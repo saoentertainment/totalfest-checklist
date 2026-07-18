@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎛️ Checklist Maestro - TOTAL FEST (Javi SAO)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0a1929 0%, #132f4c 50%, #173a5e 100%);
+    color: #e3f2fd;
+    min-height: 100vh;
+    padding: 15px;
+  }
+  .container { max-width: 950px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 25px 20px;
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(13, 71, 161, 0.25));
+    border-radius: 16px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(33, 150, 243, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  h1 { font-size: 1.6em; color: #64b5f6; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(33, 150, 243, 0.4); }
+  .subtitle { font-size: 0.9em; color: #90caf9; opacity: 0.8; margin-bottom: 15px; }
+  .event-info { display: flex; gap: 10px; flex-wrap: wrap; margin: 15px 0; justify-content: center; }
+  .event-info input {
+    padding: 10px 14px;
+    background: rgba(13, 71, 161, 0.4);
+    border: 1px solid rgba(100, 181, 246, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.95em;
+    flex: 1;
+    min-width: 180px;
+  }
+  .event-info input::placeholder { color: rgba(255,255,255,0.5); }
+  .event-info input:focus { outline: none; border-color: #64b5f6; background: rgba(13, 71, 161, 0.6); }
+  .progress-bar { width: 100%; height: 30px; background: rgba(13, 71, 161, 0.3); border-radius: 15px; overflow: hidden; margin: 15px 0; border: 1px solid rgba(100, 181, 246, 0.2); }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #1976d2, #42a5f5, #64b5f6); transition: width 0.4s ease; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9em; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+  #progressText { font-size: 0.9em; color: #90caf9; margin-top: 5px; }
+  .main-section { background: rgba(13, 71, 161, 0.15); border: 2px solid rgba(33, 150, 243, 0.3); border-radius: 14px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
+  .main-section-header { padding: 18px 20px; background: linear-gradient(135deg, rgba(25, 118, 210, 0.3), rgba(13, 71, 161, 0.4)); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background 0.2s; border-bottom: 1px solid rgba(100, 181, 246, 0.2); }
+  .main-section-header:hover { background: linear-gradient(135deg, rgba(25, 118, 210, 0.4), rgba(13, 71, 161, 0.5)); }
+  .main-section-header h2 { font-size: 1.25em; color: #bbdefb; }
+  .section-count { background: rgba(0,0,0,0.3); padding: 5px 12px; border-radius: 15px; font-size: 0.85em; color: #64b5f6; font-weight: bold; }
+  .main-section-content { padding: 0; display: none; }
+  .main-section.open .main-section-content { display: block; }
+  .sub-section { border-bottom: 1px solid rgba(100, 181, 246, 0.1); }
+  .sub-section:last-child { border-bottom: none; }
+  .sub-section-header { padding: 12px 20px; background: rgba(25, 118, 210, 0.1); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background 0.2s; }
+  .sub-section-header:hover { background: rgba(25, 118, 210, 0.2); }
+  .sub-section-header h3 { font-size: 1em; color: #90caf9; }
+  .sub-count { background: rgba(0,0,0,0.25); padding: 3px 10px; border-radius: 12px; font-size: 0.8em; color: #64b5f6; }
+  .sub-section-content { padding: 8px 15px; display: none; }
+  .sub-section.open .sub-section-content { display: block; }
+  .item { display: flex; align-items: center; padding: 10px 12px; border-bottom: 1px solid rgba(100, 181, 246, 0.08); gap: 12px; transition: background 0.2s; }
+  .item:hover { background: rgba(25, 118, 210, 0.08); }
+  .item:last-child { border-bottom: none; }
+  .item input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: #42a5f5; flex-shrink: 0; }
+  .item label { cursor: pointer; flex: 1; font-size: 0.95em; color: #e3f2fd; transition: all 0.2s; }
+  .item.checked label { text-decoration: line-through; opacity: 0.5; color: #90caf9; }
+  .item.checked { background: rgba(25, 118, 210, 0.05); }
+  .notes { width: calc(100% - 30px); margin: 10px 15px 15px; padding: 10px; background: rgba(13, 71, 161, 0.3); border: 1px solid rgba(100, 181, 246, 0.2); border-radius: 8px; color: #fff; resize: vertical; min-height: 50px; font-size: 0.9em; }
+  .notes::placeholder { color: rgba(255,255,255,0.4); }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 25px 0; }
+  button { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.95em; transition: all 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
+  button:active { transform: translateY(0); }
+  .btn-reset { background: linear-gradient(135deg, #d32f2f, #f44336); color: #fff; }
+  .btn-save { background: linear-gradient(135deg, #1976d2, #42a5f5); color: #fff; }
+  .btn-save-event { background: linear-gradient(135deg, #6a1b9a, #8e24aa); color: #fff; }
+  .btn-export { background: linear-gradient(135deg, #0277bd, #039be5); color: #fff; }
+  .btn-client { background: linear-gradient(135deg, #00695c, #00897b); color: #fff; }
+  .btn-expand { background: linear-gradient(135deg, #5e35b1, #7e57c2); color: #fff; }
+  .btn-config { background: linear-gradient(135deg, #ef6c00, #fb8c00); color: #fff; }
+  .btn-load { background: linear-gradient(135deg, #2e7d32, #43a047); color: #fff; padding: 6px 12px; font-size: 0.85em; }
+  .btn-delete { background: linear-gradient(135deg, #c62828, #e53935); color: #fff; padding: 6px 12px; font-size: 0.85em; }
+  footer { text-align: center; padding: 20px; opacity: 0.6; font-size: 0.85em; color: #90caf9; }
+  .history-section { background: rgba(106, 27, 154, 0.15); border: 2px solid rgba(142, 36, 170, 0.3); border-radius: 14px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
+  .history-header { padding: 18px 20px; background: linear-gradient(135deg, rgba(106, 27, 154, 0.3), rgba(142, 36, 170, 0.4)); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; border-bottom: 1px solid rgba(186, 104, 200, 0.2); }
+  .history-header h2 { font-size: 1.25em; color: #ce93d8; }
+  .history-content { padding: 15px; display: none; }
+  .history-section.open .history-content { display: block; }
+  .history-item { background: rgba(142, 36, 170, 0.1); border: 1px solid rgba(186, 104, 200, 0.2); border-radius: 8px; padding: 12px 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .history-info { flex: 1; min-width: 200px; }
+  .history-info h4 { color: #ce93d8; font-size: 1em; margin-bottom: 4px; }
+  .history-info p { font-size: 0.85em; color: #b39ddb; margin: 2px 0; }
+  .history-actions { display: flex; gap: 8px; }
+  .empty-history { text-align: center; padding: 20px; color: #b39ddb; opacity: 0.7; font-style: italic; }
+  .import-section { margin-top: 15px; padding: 15px; background: rgba(239, 108, 0, 0.1); border: 1px solid rgba(251, 140, 0, 0.3); border-radius: 8px; }
+  .import-section h4 { color: #ffb74d; margin-bottom: 10px; }
+  .import-section input[type="file"] { color: #fff; font-size: 0.9em; }
+  .import-section input[type="file"]::file-selector-button { background: #ef6c00; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-right: 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🎛️ CHECKLIST MAESTRO - TOTAL FEST (JAVI SAO)</h1>
+    <div class="subtitle">Sistema de verificación de equipo para eventos</div>
+    <div class="event-info">
+      <input type="text" id="eventName" placeholder="📍 Nombre del evento" oninput="autoSaveEvent()">
+      <input type="date" id="eventDate" onchange="autoSaveEvent()">
+      <input type="text" id="eventVenue" placeholder="🏢 Venue / Lugar" oninput="autoSaveEvent()">
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill">0%</div>
+    </div>
+    <div id="progressText">0 de 0 items listos</div>
+  </header>
+
+  <div id="sections"></div>
+
+  <div class="history-section">
+    <div class="history-header" onclick="this.parentElement.classList.toggle('open')">
+      <h2>📚 Historial de Eventos</h2>
+      <span class="section-count" id="historyCount">0 eventos</span>
+    </div>
+    <div class="history-content">
+      <div id="historyList"></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-expand" onclick="toggleAll()">📂 Expandir/Colapsar</button>
+    <button class="btn-save" onclick="saveAll()">💾 Guardar actual</button>
+    <button class="btn-save-event" onclick="saveAsNewEvent()">📌 Guardar como nuevo evento</button>
+    <button class="btn-export" onclick="exportReport()">📄 Reporte interno</button>
+    <button class="btn-client" onclick="exportClientReport()">📋 Reporte cliente</button>
+    <button class="btn-config" onclick="exportConfig()">⬇️ Exportar config</button>
+    <button class="btn-reset" onclick="resetChecks()">🔄 Reset checks</button>
+  </div>
+
+  <div class="import-section">
+    <h4>⬆️ Importar configuración desde otro dispositivo</h4>
+    <p style="font-size:0.85em; color:#ffb74d; margin-bottom:10px;">
+      Sube el archivo JSON exportado previamente. Esto reemplazará tu configuración actual.
+    </p>
+    <input type="file" id="importFile" accept=".json" onchange="importConfig(event)">
+  </div>
+
+  <footer>
+    Hecho con  para Javi SAO | TOTAL FEST | Datos guardados localmente en tu navegador
+  </footer>
+</div>
+
+<script>
+const CHECKLIST = [
+  {
+    title: "🅰️ SECCIÓN 1: KARAOKE + DJ",
+    subsections: [
+      { title: " 1.1 Sonido", items: ["2 Bocinas ALTO 10\" + Fundas", "1 Subwoofer ALTO 12\" + Funda", "Maleta con soportes para bocinas + Soporte Pantalla", "Micrófonos PHENYX + Módulo y Plug + Eliminador", "Micrófonos STEREN + Módulo y Plug + Eliminador", "Micrófono SHURE SM58", "Interfaz Behringer + USB", "Mezcladora Behringer + Eliminador de Corriente"] },
+      { title: "📺 1.2 Video y Pantallas", items: ["Pantalla 42\" + estuche + control", "Monitor 15\" genérico + cables", "Pantalla 19\" AOC + control + base", "Pantalla 20\" Mitsui + control + base", "Soporte para laptop y monitor genérico 15\"", "Soportes de piso para Pantallas HERCULES"] },
+      { title: "💡 1.3 Iluminación", items: ["2 Barras de luces LED + estuche", "3 Luces LED + 1 cuadrado + estuche", "Maleta con luces robóticas", "Maleta con luces beam", "Clamps para luces + hule espuma", "Lámparas: Blanca, Mini y para Laptop"] },
+      { title: "💻 1.4 Cómputo y DJ", items: ["Módulo desarmable para DJ + Patitas", "Cabina DJ + Estuche", "Laptop + Estuche", "Disco duro externo SSD Azul", "Extensor USB C", "Wav Link (transmisor HDMI inalámbrico) para monitores independientes", "HUB USB", "Audífonos + soporte + soporte vaso", "Mouse + Mouse pad"] },
+      { title: " 1.5 Cables y Energía", items: ["Regulador de energía FURMAN", "Maleta de cables de audio", "Maleta de adaptadores (verde)", "Maleta de extensiones de luz y multicontactos", "Maleta HDMI / Splitters / Cables HDMI", "Herramienta, clips, velcros, correas sujetadoras"] },
+      { title: "🎒 1.6 Logística, Docs y Personal", items: ["Carrito transportador", "Atril para micrófonos (partituras)", "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación", "Pilas (¡cargarlas!) + Micro limpiador de micrófono", "Vestuario: Maletas con accesorios + ropa en gancho", "Hospitalidad: Almuerzo + Electrolit"] }
+    ]
+  },
+  {
+    title: "🅱️ SECCIÓN 2: MÚSICA EN VIVO (Bajista y Cantante)",
+    subsections: [
+      { title: "🎸 2.1 Instrumentos y Amplificación", items: ["Bajo BATTALION + eliminador", "Afinador + eliminador", "Amplificador BUGERA + cable de corriente", "Bajo GL", "Bajo FACTOR", "THALI", "Soporte elevador monitor + cable corriente", "Cuerdas de repuesto"] },
+      { title: "🎤 2.2 Audio y Cables", items: ["Micrófono SHURE SM58 (voz)", "Cables Plug (2)", "Cable XLR Voz", "2 cables XLR Salida Bugera", "Cables Plugs extra", "Clips de atril para cables de micrófono"] },
+      { title: " 2.3 Soportes", items: ["Atril para micrófono", "Atriles para bajo", "Atril para teclado", "Clips de atril de teclado para cables", "Tablet + soporte Hercules", "Soporte para celular Hercules", "Soporte para vaso"] },
+      { title: "💻 2.4 Cómputo y Video", items: ["Laptop + eliminador de corriente", "Disco duro negro + cable", "Base para pantalla tributo MUSE"] },
+      { title: "🔌 2.5 Energía y Accesorios", items: ["Extensión de luz", "Multicontactos", "Plumillas + PortaPlumillas"] }
+    ]
+  }
+];
+
+const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v2';
+
+function getStorage() {
+  const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  return { current: data.current || { eventName: '', eventDate: '', eventVenue: '', checks: {}, notes: {} }, history: data.history || [] };
+}
+function setStorage(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+
+function render() {
+  const storage = getStorage();
+  const container = document.getElementById('sections');
+  container.innerHTML = '';
+  document.getElementById('eventName').value = storage.current.eventName || '';
+  document.getElementById('eventDate').value = storage.current.eventDate || '';
+  document.getElementById('eventVenue').value = storage.current.eventVenue || '';
+
+  CHECKLIST.forEach((section, sIdx) => {
+    const sectionDiv = document.createElement('div');
+    sectionDiv.className = 'main-section open';
+    let totalItems = 0, checkedItems = 0;
+    section.subsections.forEach((sub, subIdx) => {
+      sub.items.forEach((_, iIdx) => { totalItems++; if (storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`]) checkedItems++; });
+    });
+    sectionDiv.innerHTML = `
+      <div class="main-section-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>${section.title}</h2><span class="section-count">${checkedItems}/${totalItems}</span>
+      </div>
+      <div class="main-section-content">
+        ${section.subsections.map((sub, subIdx) => {
+          const subChecked = sub.items.filter((_, iIdx) => storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`] === true).length;
+          return `
+            <div class="sub-section open">
+              <div class="sub-section-header" onclick="event.stopPropagation(); this.parentElement.classList.toggle('open')">
+                <h3>${sub.title}</h3><span class="sub-count">${subChecked}/${sub.items.length}</span>
+              </div>
+              <div class="sub-section-content">
+                ${sub.items.map((item, iIdx) => {
+                  const key = `s${sIdx}_sub${subIdx}_i${iIdx}`;
+                  const isChecked = storage.current.checks[key] === true;
+                  return `<div class="item ${isChecked ? 'checked' : ''}"><input type="checkbox" id="${key}" ${isChecked ? 'checked' : ''} onchange="toggleItem('${key}', this)"><label for="${key}">${item}</label></div>`;
+                }).join('')}
+                <textarea class="notes" placeholder="📝 Notas para ${sub.title}..." oninput="saveNotes(${sIdx}, ${subIdx}, this.value)">${storage.current.notes[`s${sIdx}_sub${subIdx}`] || ''}</textarea>
+              </div>
+            </div>`;
+        }).join('')}
+      </div>`;
+    container.appendChild(sectionDiv);
+  });
+  updateProgress();
+  renderHistory();
+}
+
+function toggleItem(key, el) {
+  const storage = getStorage();
+  storage.current.checks[key] = el.checked;
+  setStorage(storage);
+  el.parentElement.classList.toggle('checked', el.checked);
+  updateProgress();
+  const parts = key.split('_');
+  const sIdx = parseInt(parts[0].replace('s',''));
+  const subIdx = parseInt(parts[1].replace('sub',''));
+  const section = CHECKLIST[sIdx];
+  const subChecked = section.subsections[subIdx].items.filter((_, iIdx) => storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`] === true).length;
+  const totalSection = section.subsections.reduce((acc, sub) => acc + sub.items.length, 0);
+  const checkedSection = section.subsections.reduce((acc, sub, idx) => acc + sub.items.filter((_, iIdx) => storage.current.checks[`s${sIdx}_sub${idx}_i${iIdx}`] === true).length, 0);
+  const mainSections = document.querySelectorAll('.main-section');
+  mainSections[sIdx].querySelector('.section-count').textContent = `${checkedSection}/${totalSection}`;
+  mainSections[sIdx].querySelectorAll('.sub-section')[subIdx].querySelector('.sub-count').textContent = `${subChecked}/${section.subsections[subIdx].items.length}`;
+}
+
+function saveNotes(sIdx, subIdx, value) { const storage = getStorage(); storage.current.notes[`s${sIdx}_sub${subIdx}`] = value; setStorage(storage); }
+function saveAll() { const storage = getStorage(); storage.current.eventName = document.getElementById('eventName').value; storage.current.eventDate = document.getElementById('eventDate').value; storage.current.eventVenue = document.getElementById('eventVenue').value; storage.current.lastSave = new Date().toISOString(); setStorage(storage); alert('✅ Evento actual guardado correctamente'); }
+function autoSaveEvent() { const storage = getStorage(); storage.current.eventName = document.getElementById('eventName').value; storage.current.eventDate = document.getElementById('eventDate').value; storage.current.eventVenue = document.getElementById('eventVenue').value; setStorage(storage); }
+
+function saveAsNewEvent() {
+  const eventName = document.getElementById('eventName').value.trim();
+  if (!eventName) { alert('⚠️ Ingresa al menos el nombre del evento.'); return; }
+  if (!confirm(`¿Guardar "${eventName}" en el historial?`)) return;
+  const storage = getStorage();
+  storage.history.unshift({ id: Date.now(), eventName, eventDate: document.getElementById('eventDate').value, eventVenue: document.getElementById('eventVenue').value.trim(), checks: { ...storage.current.checks }, notes: { ...storage.current.notes }, savedAt: new Date().toISOString() });
+  setStorage(storage);
+  renderHistory();
+  alert(`✅ "${eventName}" guardado en el historial`);
+}
+
+function loadEvent(id) {
+  const storage = getStorage();
+  const event = storage.history.find(e => e.id === id);
+  if (!event) return;
+  if (!confirm(`¿Cargar "${event.eventName}"? Reemplazará el evento actual.`)) return;
+  storage.current = { eventName: event.eventName, eventDate: event.eventDate, eventVenue: event.eventVenue, checks: { ...event.checks }, notes: { ...event.notes } };
+  setStorage(storage);
+  render();
+}
+
+function deleteEvent(id) {
+  const storage = getStorage();
+  const event = storage.history.find(e => e.id === id);
+  if (!event) return;
+  if (!confirm(`¿Eliminar "${event.eventName}"?`)) return;
+  storage.history = storage.history.filter(e => e.id !== id);
+  setStorage(storage);
+  renderHistory();
+}
+
+function renderHistory() {
+  const storage = getStorage();
+  const list = document.getElementById('historyList');
+  document.getElementById('historyCount').textContent = `${storage.history.length} eventos`;
+  if (storage.history.length === 0) { list.innerHTML = '<div class="empty-history">No hay eventos guardados aún.</div>'; return; }
+  list.innerHTML = storage.history.map(event => {
+    const checkedCount = Object.values(event.checks).filter(v => v).length;
+    const dateStr = event.eventDate ? formatDateLocal(event.eventDate) : 'Sin fecha';
+    return `<div class="history-item"><div class="history-info"><h4>📍 ${event.eventName}</h4><p>📅 ${dateStr} |  ${event.eventVenue || 'Sin venue'}</p><p>✅ ${checkedCount} equipos</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
+  }).join('');
+}
+
+function resetChecks() { if (!confirm('¿Resetear todos los checks?')) return; const storage = getStorage(); storage.current.checks = {}; setStorage(storage); render(); }
+function toggleAll() { document.querySelectorAll('.main-section').forEach(s => s.classList.toggle('open')); document.querySelectorAll('.sub-section').forEach(s => s.classList.toggle('open')); }
+
+function exportReport() {
+  const storage = getStorage();
+  const eventName = document.getElementById('eventName').value.trim() || storage.current.eventName || 'N/A';
+  const eventDate = document.getElementById('eventDate').value || storage.current.eventDate;
+  const eventVenue = document.getElementById('eventVenue').value.trim() || storage.current.eventVenue || 'N/A';
+  let report = `REPORTE DE CARGA - CHECKLIST MAESTRO\n========================================\nTOTAL FEST - JAVI SAO\nEvento: ${eventName}\nFecha: ${eventDate ? formatDateLocal(eventDate) : 'N/A'}\nVenue: ${eventVenue}\nGenerado: ${new Date().toLocaleString('es-MX')}\n\n`;
+  CHECKLIST.forEach((section, sIdx) => {
+    report += `\n${'='.repeat(50)}\n${section.title}\n${'='.repeat(50)}\n`;
+    section.subsections.forEach((sub, subIdx) => {
+      report += `\n  ${sub.title}\n  ${'-'.repeat(40)}\n`;
+      sub.items.forEach((item, iIdx) => {
+        const key = `s${sIdx}_sub${subIdx}_i${iIdx}`;
+        report += `  ${storage.current.checks[key] ? '✅' : '❌'} ${item}\n`;
+      });
+      if (storage.current.notes[`s${sIdx}_sub${subIdx}`]) report += `  📝 Notas: ${storage.current.notes[`s${sIdx}_sub${subIdx}`]}\n`;
+    });
+  });
+  const blob = new Blob([report], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `rider_${eventDate || 'evento'}_${Date.now()}.txt`;
+  a.click();
+}
+
+function exportClientReport() {
+  const storage = getStorage();
+  const eventName = document.getElementById('eventName').value.trim() || storage.current.eventName || 'Evento';
+  const eventDate = document.getElementById('eventDate').value || storage.current.eventDate;
+  const eventVenue = document.getElementById('eventVenue').value.trim() || storage.current.eventVenue || 'Venue por confirmar';
+  
+  let totalChecked = 0;
+  CHECKLIST.forEach((section, sIdx) => { section.subsections.forEach((sub, subIdx) => { sub.items.forEach((_, iIdx) => { if (storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`]) totalChecked++; }); }); });
+  if (totalChecked === 0) { alert('⚠️ Marca al menos un equipo.'); return; }
+
+  const printWindow = window.open('', '_blank');
+  let html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Reporte - ${eventName}</title><style>
+  @page { margin: 1.5cm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #1a1a1a; line-height: 1.4; padding: 10px; background: #fff; }
+  .header { text-align: center; padding: 20px; background: linear-gradient(135deg, #1976d2, #0d47a1); color: white; border-radius: 8px; margin-bottom: 15px; }
+  .header h1 { font-size: 1.8em; margin-bottom: 5px; }
+  .event-info { background: #f5f9ff; border-left: 4px solid #1976d2; padding: 15px; margin: 10px 0; border-radius: 6px; }
+  .event-info h2 { color: #0d47a1; font-size: 1.2em; margin-bottom: 10px; }
+  .event-info p { margin: 5px 0; font-size: 0.95em; }
+  .event-info strong { color: #1976d2; }
+  .summary { background: #e8f5e9; border: 2px solid #4caf50; padding: 10px; border-radius: 6px; margin: 10px 0; text-align: center; font-size: 1em; color: #2e7d32; font-weight: bold; }
+  .section { margin: 15px 0; }
+  .section-title { background: linear-gradient(135deg, #1976d2, #42a5f5); color: white; padding: 10px 15px; border-radius: 6px; font-size: 1.1em; font-weight: bold; margin-bottom: 10px; }
+  .subsection { margin: 10px 0; padding-left: 10px; }
+  .subsection-title { color: #0d47a1; font-size: 1em; font-weight: bold; margin-bottom: 5px; border-bottom: 1px solid #e3f2fd; padding-bottom: 3px; }
+  .item-list { list-style: none; padding-left: 0; }
+  .item-list li { padding: 5px 10px; margin: 3px 0; background: #f8fbff; border-left: 3px solid #42a5f5; border-radius: 3px; font-size: 0.9em; }
+  .item-list li:before { content: "✓"; color: #2e7d32; font-weight: bold; margin-right: 10px; }
+  .footer { margin-top: 20px; padding-top: 15px; border-top: 2px solid #e3f2fd; text-align: center; color: #666; font-size: 0.85em; }
+  .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #1976d2; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; }
+  @media print { .print-btn { display: none; } body { padding: 0; } }
+  </style></head><body>
+  <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
+  <div class="header"><h1>🎛️ TOTAL FEST</h1><div>Servicios Musicales Profesionales</div></div>
+  <div class="event-info">
+    <h2>📋 Reporte de Equipo Confirmado</h2>
+    <p><strong>Evento:</strong> ${eventName}</p>
+    <p><strong>Fecha:</strong> ${eventDate ? formatDateLocal(eventDate) : 'Por confirmar'}</p>
+    <p><strong>Venue:</strong> ${eventVenue}</p>
+    <p><strong>Generado:</strong> ${new Date().toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+  </div>
+  <div class="summary">✅ ${totalChecked} equipos confirmados para este evento</div>`;
+
+  CHECKLIST.forEach((section, sIdx) => {
+    let sectionHasItems = false, sectionContent = '';
+    section.subsections.forEach((sub, subIdx) => {
+      const checkedItems = sub.items.filter((item, iIdx) => storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`] === true);
+      if (checkedItems.length > 0) {
+        sectionHasItems = true;
+        sectionContent += `<div class="subsection"><div class="subsection-title">${sub.title}</div><ul class="item-list">${checkedItems.map(item => `<li>${item}</li>`).join('')}</ul></div>`;
+      }
+    });
+    if (sectionHasItems) html += `<div class="section"><div class="section-title">${section.title}</div>${sectionContent}</div>`;
+  });
+
+  html += `<div class="footer">
+    <p><strong>TOTAL FEST - JAVI SAO</strong></p>
+    <p>Servicios de Karaoke, DJ y Música en Vivo</p>
+    <p>📞 <a href="tel:+525532687918" style="color:#1976d2; text-decoration:none;">55 3268 7918</a> | 📧 <a href="mailto:karaoke.sao@gmail.com" style="color:#1976d2; text-decoration:none;">karaoke.sao@gmail.com</a></p>
+    <p style="margin-top: 10px; font-size: 0.8em; opacity: 0.7;">Este reporte confirma el equipo que será llevado al evento.</p>
+  </div></body></html>`;
+
+  printWindow.document.write(html);
+  printWindow.document.close();
+  setTimeout(() => printWindow.focus(), 250);
+}
+
+// 🐛 FIX BLINDADO PARA LA FECHA
+function formatDateLocal(dateStr) {
+  if (!dateStr) return '';
+  const parts = dateStr.split('-');
+  if (parts.length === 3) {
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+    const date = new Date(year, month, day);
+    return date.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  }
+  return dateStr;
+}
+
+function exportConfig() {
+  const storage = getStorage();
+  const config = { version: '2.0', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - JAVI SAO', data: storage };
+  const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `totalfest_config_${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  alert('✅ Configuración exportada.');
+}
+
+function importConfig(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  if (!confirm('⚠️ Esto reemplazará TODA tu configuración actual. ¿Continuar?')) { event.target.value = ''; return; }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const config = JSON.parse(e.target.result);
+      if (!config.data || !config.data.current) throw new Error('Formato inválido');
+      setStorage(config.data);
+      render();
+      alert('✅ Configuración importada correctamente');
+    } catch (err) { alert(' Error al importar: archivo inválido'); }
+    event.target.value = '';
+  };
+  reader.readAsText(file);
+}
+
+function updateProgress() {
+  const storage = getStorage();
+  let total = 0, checked = 0;
+  CHECKLIST.forEach((s, sIdx) => { s.subsections.forEach((sub, subIdx) => { sub.items.forEach((_, iIdx) => { total++; if (storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`]) checked++; }); }); });
+  const pct = total ? Math.round((checked/total)*100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressFill').textContent = pct + '%';
+  document.getElementById('progressText').textContent = `${checked} de ${total} items listos`;
+}
+
+window.addEventListener('load', render);
+</script>
+</body>
+</html>
