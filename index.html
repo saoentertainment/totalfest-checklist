@@ -247,7 +247,9 @@
     <button class="btn-export" onclick="exportReport()">📄 Reporte interno</button>
     <button class="btn-client" onclick="exportClientReport()">📋 Reporte cliente</button>
     <button class="btn-config" onclick="exportConfig()">⬇️ Exportar config</button>
-    <button class="btn-reset" onclick="doReset()">🔄 Resetear Todo</button>
+<form id="resetForm" onsubmit="doReset(); return false;" style="display:inline;">
+  <button type="submit" class="btn-reset" style="pointer-events:auto; touch-action:manipulation;">🔄 Resetear Todo</button>
+</form>
   </div>
 
   <div class="import-section">
@@ -301,52 +303,26 @@ if ('serviceWorker' in navigator) {
 
 // Función de reset definida al inicio para evitar problemas de carga
 function doReset() { 
-  alert('🔄 Botón reset presionado - Versión 3.9');
+  if (!window.confirm('¿Limpiar todo el evento actual? El historial se mantiene.')) {
+    return false;
+  }
   
-  const storage = getStorage(); 
-  
-  storage.current.checks = {}; 
-  storage.current.notes = {};
-  storage.current.service = '';
-  storage.current.eventType = '';
-  storage.current.celebrant = '';
-  storage.current.client = '';
-  storage.current.address = '';
-  storage.current.eventDate = '';
-  storage.current.startTime = '';
-  storage.current.contractedHours = '';
-  storage.current.transportType = '';
-  storage.current.transportDetails = '';
-  storage.current.staffCount = '1';
-  storage.current.staffNames = '';
-  storage.current.costTotal = '';
-  storage.current.costAdvance = '';
-  storage.current.advanceDate = '';
-  
-  setStorage(storage); 
-  
-  document.getElementById('service').value = '';
-  document.getElementById('eventType').value = '';
-  document.getElementById('celebrant').value = '';
-  document.getElementById('client').value = '';
-  document.getElementById('address').value = '';
-  document.getElementById('eventDate').value = '';
-  document.getElementById('startTime').value = '';
-  document.getElementById('contractedHours').value = '';
-  document.getElementById('transportType').value = '';
-  document.getElementById('transportDetails').value = '';
-  document.getElementById('staffCount').value = '1';
-  document.getElementById('staffNames').value = '';
-  document.getElementById('costTotal').value = '';
-  document.getElementById('costAdvance').value = '';
-  document.getElementById('advanceDate').value = '';
-  
-  updateMapsLink(); 
-  calculateBalance();
-  render();
-  
-  alert('✅ Todo limpio y listo');
-} 
+  try {
+    const storage = getStorage(); 
+    storage.current = { 
+      service: '', eventType: '', celebrant: '', client: '', 
+      address: '', eventDate: '', startTime: '', contractedHours: '', 
+      transportType: '', transportDetails: '', staffCount: '1', 
+      staffNames: '', costTotal: '', costAdvance: '', advanceDate: '', 
+      checks: {}, notes: {} 
+    };
+    setStorage(storage); 
+    window.location.reload();
+  } catch(e) {
+    alert('Error: ' + e.message);
+  }
+  return false;
+}
 const CHECKLIST = [
   {
     title: "🅰️ SECCIÓN 1: KARAOKE + DJ",
