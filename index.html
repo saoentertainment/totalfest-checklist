@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>️ Checklist Maestro - TOTAL FEST (Javi SAO)</title>
+<title>🎛️ Checklist Maestro - TOTAL FEST (Javi SAO)</title>
 <link rel="icon" type="image/png" sizes="32x32" href="./icon-192.png">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <link rel="manifest" href="./manifest.json">
@@ -74,7 +74,7 @@
   .notes { width: calc(100% - 30px); margin: 10px 15px 15px; padding: 10px; background: rgba(13, 71, 161, 0.3); border: 1px solid rgba(100, 181, 246, 0.2); border-radius: 8px; color: #fff; resize: vertical; min-height: 50px; font-size: 0.9em; }
   .notes::placeholder { color: rgba(255,255,255,0.4); }
   .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 25px 0; }
-button { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.95em; transition: all 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.2); user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+  button { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.95em; transition: all 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.2); user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
   button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
   button:active { transform: translateY(0); }
   .btn-reset { background: linear-gradient(135deg, #d32f2f, #f44336); color: #fff; }
@@ -102,84 +102,17 @@ button { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; 
   .import-section input[type="file"] { color: #fff; font-size: 0.9em; }
   .import-section input[type="file"]::file-selector-button { background: #ef6c00; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-right: 10px; }
 
-  /* MENÚ FLOTANTE DE NAVEGACIÓN */
-  .fab-container {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-  .fab-main {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #1976d2, #8e24aa);
-    color: white;
-    border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    font-size: 24px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s, background 0.3s;
-    z-index: 1001;
-  }
+  .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column-reverse; align-items: center; }
+  .fab-main { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #1976d2, #8e24aa); color: white; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.4); font-size: 24px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: transform 0.3s, background 0.3s; z-index: 1001; }
   .fab-main:hover { transform: scale(1.1); }
   .fab-main.active { transform: rotate(45deg); background: linear-gradient(135deg, #d32f2f, #f44336); }
-  .fab-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 15px;
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
-    transition: all 0.3s ease;
-  }
-  .fab-menu.open {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  .fab-item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-  }
-  .fab-item span {
-    background: rgba(13, 71, 161, 0.95);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85em;
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    white-space: nowrap;
-    border: 1px solid rgba(100, 181, 246, 0.3);
-  }
-  .fab-item button {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: none;
-    background: linear-gradient(135deg, #42a5f5, #1976d2);
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
-    padding: 0;
-  }
+  .fab-menu { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; opacity: 0; transform: translateY(20px); pointer-events: none; transition: all 0.3s ease; }
+  .fab-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .fab-item { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+  .fab-item span { background: rgba(13, 71, 161, 0.95); color: white; padding: 6px 12px; border-radius: 20px; font-size: 0.85em; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.3); white-space: nowrap; border: 1px solid rgba(100, 181, 246, 0.3); }
+  .fab-item button { width: 45px; height: 45px; border-radius: 50%; border: none; background: linear-gradient(135deg, #42a5f5, #1976d2); color: white; font-size: 18px; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.3); transition: transform 0.2s; padding: 0; }
   .fab-item button:hover { transform: scale(1.1); }
-  @media (max-width: 600px) {
-    .fab-container { bottom: 20px; right: 20px; }
-    .fab-item span { font-size: 0.75em; padding: 5px 10px; }
-  }
+  @media (max-width: 600px) { .fab-container { bottom: 20px; right: 20px; } .fab-item span { font-size: 0.75em; padding: 5px 10px; } }
 </style>
 </head>
 <body>
@@ -215,12 +148,12 @@ button { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; 
         </div>
       </div>
 
-      <div class="section-title"> Ubicación, Fecha y Horario</div>
+      <div class="section-title">📍 Ubicación, Fecha y Horario</div>
       <div class="form-group">
         <label>Dirección Completa</label>
         <input type="text" id="address" placeholder="Calle, número, colonia, ciudad, CP" oninput="updateMapsLink(); autoSaveEvent()">
       </div>
-      <a id="mapsLink" href="#" target="_blank" class="btn-maps disabled"> Abrir en Google Maps</a>
+      <a id="mapsLink" href="#" target="_blank" class="btn-maps disabled">📍 Abrir en Google Maps</a>
       
       <div class="form-row-3" style="margin-top: 15px;">
         <div class="form-group">
@@ -237,7 +170,7 @@ button { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; 
         </div>
       </div>
 
-      <div class="section-title"> Logística y Personal</div>
+      <div class="section-title">🚗 Logística y Personal</div>
       <div class="form-row">
         <div class="form-group">
           <label>Modo de Transporte</label>
@@ -311,10 +244,10 @@ button { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; 
   <div class="actions">
     <button class="btn-expand" onclick="toggleAll()">📂 Expandir/Colapsar</button>
     <button class="btn-save-event" onclick="saveAsNewEvent()">📌 Guardar en Historial</button>
-    <button class="btn-export" onclick="exportReport()">📄 Reporte interno</button>
-    <button class="btn-client" onclick="exportClientReport()">📋 Reporte cliente</button>
+    <button class="btn-export" onclick="exportReport()"> Reporte interno</button>
+    <button class="btn-client" onclick="exportClientReport()"> Reporte cliente</button>
     <button class="btn-config" onclick="exportConfig()">⬇️ Exportar config</button>
-<button class="btn-reset" onclick="resetChecks()" style="user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;">Reset checks</button>
+    <button class="btn-reset" onclick="resetChecks()">Resetear Todo</button>
   </div>
 
   <div class="import-section">
@@ -330,7 +263,6 @@ button { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; 
   </footer>
 </div>
 
-<!-- MENÚ FLOTANTE -->
 <div class="fab-container">
   <button class="fab-main" id="fabMain" onclick="toggleFab()">☰</button>
   <div class="fab-menu" id="fabMenu">
@@ -351,7 +283,7 @@ button { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; 
       <button onclick="scrollToSection('section-2')">🏛️</button>
     </div>
     <div class="fab-item">
-      <span>📚 Historial</span>
+      <span> Historial</span>
       <button onclick="scrollToSection('history-section')">📚</button>
     </div>
   </div>
@@ -364,9 +296,9 @@ const CHECKLIST = [
     subsections: [
       { title: "🔊 1.1 Sonido", items: ["2 Bocinas ALTO 10\" + Fundas", "1 Subwoofer ALTO 12\" + Funda", "Maleta con soportes para bocinas + Soporte Pantalla", "Micrófonos PHENYX + Módulo y Plug + Eliminador", "Micrófonos STEREN + Módulo y Plug + Eliminador", "Micrófono SHURE SM58", "Interfaz Behringer + USB", "Mezcladora Behringer + Eliminador de Corriente"] },
       { title: "📺 1.2 Video y Pantallas", items: ["Pantalla 42\" + estuche + control", "Monitor 15\" genérico + cables", "Pantalla 19\" AOC + control + base", "Pantalla 20\" Mitsui + control + base", "Soporte para laptop y monitor genérico 15\"", "Soportes de piso para Pantallas HERCULES"] },
-      { title: " 1.3 Iluminación", items: ["2 Barras de luces LED + estuche", "3 Luces LED + 1 cuadrado + estuche", "Maleta con luces robóticas", "Maleta con luces beam", "Clamps para luces + hule espuma", "Lámparas: Blanca, Mini y para Laptop"] },
+      { title: "💡 1.3 Iluminación", items: ["2 Barras de luces LED + estuche", "3 Luces LED + 1 cuadrado + estuche", "Maleta con luces robóticas", "Maleta con luces beam", "Clamps para luces + hule espuma", "Lámparas: Blanca, Mini y para Laptop"] },
       { title: "💻 1.4 Cómputo y DJ", items: ["Módulo desarmable para DJ + Patitas", "Cabina DJ + Estuche", "Laptop + Estuche", "Disco duro externo SSD Azul", "Extensor USB C", "Wav Link (transmisor HDMI inalámbrico) para monitores independientes", "HUB USB", "Audífonos + soporte + soporte vaso", "Mouse + Mouse pad"] },
-      { title: "🔌 1.5 Cables y Energía", items: ["Regulador de energía FURMAN", "Maleta de cables de audio", "Maleta de adaptadores (verde)", "Maleta de extensiones de luz y multicontactos", "Maleta HDMI / Splitters / Cables HDMI", "Herramienta, clips, velcros, correas sujetadoras"] },
+      { title: " 1.5 Cables y Energía", items: ["Regulador de energía FURMAN", "Maleta de cables de audio", "Maleta de adaptadores (verde)", "Maleta de extensiones de luz y multicontactos", "Maleta HDMI / Splitters / Cables HDMI", "Herramienta, clips, velcros, correas sujetadoras"] },
       { title: "🎒 1.6 Logística, Docs y Personal", items: ["Carrito transportador", "Atril para micrófonos (partituras)", "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación", "Pilas (¡cargarlas!) + Micro limpiador de micrófono", "Vestuario: Maletas con accesorios + ropa en gancho", "Hospitalidad: Almuerzo + Electrolit"] }
     ]
   },
@@ -375,22 +307,22 @@ const CHECKLIST = [
     subsections: [
       { title: "🎸 2.1 Instrumentos y Amplificación", items: ["Bajo BATTALION + eliminador", "Afinador + eliminador", "Amplificador BUGERA + cable de corriente", "Bajo GL", "Bajo FACTOR", "THALI", "Soporte elevador monitor + cable corriente", "Cuerdas de repuesto"] },
       { title: "🎤 2.2 Audio y Cables", items: ["Micrófono SHURE SM58 (voz)", "Cables Plug (2)", "Cable XLR Voz", "2 cables XLR Salida Bugera", "Cables Plugs extra", "Clips de atril para cables de micrófono"] },
-      { title: "📱 2.3 Soportes", items: ["Atril para micrófono", "Atriles para bajo", "Atril para teclado", "Clips de atril de teclado para cables", "Tablet + soporte Hercules", "Soporte para celular Hercules", "Soporte para vaso"] },
+      { title: " 2.3 Soportes", items: ["Atril para micrófono", "Atriles para bajo", "Atril para teclado", "Clips de atril de teclado para cables", "Tablet + soporte Hercules", "Soporte para celular Hercules", "Soporte para vaso"] },
       { title: "💻 2.4 Cómputo y Video", items: ["Laptop + eliminador de corriente", "Disco duro negro + cable", "Base para pantalla tributo MUSE"] },
       { title: "🔌 2.5 Energía y Accesorios", items: ["Extensión de luz", "Multicontactos", "Plumillas + PortaPlumillas"] }
     ]
   },
   {
-    title: "️ SECCIÓN 3: REQUISITOS DEL LUGAR (RIDER CLIENTE)",
+    title: "🅲️ SECCIÓN 3: REQUISITOS DEL LUGAR (RIDER CLIENTE)",
     subsections: [
       { title: "⚙️ Instalación y Espacio", items: ["Acceso al lugar 3 horas antes (instalación y prueba de sonido)", "Contactos aterrizados (3 patas) con breaker mínimo 15A", "Área despejada con techo/lona (protección contra sol/lluvia)", "Suelo firme y estable (no pasto húmedo/tierra por riesgos eléctricos)", "WiFi disponible en el lugar (o reportar ausencia con anticipación)"] },
-      { title: " Logística y Accesos", items: ["Permisos y accesos tramitados (si es privada/condominio/fraccionamiento)", "Acceso vehicular cercano (escaleras/terreno difícil = cargo extra por maniobras)", "Zona de cobertura verificada (CDMX/Zona Metro. Otras zonas = costo de traslado ajustado)"] },
-      { title: " Acuerdos y Condiciones", items: ["Cuota sindical cubierta por el contratante (si aplica: SUTM, CROC, ANDA, etc.)", "Atención para el staff considerada (alimentos y bebidas durante descansos)", "Responsabilidad por daños al equipo (invitados o instalaciones deficientes) al 100% en 15 días", "Tiempo contratado ininterrumpido (interrupciones por mariachis/rifas/discursos NO generan reposición)"] }
+      { title: "🚛 Logística y Accesos", items: ["Permisos y accesos tramitados (si es privada/condominio/fraccionamiento)", "Acceso vehicular cercano (escaleras/terreno difícil = cargo extra por maniobras)", "Zona de cobertura verificada (CDMX/Zona Metro. Otras zonas = costo de traslado ajustado)"] },
+      { title: "📜 Acuerdos y Condiciones", items: ["Cuota sindical cubierta por el contratante (si aplica: SUTM, CROC, ANDA, etc.)", "Atención para el staff considerada (alimentos y bebidas durante descansos)", "Responsabilidad por daños al equipo (invitados o instalaciones deficientes) al 100% en 15 días", "Tiempo contratado ininterrumpido (interrupciones por mariachis/rifas/discursos NO generan reposición)"] }
     ]
   }
 ];
 
-const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v3_6';
+const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v3_7';
 const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/saoentertainment/totalfest-checklist/main/';
 
 function getStorage() {
@@ -577,11 +509,12 @@ function renderHistory() {
     const dateStr = event.eventDate ? formatDateLocal(event.eventDate) : 'Sin fecha';
     const timeStr = event.startTime ? formatTime12(event.startTime) : '';
     const balance = Math.max(0, (parseFloat(event.costTotal)||0) - (parseFloat(event.costAdvance)||0));
-    return `<div class="history-item"><div class="history-info"><h4>🎵 ${event.service} |  ${event.celebrant || 'N/A'}</h4><p>📅 ${dateStr} ${timeStr ? `⏰ ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p>💰 Saldo: ${formatCurrency(balance)} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
+    return `<div class="history-item"><div class="history-info"><h4>🎵 ${event.service} |  ${event.celebrant || 'N/A'}</h4><p>📅 ${dateStr} ${timeStr ? `⏰ ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p> Saldo: ${formatCurrency(balance)} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
   }).join('');
 }
 
 function resetChecks() { 
+  alert('🔄 Botón de reset funcionando correctamente');
   if (!confirm('⚠️ ¿Resetear checks y limpiar TODOS los datos del evento? (El historial NO se borrará)')) return; 
   
   const storage = getStorage(); 
@@ -625,6 +558,7 @@ function resetChecks() {
   updateMapsLink(); 
   calculateBalance();
   render(); 
+  alert('✅ Todo limpio y listo para el siguiente evento');
 }
 
 function toggleAll() { document.querySelectorAll('.main-section').forEach(s => s.classList.toggle('open')); document.querySelectorAll('.sub-section').forEach(s => s.classList.toggle('open')); }
@@ -637,7 +571,6 @@ function formatDateLocal(dateStr) {
   return date.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-// FUNCIONES DEL MENÚ FLOTANTE
 function toggleFab() {
   const menu = document.getElementById('fabMenu');
   const btn = document.getElementById('fabMain');
@@ -659,14 +592,14 @@ function exportReport() {
   report += `║   🎛️ TOTAL FEST - SAO KARAOKE 🎤         ║\n`;
   report += `║   Checklist Maestro - Javi SAO              ║\n`;
   report += `╚══════════════════════════════════════════════════╝\n\n`;
-  report += `🎵 SERVICIO: ${document.getElementById('service').value || 'N/A'}\n`;
-  report += ` TIPO EVENTO: ${document.getElementById('eventType').value || 'N/A'}\n`;
+  report += ` SERVICIO: ${document.getElementById('service').value || 'N/A'}\n`;
+  report += `🎉 TIPO EVENTO: ${document.getElementById('eventType').value || 'N/A'}\n`;
   report += `🎂 FESTEJO DE: ${document.getElementById('celebrant').value || 'N/A'}\n`;
   report += `👤 CLIENTE: ${document.getElementById('client').value || 'N/A'}\n`;
-  report += ` DIRECCIÓN: ${document.getElementById('address').value || 'N/A'}\n`;
+  report += `📍 DIRECCIÓN: ${document.getElementById('address').value || 'N/A'}\n`;
   report += `📅 FECHA: ${document.getElementById('eventDate').value ? formatDateLocal(document.getElementById('eventDate').value) : 'N/A'}\n`;
   report += `⏰ HORARIO: ${document.getElementById('startTime').value ? formatTime12(document.getElementById('startTime').value) : 'N/A'} (${document.getElementById('contractedHours').value || '?'} Horas de Servicio)\n`;
-  report += `🚗 TRANSPORTE: ${document.getElementById('transportType').value || 'N/A'} - ${document.getElementById('transportDetails').value || ''}\n`;
+  report += ` TRANSPORTE: ${document.getElementById('transportType').value || 'N/A'} - ${document.getElementById('transportDetails').value || ''}\n`;
   report += `👥 STAFF: ${document.getElementById('staffCount').value} persona(s) - ${document.getElementById('staffNames').value || 'N/A'}\n`;
   report += `💰 COSTO TOTAL: ${formatCurrency(parseFloat(document.getElementById('costTotal').value)||0)}\n`;
   report += `💵 ANTICIPO: ${formatCurrency(parseFloat(document.getElementById('costAdvance').value)||0)} (Fecha: ${document.getElementById('advanceDate').value || 'N/A'})\n`;
@@ -715,7 +648,7 @@ function exportClientReport() {
 
   let totalChecked = 0;
   CHECKLIST.forEach((section, sIdx) => { section.subsections.forEach((sub, subIdx) => { sub.items.forEach((_, iIdx) => { if (storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`]) totalChecked++; }); }); });
-  if (totalChecked === 0) { alert('️ Marca al menos un equipo.'); return; }
+  if (totalChecked === 0) { alert('⚠️ Marca al menos un equipo.'); return; }
 
   const printWindow = window.open('', '_blank');
   let html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Reporte - ${celebrant || service}</title><style>
@@ -753,16 +686,16 @@ function exportClientReport() {
       <img src="${GITHUB_BASE_URL}totalfest-logo.png" alt="TOTAL FEST">
       <img src="${GITHUB_BASE_URL}sao-logo.png" alt="SAO Karaoke">
     </div>
-    <h1>🎛️ TOTAL FEST</h1>
+    <h1>️ TOTAL FEST</h1>
     <div>Servicios Musicales Profesionales</div>
   </div>
   <div class="event-info">
     <h2>📋 Reporte de Equipo y Servicio Confirmado</h2>
     <p><strong>🎵 Servicio:</strong> ${service} ${eventType ? `(${eventType})` : ''}</p>
     ${celebrant ? `<p><strong>🎉 Festejo de:</strong> ${celebrant}</p>` : ''}
-    ${client ? `<p><strong>👤 Cliente:</strong> ${client}</p>` : ''}
+    ${client ? `<p><strong> Cliente:</strong> ${client}</p>` : ''}
     ${address ? `<p><strong>📍 Ubicación:</strong> ${address}</p>` : ''}
-    <p><strong>📅 Fecha:</strong> ${eventDate ? formatDateLocal(eventDate) : 'Por confirmar'}</p>
+    <p><strong> Fecha:</strong> ${eventDate ? formatDateLocal(eventDate) : 'Por confirmar'}</p>
     ${timeDisplay ? `<p><strong>⏰ Horario de inicio:</strong> ${timeDisplay}</p>` : ''}
     ${staffNames ? `<p><strong>👥 Staff asignado:</strong> ${staffNames} (${staffCount} persona(s))</p>` : ''}
     <p><strong>🕒 Generado:</strong> ${new Date().toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
@@ -796,7 +729,7 @@ function exportClientReport() {
     </div>
     <p><strong>TOTAL FEST - JAVI SAO</strong></p>
     <p>Servicios de Karaoke, DJ y Música en Vivo</p>
-    <p>📞 <a href="tel:+525532687918" style="color:#1976d2; text-decoration:none;">55 3268 7918</a> | 📧 <a href="mailto:karaoke.sao@gmail.com" style="color:#1976d2; text-decoration:none;">karaoke.sao@gmail.com</a></p>
+    <p> <a href="tel:+525532687918" style="color:#1976d2; text-decoration:none;">55 3268 7918</a> | 📧 <a href="mailto:karaoke.sao@gmail.com" style="color:#1976d2; text-decoration:none;">karaoke.sao@gmail.com</a></p>
     <p style="margin-top: 10px; font-size: 0.8em; opacity: 0.7;">Este reporte confirma el equipo, requisitos y condiciones del servicio.</p>
   </div></body></html>`;
 
@@ -807,7 +740,7 @@ function exportClientReport() {
 
 function exportConfig() {
   const storage = getStorage();
-  const config = { version: '3.5', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - JAVI SAO', data: storage };
+  const config = { version: '3.7', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - JAVI SAO', data: storage };
   const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
