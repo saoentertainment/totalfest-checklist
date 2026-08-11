@@ -581,7 +581,56 @@ function renderHistory() {
   }).join('');
 }
 
-function resetChecks() { if (!confirm('¿Resetear todos los checks?')) return; const storage = getStorage(); storage.current.checks = {}; setStorage(storage); render(); }
+function resetChecks() { 
+  if (!confirm('⚠️ ¿Resetear checks y limpiar TODOS los datos del evento? (El historial NO se borrará)')) return; 
+  
+  const storage = getStorage(); 
+  
+  // 1. Limpiar checks y notas
+  storage.current.checks = {}; 
+  storage.current.notes = {};
+  
+  // 2. Limpiar datos del formulario en la memoria
+  storage.current.service = '';
+  storage.current.eventType = '';
+  storage.current.celebrant = '';
+  storage.current.client = '';
+  storage.current.address = '';
+  storage.current.eventDate = '';
+  storage.current.startTime = '';
+  storage.current.contractedHours = '';
+  storage.current.transportType = '';
+  storage.current.transportDetails = '';
+  storage.current.staffCount = '1';
+  storage.current.staffNames = '';
+  storage.current.costTotal = '';
+  storage.current.costAdvance = '';
+  storage.current.advanceDate = '';
+  
+  setStorage(storage); 
+  
+  // 3. Limpiar los inputs visuales en la pantalla
+  document.getElementById('service').value = '';
+  document.getElementById('eventType').value = '';
+  document.getElementById('celebrant').value = '';
+  document.getElementById('client').value = '';
+  document.getElementById('address').value = '';
+  document.getElementById('eventDate').value = '';
+  document.getElementById('startTime').value = '';
+  document.getElementById('contractedHours').value = '';
+  document.getElementById('transportType').value = '';
+  document.getElementById('transportDetails').value = '';
+  document.getElementById('staffCount').value = '1';
+  document.getElementById('staffNames').value = '';
+  document.getElementById('costTotal').value = '';
+  document.getElementById('costAdvance').value = '';
+  document.getElementById('advanceDate').value = '';
+  
+  // 4. Actualizar botones y UI
+  updateMapsLink(); 
+  calculateBalance();
+  render(); 
+}
 function toggleAll() { document.querySelectorAll('.main-section').forEach(s => s.classList.toggle('open')); document.querySelectorAll('.sub-section').forEach(s => s.classList.toggle('open')); }
 
 function formatDateLocal(dateStr) {
