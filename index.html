@@ -290,6 +290,63 @@
 </div>
 
 <script>
+// Limpiar Service Worker si existe
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for(let registration of registrations) {
+      registration.unregister();
+    }
+  });
+}
+
+// Función de reset definida al inicio para evitar problemas de carga
+function doReset() { 
+  alert('🔄 Botón reset presionado - Versión 3.9');
+  
+  const storage = getStorage(); 
+  
+  storage.current.checks = {}; 
+  storage.current.notes = {};
+  storage.current.service = '';
+  storage.current.eventType = '';
+  storage.current.celebrant = '';
+  storage.current.client = '';
+  storage.current.address = '';
+  storage.current.eventDate = '';
+  storage.current.startTime = '';
+  storage.current.contractedHours = '';
+  storage.current.transportType = '';
+  storage.current.transportDetails = '';
+  storage.current.staffCount = '1';
+  storage.current.staffNames = '';
+  storage.current.costTotal = '';
+  storage.current.costAdvance = '';
+  storage.current.advanceDate = '';
+  
+  setStorage(storage); 
+  
+  document.getElementById('service').value = '';
+  document.getElementById('eventType').value = '';
+  document.getElementById('celebrant').value = '';
+  document.getElementById('client').value = '';
+  document.getElementById('address').value = '';
+  document.getElementById('eventDate').value = '';
+  document.getElementById('startTime').value = '';
+  document.getElementById('contractedHours').value = '';
+  document.getElementById('transportType').value = '';
+  document.getElementById('transportDetails').value = '';
+  document.getElementById('staffCount').value = '1';
+  document.getElementById('staffNames').value = '';
+  document.getElementById('costTotal').value = '';
+  document.getElementById('costAdvance').value = '';
+  document.getElementById('advanceDate').value = '';
+  
+  updateMapsLink(); 
+  calculateBalance();
+  render();
+  
+  alert('✅ Todo limpio y listo');
+} 
 const CHECKLIST = [
   {
     title: "🅰️ SECCIÓN 1: KARAOKE + DJ",
@@ -322,7 +379,7 @@ const CHECKLIST = [
   }
 ];
 
-const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v3_8';
+const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v3_9';
 const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/saoentertainment/totalfest-checklist/main/';
 
 function getStorage() {
