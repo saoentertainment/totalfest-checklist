@@ -247,7 +247,7 @@
     <button class="btn-export" onclick="exportReport()"> Reporte interno</button>
     <button class="btn-client" onclick="exportClientReport()"> Reporte cliente</button>
     <button class="btn-config" onclick="exportConfig()">⬇️ Exportar config</button>
-    <button class="btn-reset" onclick="resetChecks()">Resetear Todo</button>
+    <button class="btn-reset" id="btnReset">Resetear Todo</button>
   </div>
 
   <div class="import-section">
@@ -514,8 +514,7 @@ function renderHistory() {
 }
 
 function resetChecks() { 
-  alert('🔄 Botón de reset funcionando correctamente');
-  if (!confirm('⚠️ ¿Resetear checks y limpiar TODOS los datos del evento? (El historial NO se borrará)')) return; 
+  console.log('🔄 Botón de reset fue presionado');
   
   const storage = getStorage(); 
   
@@ -557,7 +556,8 @@ function resetChecks() {
   
   updateMapsLink(); 
   calculateBalance();
-  render(); 
+  render();
+  
   alert('✅ Todo limpio y listo para el siguiente evento');
 }
 
@@ -778,6 +778,25 @@ function updateProgress() {
   document.getElementById('progressText').textContent = `${checked} de ${total} items listos`;
 }
 
+// Event listener para el botón de reset (solución para Android PWA)
+document.addEventListener('DOMContentLoaded', function() {
+  const btnReset = document.getElementById('btnReset');
+  if (btnReset) {
+    btnReset.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Click detectado en botón reset');
+      resetChecks();
+    });
+    
+    // También agregar touchstart para móviles
+    btnReset.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      console.log('Touch detectado en botón reset');
+      resetChecks();
+    }, { passive: false });
+  }
+}); 
 window.addEventListener('load', render);
 </script>
 </body>
