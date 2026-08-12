@@ -246,11 +246,15 @@
 
   <div class="actions">
     <button class="btn-expand" onclick="toggleAll()">📂 Expandir/Colapsar</button>
-    <button class="btn-save-event" onclick="saveAsNewEvent()">📌 Guardar en Historial</button>
-    <button class="btn-export" onclick="exportReport()">📄 Reporte interno</button>
-    <button class="btn-client" onclick="exportClientReport()">📋 Reporte cliente</button>
-    <button class="btn-config" onclick="exportConfig()">⬇️ Exportar config</button>
-    <button class="btn-reset" id="btnReset">🔄 Reset Todo</button>
+    <button class="btn-save-event" onclick="saveAsNewEvent()"> Guardar en Historial</button>
+    <button class="btn-export" onclick="exportReport()"> Reporte interno</button>
+    <button class="btn-client" onclick="exportClientReport()"> Reporte cliente</button>
+    <button class="btn-config" onclick="exportConfig()">️ Exportar config</button>
+  </div>
+
+  <!-- BOTÓN DE RESET AISLADO Y MÁS GRANDE -->
+  <div style="width: 100%; margin-top: 20px; display: flex; justify-content: center;">
+    <button class="btn-reset" id="btnReset" style="width: 100%; max-width: 350px; padding: 16px; font-size: 1.1em; border-radius: 10px;">🔄 Reset Todo</button>
   </div>
 
   <div class="import-section">
