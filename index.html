@@ -6,14 +6,12 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-
-<meta property="og:title" content="🎛️ Checklist Maestro - TOTAL FEST">
+<meta property="og:title" content="️ Checklist Maestro - TOTAL FEST">
 <meta property="og:description" content="Sistema de verificación de equipo para eventos - Javi SAO">
 <meta property="og:image" content="https://raw.githubusercontent.com/saoentertainment/totalfest-checklist/main/sao-logo.png">
 <meta property="og:url" content="https://saoentertainment.github.io/totalfest-checklist/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-
 <title>🎛️ Checklist Maestro - TOTAL FEST (Javi SAO)</title>
 <link rel="icon" type="image/png" sizes="32x32" href="./icon-192.png">
 <link rel="apple-touch-icon" href="./icon-192.png">
@@ -27,15 +25,12 @@
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0a1929 0%, #132f4c 50%, #173a5e 100%); color: #e3f2fd; min-height: 100vh; padding: 15px; padding-bottom: 80px; }
   .container { max-width: 950px; margin: 0 auto; }
   header { text-align: center; padding: 25px 20px; background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(13, 71, 161, 0.25)); border-radius: 16px; margin-bottom: 20px; border: 2px solid rgba(33, 150, 243, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); }
-  
   .logo-container { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 15px; flex-wrap: wrap; }
   .logo-totalfest { max-width: 100px; height: auto; object-fit: contain; }
   .logo-sao { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(186, 104, 200, 0.5)); }
   @media (max-width: 600px) { .logo-totalfest { max-width: 80px; } .logo-sao { width: 80px; height: 80px; } }
-  
   h1 { font-size: 1.6em; color: #64b5f6; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(33, 150, 243, 0.4); }
   .subtitle { font-size: 0.9em; color: #90caf9; opacity: 0.8; margin-bottom: 20px; }
-  
   .data-form-content { transition: all 0.3s ease; }
   .form-group { margin-bottom: 15px; }
   .form-group label { display: block; font-size: 0.85em; color: #90caf9; margin-bottom: 5px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -46,60 +41,21 @@
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
   .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
   @media (max-width: 600px) { .form-row, .form-row-3 { grid-template-columns: 1fr; } }
-  
   .section-title { color: #64b5f6; font-size: 1.1em; margin: 20px 0 10px; padding-bottom: 5px; border-bottom: 1px solid rgba(100, 181, 246, 0.2); display: flex; align-items: center; gap: 8px; }
-  
-  .liquidado-box { 
-    display: flex; 
-    align-items: center; 
-    gap: 15px; 
-    padding: 15px; 
-    background: rgba(76, 175, 80, 0.1); 
-    border: 2px solid rgba(76, 175, 80, 0.4); 
-    border-radius: 10px; 
-    margin-top: 15px;
-    flex-wrap: wrap;
-  }
-  .liquidado-box label { 
-    color: #4caf50; 
-    font-weight: bold; 
-    font-size: 1em; 
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
-  }
-  .liquidado-box input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
-    accent-color: #4caf50;
-    cursor: pointer;
-  }
-  .liquidado-box .fecha-liquidado {
-    flex: 1;
-    min-width: 150px;
-  }
-  .liquidado-box .fecha-liquidado label {
-    color: #90caf9;
-    font-size: 0.85em;
-    margin-bottom: 5px;
-  }
-  .liquidado-box .fecha-liquidado input {
-    width: 100%;
-  }
-  
+  .liquidado-box { display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.4); border-radius: 10px; margin-top: 15px; flex-wrap: wrap; }
+  .liquidado-box label { color: #4caf50; font-weight: bold; font-size: 1em; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0; }
+  .liquidado-box input[type="checkbox"] { width: 24px; height: 24px; accent-color: #4caf50; cursor: pointer; }
+  .liquidado-box .fecha-liquidado { flex: 1; min-width: 150px; }
+  .liquidado-box .fecha-liquidado label { color: #90caf9; font-size: 0.85em; margin-bottom: 5px; }
+  .liquidado-box .fecha-liquidado input { width: 100%; }
   .btn-maps { display: inline-block; width: 100%; text-align: center; padding: 10px; background: linear-gradient(135deg, #0288d1, #03a9f4); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 5px; transition: transform 0.2s; }
   .btn-maps:hover { transform: scale(1.02); }
   .btn-maps.disabled { background: #555; cursor: not-allowed; opacity: 0.5; }
-
   .balance-display { font-size: 1.2em; font-weight: bold; color: #4caf50; text-align: right; padding: 10px; background: rgba(76, 175, 80, 0.1); border-radius: 8px; border: 1px solid rgba(76, 175, 80, 0.3); }
   .balance-display.pending { color: #ff9800; background: rgba(255, 152, 0, 0.1); border-color: rgba(255, 152, 0, 0.3); }
-
   .progress-bar { width: 100%; height: 30px; background: rgba(13, 71, 161, 0.3); border-radius: 15px; overflow: hidden; margin: 20px 0 5px; border: 1px solid rgba(100, 181, 246, 0.2); }
   .progress-fill { height: 100%; background: linear-gradient(90deg, #1976d2, #42a5f5, #64b5f6); transition: width 0.4s ease; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9em; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
   #progressText { font-size: 0.9em; color: #90caf9; margin-bottom: 10px; }
-
   .main-section { background: rgba(13, 71, 161, 0.15); border: 2px solid rgba(33, 150, 243, 0.3); border-radius: 14px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
   .main-section-header { padding: 18px 20px; background: linear-gradient(135deg, rgba(25, 118, 210, 0.3), rgba(13, 71, 161, 0.4)); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background 0.2s; border-bottom: 1px solid rgba(100, 181, 246, 0.2); }
   .main-section-header:hover { background: linear-gradient(135deg, rgba(25, 118, 210, 0.4), rgba(13, 71, 161, 0.5)); }
@@ -152,7 +108,6 @@
   .import-section h4 { color: #ffb74d; margin-bottom: 10px; }
   .import-section input[type="file"] { color: #fff; font-size: 0.9em; }
   .import-section input[type="file"]::file-selector-button { background: #ef6c00; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-right: 10px; }
-
   .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column-reverse; align-items: center; }
   .fab-main { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #1976d2, #8e24aa); color: white; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.4); font-size: 24px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: transform 0.3s, background 0.3s; z-index: 1001; }
   .fab-main:hover { transform: scale(1.1); }
@@ -276,7 +231,6 @@
         <div id="balanceDisplay" class="balance-display">$0.00</div>
       </div>
 
-      <!-- NUEVO: APARTADO DE EVENTO LIQUIDADO -->
       <div class="liquidado-box">
         <label>
           <input type="checkbox" id="eventoLiquidado" onchange="autoSaveEvent()">
@@ -299,7 +253,7 @@
 
   <div class="history-section" id="history-section">
     <div class="history-header" onclick="this.parentElement.classList.toggle('open')">
-      <h2> Historial de Eventos</h2>
+      <h2>📚 Historial de Eventos</h2>
       <span class="section-count" id="historyCount">0 eventos</span>
     </div>
     <div class="history-content">
@@ -308,12 +262,12 @@
   </div>
 
   <div class="actions">
-    <button class="btn-expand" onclick="toggleAll()">📂 Expandir/Colapsar</button>
+    <button class="btn-expand" onclick="toggleAll()"> Expandir/Colapsar</button>
     <button class="btn-save-event" onclick="saveAsNewEvent()">📌 Guardar en Historial</button>
     <button class="btn-export" onclick="exportReport()">📄 Reporte interno</button>
     <button class="btn-client" onclick="exportClientReport()">📋 Reporte cliente</button>
     <button class="btn-client" onclick="exportRecibo()" style="background: linear-gradient(135deg, #2e7d32, #4caf50);">✅ Recibo de Liquidación</button>
-    <button class="btn-config" onclick="exportConfig()">️ Exportar config</button>
+    <button class="btn-config" onclick="exportConfig()">⬇️ Exportar config</button>
   </div>
 
   <div style="width: 100%; margin-top: 20px; display: flex; justify-content: center;">
@@ -353,7 +307,7 @@
       <button onclick="scrollToSection('section-2')">🏛️</button>
     </div>
     <div class="fab-item">
-      <span> Historial</span>
+      <span>📚 Historial</span>
       <button onclick="scrollToSection('history-section')">📚</button>
     </div>
   </div>
@@ -362,37 +316,22 @@
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
-    for(let registration of registrations) {
-      registration.unregister();
-    }
+    for(let registration of registrations) { registration.unregister(); }
   });
 }
 
 function toggleDataForm() {
   const content = document.getElementById('dataFormContent');
   const arrow = document.getElementById('dataFormArrow');
-  if (content.style.display === 'none') {
-    content.style.display = 'block';
-    arrow.textContent = '▼';
-  } else {
-    content.style.display = 'none';
-    arrow.textContent = '▶';
-  }
+  if (content.style.display === 'none') { content.style.display = 'block'; arrow.textContent = '▼'; } 
+  else { content.style.display = 'none'; arrow.textContent = '▶'; }
 }
 
 function doReset() { 
   setTimeout(function() {
     if(!confirm('¿Limpiar el evento actual? El historial se mantendrá a salvo.')) return;
-    
     const storage = getStorage();
-    storage.current = { 
-      service: '', eventType: '', celebrant: '', client: '', 
-      address: '', eventDate: '', startTime: '', contractedHours: '', 
-      transportType: '', transportDetails: '', staffCount: '1', 
-      staffNames: '', costTotal: '', costAdvance: '', advanceDate: '', 
-      eventoLiquidado: false, fechaLiquidacion: '',
-      checks: {}, notes: {} 
-    };
+    storage.current = { service: '', eventType: '', celebrant: '', client: '', address: '', eventDate: '', startTime: '', contractedHours: '', transportType: '', transportDetails: '', staffCount: '1', staffNames: '', costTotal: '', costAdvance: '', advanceDate: '', eventoLiquidado: false, fechaLiquidacion: '', checks: {}, notes: {} };
     setStorage(storage);
     window.location.reload();
   }, 100);
@@ -401,159 +340,51 @@ function doReset() {
 window.addEventListener('load', function() {
   const btn = document.getElementById('btnReset');
   if (btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      doReset();
-    });
-    btn.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      doReset();
-    }, { passive: false });
+    btn.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); doReset(); });
+    btn.addEventListener('touchstart', function(e) { e.preventDefault(); e.stopPropagation(); doReset(); }, { passive: false });
   }
 });
 
 const CHECKLIST = [
   {
-    title: "🅰️ SECCIÓN 1: KARAOKE + DJ",
+    title: "️ SECCIÓN 1: KARAOKE + DJ",
     subsections: [
-      { title: "🔊 1.1 Sonido", items: [
-        "2 Bocinas ALTO 10\" + Fundas",
-        "1 Bocinas ALTO 15\" + Funda",
-        "1 Subwoofer ALTO 12\" + Funda",
-        "Maleta con soportes para bocinas + Soporte Pantalla",
-        "Micrófonos PHENYX + Módulo y Plug + Eliminador + Estrellas protectoras",
-        "Micrófonos STEREN + Módulo y Plug + Eliminador + Estrellas protectoras",
-        "Micrófono SHURE SM58",
-        "Interfaz Behringer UMC 404 + USB",
-        "Interfaz Behringer UCA 202 + USB",
-        "Mezcladora Behringer + Eliminador de Corriente"
-      ]},
-      { title: "📺 1.2 Video y Pantallas", items: [
-        "Pantalla 42\" + estuche + control",
-        "Monitor 15\" ligero + cables",
-        "Pantalla 19\" AOC + control + base",
-        "Pantalla 20\" Mitsui + control + base",
-        "Soporte para laptop y monitor ligero 15\" (Brazos Robot)",
-        "Soportes de piso para Pantallas HERCULES (StagePrompt)"
-      ]},
-      { title: "💡 1.3 Iluminación", items: [
-        "2 Barras de luces LED + estuche",
-        "3 Luces LED + 1 rectangulo LED + estuche",
-        "Maleta con 2 luces robóticas",
-        "Maleta con 2 luces BEAM",
-        "Clamps para luces + hule espuma",
-        "Lámparas: Blanca, Mini y para Laptop + Cables USB"
-      ]},
-      { title: "💻 1.4 Cómputo y DJ", items: [
-        "Módulo desarmable para DJ + Patitas",
-        "Cabina DJ + Estuche",
-        "Laptop + Estuche",
-        "Disco duro externo SSD Azul",
-        "Extensor USB C",
-        "Wav Link (transmisor HDMI inalámbrico) para monitores independientes",
-        "EDID HDMI + Cables",
-        "HUB USB",
-        "Audífonos + soporte + soporte vaso",
-        "Mouse + Mouse pad"
-      ]},
-      { title: "🔌 1.5 Cables y Energía", items: [
-        "Regulador de energía FURMAN",
-        "Maleta de cables de audio",
-        "Maleta de adaptadores (verde)",
-        "Maleta de extensiones de luz y multicontactos",
-        "Maleta HDMI / Splitters + eliminador / Cables HDMI",
-        "Herramienta, clips, velcros, correas sujetadoras"
-      ]},
-      { title: "🎒 1.6 Logística, Docs y Personal", items: [
-        "Carrito transportador",
-        "Atril partituras (Para Micrófonos inalámbricos)",
-        "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación",
-        "Pilas (¡cargarlas!) + Líquido limpiador de micrófono",
-        "Vestuario: Maletas con accesorios + ropa en gancho",
-        "Hospitalidad: Almuerzo + Electrolit"
-      ]}
+      { title: "🔊 1.1 Sonido", items: ["2 Bocinas ALTO 10\" + Fundas", "1 Bocinas ALTO 15\" + Funda", "1 Subwoofer ALTO 12\" + Funda", "Maleta con soportes para bocinas + Soporte Pantalla", "Micrófonos PHENYX + Módulo y Plug + Eliminador + Estrellas protectoras", "Micrófonos STEREN + Módulo y Plug + Eliminador + Estrellas protectoras", "Micrófono SHURE SM58", "Interfaz Behringer UMC 404 + USB", "Interfaz Behringer UCA 202 + USB", "Mezcladora Behringer + Eliminador de Corriente"] },
+      { title: "📺 1.2 Video y Pantallas", items: ["Pantalla 42\" + estuche + control", "Monitor 15\" ligero + cables", "Pantalla 19\" AOC + control + base", "Pantalla 20\" Mitsui + control + base", "Soporte para laptop y monitor ligero 15\" (Brazos Robot)", "Soportes de piso para Pantallas HERCULES (StagePrompt)"] },
+      { title: "💡 1.3 Iluminación", items: ["2 Barras de luces LED + estuche", "3 Luces LED + 1 rectangulo LED + estuche", "Maleta con 2 luces robóticas", "Maleta con 2 luces BEAM", "Clamps para luces + hule espuma", "Lámparas: Blanca, Mini y para Laptop + Cables USB"] },
+      { title: " 1.4 Cómputo y DJ", items: ["Módulo desarmable para DJ + Patitas", "Cabina DJ + Estuche", "Laptop + Estuche", "Disco duro externo SSD Azul", "Extensor USB C", "Wav Link (transmisor HDMI inalámbrico) para monitores independientes", "EDID HDMI + Cables", "HUB USB", "Audífonos + soporte + soporte vaso", "Mouse + Mouse pad"] },
+      { title: "🔌 1.5 Cables y Energía", items: ["Regulador de energía FURMAN", "Maleta de cables de audio", "Maleta de adaptadores (verde)", "Maleta de extensiones de luz y multicontactos", "Maleta HDMI / Splitters + eliminador / Cables HDMI", "Herramienta, clips, velcros, correas sujetadoras"] },
+      { title: "🎒 1.6 Logística, Docs y Personal", items: ["Carrito transportador", "Atril partituras (Para Micrófonos inalámbricos)", "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación", "Pilas (¡cargarlas!) + Líquido limpiador de micrófono", "Vestuario: Maletas con accesorios + ropa en gancho", "Hospitalidad: Almuerzo + Electrolit"] }
     ]
   },
   {
     title: "🅱️ SECCIÓN 2: MÚSICA EN VIVO",
     subsections: [
-      { title: "🎸 2.1 Instrumentos y Amplificación", items: [
-        "BATTALION + eliminador",
-        "Afinador + eliminador",
-        "Amplificador BUGERA + cable de corriente + Estuche",
-        "Bajo GL + Estuche",
-        "Bajo FACTOR + Estuche",
-        "THALI",
-        "Soporte para Batallion + cable corriente",
-        "Cuerdas de repuesto"
-      ]},
-      { title: "🎤 2.2 Audio y Cables", items: [
-        "Micrófono SHURE SM58 (voz)",
-        "Cables Plug (2)",
-        "Cable XLR Voz",
-        "2 cables XLR Salida Bugera",
-        "Cables Plugs extra",
-        "Clips de atril para cables de micrófono"
-      ]},
-      { title: "📱 2.3 Soportes", items: [
-        "Atril para micrófono",
-        "Atriles para bajo",
-        "Atril para teclado",
-        "Clips de atril de teclado para cables",
-        "Tablet + soporte Hercules",
-        "Soporte para celular Hercules",
-        "Soporte para vaso"
-      ]},
-      { title: "💻 2.4 Cómputo y Video", items: [
-        "Laptop + eliminador de corriente",
-        "Disco duro negro + cable"
-      ]},
-      { title: "🔌 2.5 Energía y Accesorios", items: [
-        "Extensión de luz",
-        "Multicontactos",
-        "Plumillas + PortaPlumillas"
-      ]}
+      { title: "🎸 2.1 Instrumentos y Amplificación", items: ["BATTALION + eliminador", "Afinador + eliminador", "Amplificador BUGERA + cable de corriente + Estuche", "Bajo GL + Estuche", "Bajo FACTOR + Estuche", "THALI", "Soporte para Batallion + cable corriente", "Cuerdas de repuesto"] },
+      { title: " 2.2 Audio y Cables", items: ["Micrófono SHURE SM58 (voz)", "Cables Plug (2)", "Cable XLR Voz", "2 cables XLR Salida Bugera", "Cables Plugs extra", "Clips de atril para cables de micrófono"] },
+      { title: "📱 2.3 Soportes", items: ["Atril para micrófono", "Atriles para bajo", "Atril para teclado", "Clips de atril de teclado para cables", "Tablet + soporte Hercules", "Soporte para celular Hercules", "Soporte para vaso"] },
+      { title: "💻 2.4 Cómputo y Video", items: ["Laptop + eliminador de corriente", "Disco duro negro + cable"] },
+      { title: "🔌 2.5 Energía y Accesorios", items: ["Extensión de luz", "Multicontactos", "Plumillas + PortaPlumillas"] }
     ]
   },
   {
-       title: " SECCIÓN 3: REQUISITOS DEL LUGAR (RIDER CLIENTE)",
+    title: "️ SECCIÓN 3: REQUISITOS DEL LUGAR (RIDER CLIENTE)",
     subsections: [
-      { title: "⚙️ Instalación y Espacio", items: [
-        "Acceso al lugar 3 horas antes (instalación y prueba de sonido)",
-        "Contactos aterrizados (3 patas) con breaker mínimo 15A y voltaje domestico 110 V o 120 V",
-        "Área despejada aprox 2 mts x 2 mts min. con techo/lona (protección contra sol/lluvia)",
-        "Suelo firme y estable (no pasto húmedo/tierra por riesgos eléctricos)",
-        "WiFi disponible en el lugar (o reportar ausencia con anticipación)"
-      ]},
-      { title: "🚛 Logística y Accesos", items: [
-        "Permisos y accesos tramitados (si es privada/condominio/fraccionamiento)",
-        "Acceso vehicular cercano (escaleras/terreno difícil = cargo extra por maniobras)",
-        "Zona de cobertura verificada (CDMX/Zona Metro. Otras zonas = costo de traslado ajustado)"
-      ]},
-      { title: "📜 Acuerdos y Condiciones", items: [
-        "Cuota sindical cubierta por el contratante (si aplica: SUTM, CROC, ANDA, etc.)",
-        "Atención para el staff considerada (alimentos y bebidas durante descansos)",
-        "Responsabilidad por daños al equipo (invitados o instalaciones deficientes) al 100% en 15 días",
-        "Tiempo contratado ininterrumpido (interrupciones por mariachis/rifas/discursos NO generan reposición)"
-      ]}
+      { title: "⚙️ Instalación y Espacio", items: ["Acceso al lugar 3 horas antes (instalación y prueba de sonido)", "Contactos aterrizados (3 patas) con breaker mínimo 15A y voltaje domestico 110 V o 120 V", "Área despejada aprox 2 mts x 2 mts min. con techo/lona (protección contra sol/lluvia)", "Suelo firme y estable (no pasto húmedo/tierra por riesgos eléctricos)", "WiFi disponible en el lugar (o reportar ausencia con anticipación)"] },
+      { title: "🚛 Logística y Accesos", items: ["Permisos y accesos tramitados (si es privada/condominio/fraccionamiento)", "Acceso vehicular cercano (escaleras/terreno difícil = cargo extra por maniobras)", "Zona de cobertura verificada (CDMX/Zona Metro. Otras zonas = costo de traslado ajustado)"] },
+      { title: "📜 Acuerdos y Condiciones", items: ["Cuota sindical cubierta por el contratante (si aplica: SUTM, CROC, ANDA, etc.)", "Atención para el staff considerada (alimentos y bebidas durante descansos)", "Responsabilidad por daños al equipo (invitados o instalaciones deficientes) al 100% en 15 días", "Tiempo contratado ininterrumpido (interrupciones por mariachis/rifas/discursos NO generan reposición)"] }
     ]
   }
 ];
 
-const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v8_0';
+const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v8_1';
 const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/saoentertainment/totalfest-checklist/main/';
 
 function getStorage() {
   const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  return { 
-    current: data.current || { service: '', eventType: '', celebrant: '', client: '', address: '', eventDate: '', startTime: '', contractedHours: '', transportType: '', transportDetails: '', staffCount: '1', staffNames: '', costTotal: 0, costAdvance: 0, advanceDate: '', eventoLiquidado: false, fechaLiquidacion: '', checks: {}, notes: {} }, 
-    history: data.history || [] 
-  };
+  return { current: data.current || { service: '', eventType: '', celebrant: '', client: '', address: '', eventDate: '', startTime: '', contractedHours: '', transportType: '', transportDetails: '', staffCount: '1', staffNames: '', costTotal: 0, costAdvance: 0, advanceDate: '', eventoLiquidado: false, fechaLiquidacion: '', checks: {}, notes: {} }, history: data.history || [] };
 }
 function setStorage(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
-
 function formatCurrency(num) { return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(num); }
 function formatTime12(timeStr) {
   if (!timeStr) return '';
@@ -563,7 +394,6 @@ function formatTime12(timeStr) {
   hour = hour % 12; hour = hour ? hour : 12; 
   return `${hour}:${minute} ${ampm}`;
 }
-
 function calculateBalance() {
   const total = parseFloat(document.getElementById('costTotal').value) || 0;
   const advance = parseFloat(document.getElementById('costAdvance').value) || 0;
@@ -574,19 +404,16 @@ function calculateBalance() {
   else if (balance > 0) { display.className = "balance-display pending"; } 
   else { display.className = "balance-display"; }
 }
-
 function updateMapsLink() {
   const address = document.getElementById('address').value.trim();
   const btn = document.getElementById('mapsLink');
   if (address.length > 5) { btn.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`; btn.classList.remove('disabled'); } 
   else { btn.href = "#"; btn.classList.add('disabled'); }
 }
-
 function render() {
   const storage = getStorage();
   const container = document.getElementById('sections');
   container.innerHTML = '';
-  
   document.getElementById('service').value = storage.current.service || '';
   document.getElementById('eventType').value = storage.current.eventType || '';
   document.getElementById('celebrant').value = storage.current.celebrant || '';
@@ -604,43 +431,25 @@ function render() {
   document.getElementById('advanceDate').value = storage.current.advanceDate || '';
   document.getElementById('eventoLiquidado').checked = storage.current.eventoLiquidado || false;
   document.getElementById('fechaLiquidacion').value = storage.current.fechaLiquidacion || '';
-  
   updateMapsLink(); calculateBalance();
-
   CHECKLIST.forEach((section, sIdx) => {
     const sectionDiv = document.createElement('div');
     sectionDiv.className = 'main-section open';
     sectionDiv.id = 'section-' + sIdx;
     let totalItems = 0, checkedItems = 0;
     section.subsections.forEach((sub, subIdx) => { sub.items.forEach((_, iIdx) => { totalItems++; if (storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`]) checkedItems++; }); });
-    sectionDiv.innerHTML = `
-      <div class="main-section-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>${section.title}</h2><span class="section-count">${checkedItems}/${totalItems}</span>
-      </div>
-      <div class="main-section-content">
-        ${section.subsections.map((sub, subIdx) => {
-          const subChecked = sub.items.filter((_, iIdx) => storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`] === true).length;
-          return `
-            <div class="sub-section open">
-              <div class="sub-section-header" onclick="event.stopPropagation(); this.parentElement.classList.toggle('open')">
-                <h3>${sub.title}</h3><span class="sub-count">${subChecked}/${sub.items.length}</span>
-              </div>
-              <div class="sub-section-content">
-                ${sub.items.map((item, iIdx) => {
-                  const key = `s${sIdx}_sub${subIdx}_i${iIdx}`;
-                  const isChecked = storage.current.checks[key] === true;
-                  return `<div class="item ${isChecked ? 'checked' : ''}"><input type="checkbox" id="${key}" ${isChecked ? 'checked' : ''} onchange="toggleItem('${key}', this)"><label for="${key}">${item}</label></div>`;
-                }).join('')}
-                <textarea class="notes" placeholder="📝 Notas para ${sub.title}..." oninput="saveNotes(${sIdx}, ${subIdx}, this.value)">${storage.current.notes[`s${sIdx}_sub${subIdx}`] || ''}</textarea>
-              </div>
-            </div>`;
-        }).join('')}
-      </div>`;
+    sectionDiv.innerHTML = `<div class="main-section-header" onclick="this.parentElement.classList.toggle('open')"><h2>${section.title}</h2><span class="section-count">${checkedItems}/${totalItems}</span></div><div class="main-section-content">${section.subsections.map((sub, subIdx) => {
+      const subChecked = sub.items.filter((_, iIdx) => storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`] === true).length;
+      return `<div class="sub-section open"><div class="sub-section-header" onclick="event.stopPropagation(); this.parentElement.classList.toggle('open')"><h3>${sub.title}</h3><span class="sub-count">${subChecked}/${sub.items.length}</span></div><div class="sub-section-content">${sub.items.map((item, iIdx) => {
+        const key = `s${sIdx}_sub${subIdx}_i${iIdx}`;
+        const isChecked = storage.current.checks[key] === true;
+        return `<div class="item ${isChecked ? 'checked' : ''}"><input type="checkbox" id="${key}" ${isChecked ? 'checked' : ''} onchange="toggleItem('${key}', this)"><label for="${key}">${item}</label></div>`;
+      }).join('')}<textarea class="notes" placeholder="📝 Notas para ${sub.title}..." oninput="saveNotes(${sIdx}, ${subIdx}, this.value)">${storage.current.notes[`s${sIdx}_sub${subIdx}`] || ''}</textarea></div></div>`;
+    }).join('')}</div>`;
     container.appendChild(sectionDiv);
   });
   updateProgress(); renderHistory();
 }
-
 function toggleItem(key, el) {
   const storage = getStorage();
   storage.current.checks[key] = el.checked;
@@ -658,7 +467,6 @@ function toggleItem(key, el) {
   mainSections[sIdx].querySelector('.section-count').textContent = `${checkedSection}/${totalSection}`;
   mainSections[sIdx].querySelectorAll('.sub-section')[subIdx].querySelector('.sub-count').textContent = `${subChecked}/${section.subsections[subIdx].items.length}`;
 }
-
 function saveNotes(sIdx, subIdx, value) { const storage = getStorage(); storage.current.notes[`s${sIdx}_sub${subIdx}`] = value; setStorage(storage); }
 function autoSaveEvent() { 
   const storage = getStorage(); 
@@ -681,41 +489,25 @@ function autoSaveEvent() {
   storage.current.fechaLiquidacion = document.getElementById('fechaLiquidacion').value;
   setStorage(storage); 
 }
-
 function saveAsNewEvent() {
   const service = document.getElementById('service').value.trim();
   const celebrant = document.getElementById('celebrant').value.trim();
   if (!service) { alert('⚠️ Ingresa al menos el Servicio Contratado.'); return; }
   if (!confirm(`¿Guardar "${service} - ${celebrant}" en el historial?`)) return;
   const storage = getStorage();
-  const currentData = {
-    service: document.getElementById('service').value, eventType: document.getElementById('eventType').value, celebrant: document.getElementById('celebrant').value, client: document.getElementById('client').value,
-    address: document.getElementById('address').value, eventDate: document.getElementById('eventDate').value, startTime: document.getElementById('startTime').value, contractedHours: document.getElementById('contractedHours').value,
-    transportType: document.getElementById('transportType').value, transportDetails: document.getElementById('transportDetails').value, staffCount: document.getElementById('staffCount').value, staffNames: document.getElementById('staffNames').value,
-    costTotal: document.getElementById('costTotal').value, costAdvance: document.getElementById('costAdvance').value, advanceDate: document.getElementById('advanceDate').value,
-    eventoLiquidado: document.getElementById('eventoLiquidado').checked, fechaLiquidacion: document.getElementById('fechaLiquidacion').value
-  };
+  const currentData = { service: document.getElementById('service').value, eventType: document.getElementById('eventType').value, celebrant: document.getElementById('celebrant').value, client: document.getElementById('client').value, address: document.getElementById('address').value, eventDate: document.getElementById('eventDate').value, startTime: document.getElementById('startTime').value, contractedHours: document.getElementById('contractedHours').value, transportType: document.getElementById('transportType').value, transportDetails: document.getElementById('transportDetails').value, staffCount: document.getElementById('staffCount').value, staffNames: document.getElementById('staffNames').value, costTotal: document.getElementById('costTotal').value, costAdvance: document.getElementById('costAdvance').value, advanceDate: document.getElementById('advanceDate').value, eventoLiquidado: document.getElementById('eventoLiquidado').checked, fechaLiquidacion: document.getElementById('fechaLiquidacion').value };
   storage.history.unshift({ id: Date.now(), ...currentData, checks: { ...storage.current.checks }, notes: { ...storage.current.notes }, savedAt: new Date().toISOString() });
   setStorage(storage); renderHistory();
   alert(`✅ Guardado en el historial`);
 }
-
 function loadEvent(id) {
   const storage = getStorage();
   const event = storage.history.find(e => e.id === id);
   if (!event) return;
   if (!confirm(`¿Cargar "${event.service} - ${event.celebrant}"? Reemplazará el evento actual.`)) return;
-  storage.current = { 
-    service: event.service, eventType: event.eventType, celebrant: event.celebrant, client: event.client, 
-    address: event.address, eventDate: event.eventDate, startTime: event.startTime, contractedHours: event.contractedHours,
-    transportType: event.transportType, transportDetails: event.transportDetails, staffCount: event.staffCount || '1', staffNames: event.staffNames,
-    costTotal: event.costTotal, costAdvance: event.costAdvance, advanceDate: event.advanceDate,
-    eventoLiquidado: event.eventoLiquidado || false, fechaLiquidacion: event.fechaLiquidacion || '',
-    checks: { ...event.checks }, notes: { ...event.notes } 
-  };
+  storage.current = { service: event.service, eventType: event.eventType, celebrant: event.celebrant, client: event.client, address: event.address, eventDate: event.eventDate, startTime: event.startTime, contractedHours: event.contractedHours, transportType: event.transportType, transportDetails: event.transportDetails, staffCount: event.staffCount || '1', staffNames: event.staffNames, costTotal: event.costTotal, costAdvance: event.costAdvance, advanceDate: event.advanceDate, eventoLiquidado: event.eventoLiquidado || false, fechaLiquidacion: event.fechaLiquidacion || '', checks: { ...event.checks }, notes: { ...event.notes } };
   setStorage(storage); render();
 }
-
 function deleteEvent(id) {
   const storage = getStorage();
   const event = storage.history.find(e => e.id === id);
@@ -724,7 +516,6 @@ function deleteEvent(id) {
   storage.history = storage.history.filter(e => e.id !== id);
   setStorage(storage); renderHistory();
 }
-
 function renderHistory() {
   const storage = getStorage();
   const list = document.getElementById('historyList');
@@ -736,12 +527,10 @@ function renderHistory() {
     const timeStr = event.startTime ? formatTime12(event.startTime) : '';
     const balance = Math.max(0, (parseFloat(event.costTotal)||0) - (parseFloat(event.costAdvance)||0));
     const liquidadoStr = event.eventoLiquidado ? (event.fechaLiquidacion ? ` | ✅ Liquidado: ${formatDateLocal(event.fechaLiquidacion)}` : ' | ✅ Liquidado') : ' | ⏳ Pendiente';
-    return `<div class="history-item"><div class="history-info"><h4>🎵 ${event.service} | 🎉 ${event.celebrant || 'N/A'}</h4><p>📅 ${dateStr} ${timeStr ? `⏰ ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p>💰 Saldo: ${formatCurrency(balance)}${liquidadoStr} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
+    return `<div class="history-item"><div class="history-info"><h4>🎵 ${event.service} | 🎉 ${event.celebrant || 'N/A'}</h4><p>📅 ${dateStr} ${timeStr ? `⏰ ${timeStr}` : ''} |  ${event.staffCount || 1} pax</p><p>💰 Saldo: ${formatCurrency(balance)}${liquidadoStr} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
   }).join('');
 }
-
 function toggleAll() { document.querySelectorAll('.main-section').forEach(s => s.classList.toggle('open')); document.querySelectorAll('.sub-section').forEach(s => s.classList.toggle('open')); }
-
 function formatDateLocal(dateStr) {
   if (!dateStr) return 'Sin fecha';
   const [yearStr, monthStr, dayStr] = dateStr.split('-');
@@ -749,55 +538,18 @@ function formatDateLocal(dateStr) {
   const date = new Date(year, month, day, 12, 0, 0); 
   return date.toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 }
-
-function toggleFab() {
-  const menu = document.getElementById('fabMenu');
-  const btn = document.getElementById('fabMain');
-  menu.classList.toggle('open');
-  btn.classList.toggle('active');
-}
-
-function scrollToSection(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-  toggleFab();
-}
-
+function toggleFab() { const menu = document.getElementById('fabMenu'); const btn = document.getElementById('fabMain'); menu.classList.toggle('open'); btn.classList.toggle('active'); }
+function scrollToSection(id) { const el = document.getElementById(id); if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } toggleFab(); }
 function exportReport() {
   const storage = getStorage();
-  const liquidadoStr = document.getElementById('eventoLiquidado').checked ? 
-    (`\n ESTADO: ✅ EVENTO LIQUIDADO${document.getElementById('fechaLiquidacion').value ? ` (Fecha: ${formatDateLocal(document.getElementById('fechaLiquidacion').value)})` : ''}`) : 
-    `\n💵 ESTADO: ⏳ PENDIENTE DE LIQUIDACIÓN`;
-  
-  let report = `╔══════════════════════════════════════════════════╗\n`;
-  report += `║   ️ TOTAL FEST - SAO KARAOKE          ║\n`;
-  report += `║   Checklist Maestro - Javi SAO              \n`;
-  report += `╚══════════════════════════════════════════════════╝\n\n`;
-  report += ` SERVICIO: ${document.getElementById('service').value || 'N/A'}\n`;
-  report += `🎉 TIPO EVENTO: ${document.getElementById('eventType').value || 'N/A'}\n`;
-  report += `🎂 FESTEJO DE: ${document.getElementById('celebrant').value || 'N/A'}\n`;
-  report += ` CLIENTE: ${document.getElementById('client').value || 'N/A'}\n`;
-  report += `📍 DIRECCIÓN: ${document.getElementById('address').value || 'N/A'}\n`;
-  report += `📅 FECHA: ${document.getElementById('eventDate').value ? formatDateLocal(document.getElementById('eventDate').value) : 'N/A'}\n`;
-  report += `⏰ HORARIO: ${document.getElementById('startTime').value ? formatTime12(document.getElementById('startTime').value) : 'N/A'} (${document.getElementById('contractedHours').value || '?'} Horas de Servicio)\n`;
-  report += `🚗 TRANSPORTE: ${document.getElementById('transportType').value || 'N/A'} - ${document.getElementById('transportDetails').value || ''}\n`;
-  report += `👥 STAFF: ${document.getElementById('staffCount').value} persona(s) - ${document.getElementById('staffNames').value || 'N/A'}\n`;
-  report += `💰 COSTO TOTAL: ${formatCurrency(parseFloat(document.getElementById('costTotal').value)||0)}\n`;
-  report += `💵 ANTICIPO: ${formatCurrency(parseFloat(document.getElementById('costAdvance').value)||0)} (Fecha: ${document.getElementById('advanceDate').value || 'N/A'})\n`;
-  report += `💸 SALDO RESTANTE: ${formatCurrency(Math.max(0, (parseFloat(document.getElementById('costTotal').value)||0) - (parseFloat(document.getElementById('costAdvance').value)||0)))}\n`;
-  report += liquidadoStr + `\n\n`;
-  report += `Generado: ${new Date().toLocaleString('es-MX')}\n\n`;
-  
+  const liquidadoStr = document.getElementById('eventoLiquidado').checked ? (`\n🟢 ESTADO: ✅ EVENTO LIQUIDADO${document.getElementById('fechaLiquidacion').value ? ` (Fecha: ${formatDateLocal(document.getElementById('fechaLiquidacion').value)})` : ''}`) : `\n🟡 ESTADO: ⏳ PENDIENTE DE LIQUIDACIÓN`;
+  let report = `╔══════════════════════════════════════════════════╗\n║   ️ TOTAL FEST - SAO KARAOKE          ║\n║   Checklist Maestro - Javi SAO              ║\n╚══════════════════════════════════════════════════╝\n\n`;
+  report += ` SERVICIO: ${document.getElementById('service').value || 'N/A'}\n🎉 TIPO EVENTO: ${document.getElementById('eventType').value || 'N/A'}\n🎂 FESTEJO DE: ${document.getElementById('celebrant').value || 'N/A'}\n👤 CLIENTE: ${document.getElementById('client').value || 'N/A'}\n📍 DIRECCIÓN: ${document.getElementById('address').value || 'N/A'}\n📅 FECHA: ${document.getElementById('eventDate').value ? formatDateLocal(document.getElementById('eventDate').value) : 'N/A'}\n⏰ HORARIO: ${document.getElementById('startTime').value ? formatTime12(document.getElementById('startTime').value) : 'N/A'} (${document.getElementById('contractedHours').value || '?'} Horas de Servicio)\n🚗 TRANSPORTE: ${document.getElementById('transportType').value || 'N/A'} - ${document.getElementById('transportDetails').value || ''}\n👥 STAFF: ${document.getElementById('staffCount').value} persona(s) - ${document.getElementById('staffNames').value || 'N/A'}\n💰 COSTO TOTAL: ${formatCurrency(parseFloat(document.getElementById('costTotal').value)||0)}\n💵 ANTICIPO: ${formatCurrency(parseFloat(document.getElementById('costAdvance').value)||0)} (Fecha: ${document.getElementById('advanceDate').value || 'N/A'})\n💸 SALDO RESTANTE: ${formatCurrency(Math.max(0, (parseFloat(document.getElementById('costTotal').value)||0) - (parseFloat(document.getElementById('costAdvance').value)||0)))}${liquidadoStr}\n\nGenerado: ${new Date().toLocaleString('es-MX')}\n\n`;
   CHECKLIST.forEach((section, sIdx) => {
     report += `\n${'═'.repeat(50)}\n${section.title}\n${'═'.repeat(50)}\n`;
     section.subsections.forEach((sub, subIdx) => {
       report += `\n  ${sub.title}\n  ${'-'.repeat(40)}\n`;
-      sub.items.forEach((item, iIdx) => {
-        const key = `s${sIdx}_sub${subIdx}_i${iIdx}`;
-        report += `  ${storage.current.checks[key] ? '✅' : '⬜'} ${item}\n`;
-      });
+      sub.items.forEach((item, iIdx) => { const key = `s${sIdx}_sub${subIdx}_i${iIdx}`; report += `  ${storage.current.checks[key] ? '✅' : '⬜'} ${item}\n`; });
       if (storage.current.notes[`s${sIdx}_sub${subIdx}`]) report += `  📝 Notas: ${storage.current.notes[`s${sIdx}_sub${subIdx}`]}\n`;
     });
   });
@@ -808,7 +560,6 @@ function exportReport() {
   a.download = `rider_${document.getElementById('celebrant').value || 'evento'}_${Date.now()}.txt`;
   a.click();
 }
-
 function exportClientReport() {
   const storage = getStorage();
   const service = document.getElementById('service').value.trim() || 'Servicio Musical';
@@ -824,135 +575,61 @@ function exportClientReport() {
   const costTotal = document.getElementById('costTotal').value;
   const costAdvance = document.getElementById('costAdvance').value;
   const advanceDate = document.getElementById('advanceDate').value;
-  const eventoLiquidado = document.getElementById('eventoLiquidado').checked;
-  const fechaLiquidacion = document.getElementById('fechaLiquidacion').value;
-  
   const fmtTotal = formatCurrency(parseFloat(costTotal)||0);
   const fmtAdvance = formatCurrency(parseFloat(costAdvance)||0);
   const fmtBalance = formatCurrency(Math.max(0, (parseFloat(costTotal)||0) - (parseFloat(costAdvance)||0)));
   const timeDisplay = startTime ? `${formatTime12(startTime)} (${contractedHours} Horas de Servicio)` : '';
-
   let totalChecked = 0;
   CHECKLIST.forEach((section, sIdx) => { section.subsections.forEach((sub, subIdx) => { sub.items.forEach((_, iIdx) => { if (storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`]) totalChecked++; }); }); });
-  if (totalChecked === 0) { alert('️ Marca al menos un equipo.'); return; }
-
+  if (totalChecked === 0) { alert('⚠️ Marca al menos un equipo.'); return; }
   const printWindow = window.open('', '_blank');
-  let html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Reporte - ${celebrant || service}</title><style>
-  @page { margin: 1.5cm; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #1a1a1a; line-height: 1.4; padding: 10px; background: #fff; }
-  .header { text-align: center; padding: 20px; background: linear-gradient(135deg, #1976d2, #0d47a1); color: white; border-radius: 8px; margin-bottom: 15px; }
-  .header-logos { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 15px; flex-wrap: wrap; }
-  .header-logos img { max-height: 70px; object-fit: contain; background: white; padding: 5px; border-radius: 8px; }
-  .header h1 { font-size: 1.8em; margin-bottom: 5px; }
-  .event-info { background: #f5f9ff; border-left: 4px solid #1976d2; padding: 15px; margin: 10px 0; border-radius: 6px; }
-  .event-info h2 { color: #0d47a1; font-size: 1.2em; margin-bottom: 10px; }
-  .event-info p { margin: 5px 0; font-size: 0.95em; }
-  .event-info strong { color: #1976d2; }
-  .payment-info { background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin: 10px 0; border-radius: 6px; }
-  .payment-info h2 { color: #e65100; font-size: 1.1em; margin-bottom: 10px; }
-  .payment-info p { margin: 5px 0; font-size: 0.95em; }
-  .liquidado-info { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; margin: 10px 0; border-radius: 6px; }
-  .liquidado-info h2 { color: #2e7d32; font-size: 1.1em; margin-bottom: 10px; }
-  .liquidado-info p { margin: 5px 0; font-size: 0.95em; }
-  .summary { background: #e8f5e9; border: 2px solid #4caf50; padding: 10px; border-radius: 6px; margin: 10px 0; text-align: center; font-size: 1em; color: #2e7d32; font-weight: bold; }
-  .section { margin: 15px 0; }
-  .section-title { background: linear-gradient(135deg, #1976d2, #42a5f5); color: white; padding: 10px 15px; border-radius: 6px; font-size: 1.1em; font-weight: bold; margin-bottom: 10px; }
-  .subsection { margin: 10px 0; padding-left: 10px; }
-  .subsection-title { color: #0d47a1; font-size: 1em; font-weight: bold; margin-bottom: 5px; border-bottom: 1px solid #e3f2fd; padding-bottom: 3px; }
-  .item-list { list-style: none; padding-left: 0; }
-  .item-list li { padding: 5px 10px; margin: 3px 0; background: #f8fbff; border-left: 3px solid #42a5f5; border-radius: 3px; font-size: 0.9em; }
-  .item-list li:before { content: "✓"; color: #2e7d32; font-weight: bold; margin-right: 10px; }
-  .footer { margin-top: 20px; padding-top: 15px; border-top: 2px solid #e3f2fd; text-align: center; color: #666; font-size: 0.85em; }
-  .footer-logos { display: flex; justify-content: center; gap: 15px; margin: 10px 0; }
-  .footer-logos img { max-height: 50px; object-fit: contain; }
-  .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #1976d2; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; }
-  @media print { .print-btn { display: none; } body { padding: 0; } }
-  </style></head><body>
-  <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
-  <div class="header">
-    <div class="header-logos">
-      <img src="${GITHUB_BASE_URL}totalfest-logo.png" alt="TOTAL FEST">
-      <img src="${GITHUB_BASE_URL}sao-logo.png" alt="SAO Karaoke">
-    </div>
-    <h1>🎛️ TOTAL FEST</h1>
-    <div>Servicios Musicales Profesionales</div>
-  </div>
-  <div class="event-info">
-    <h2>📋 Reporte de Equipo y Servicio Confirmado</h2>
-    <p><strong>🎵 Servicio:</strong> ${service} ${eventType ? `(${eventType})` : ''}</p>
-    ${celebrant ? `<p><strong>🎉 Festejo de:</strong> ${celebrant}</p>` : ''}
-    ${client ? `<p><strong>👤 Cliente:</strong> ${client}</p>` : ''}
-    ${address ? `<p><strong>📍 Ubicación:</strong> ${address}</p>` : ''}
-    <p><strong>📅 Fecha:</strong> ${eventDate ? formatDateLocal(eventDate) : 'Por confirmar'}</p>
-    ${timeDisplay ? `<p><strong>⏰ Horario de inicio:</strong> ${timeDisplay}</p>` : ''}
-    ${staffNames ? `<p><strong> Staff asignado:</strong> ${staffNames} (${staffCount} persona(s))</p>` : ''}
-    <p><strong>🕒 Generado:</strong> ${new Date().toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
-  </div>
-  
-  <div class="payment-info">
-    <h2>💰 Resumen de Pagos</h2>
-    <p><strong>Costo Total del Servicio:</strong> ${fmtTotal}</p>
-    <p><strong>Anticipo Recibido:</strong> ${fmtAdvance} ${advanceDate ? `(Fecha: ${formatDateLocal(advanceDate)})` : ''}</p>
-    <p><strong>Saldo Restante por Liquidar:</strong> ${fmtBalance}</p>
-  </div>
-
-  ${eventoLiquidado ? `<div class="liquidado-info">
-    <h2>✅ Evento Liquidado</h2>
-    <p><strong>Fecha de Liquidación:</strong> ${fechaLiquidacion ? formatDateLocal(fechaLiquidacion) : 'No especificada'}</p>
-  </div>` : ''}
-
-  <div class="summary">✅ ${totalChecked} items confirmados para este evento</div>`;
-
+  let html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Reporte - ${celebrant || service}</title><style>@page { margin: 1.5cm; } * { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #1a1a1a; line-height: 1.4; padding: 10px; background: #fff; } .header { text-align: center; padding: 20px; background: linear-gradient(135deg, #1976d2, #0d47a1); color: white; border-radius: 8px; margin-bottom: 15px; } .header-logos { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 15px; flex-wrap: wrap; } .header-logos img { max-height: 70px; object-fit: contain; background: white; padding: 5px; border-radius: 8px; } .header h1 { font-size: 1.8em; margin-bottom: 5px; } .event-info { background: #f5f9ff; border-left: 4px solid #1976d2; padding: 15px; margin: 10px 0; border-radius: 6px; } .event-info h2 { color: #0d47a1; font-size: 1.2em; margin-bottom: 10px; } .event-info p { margin: 5px 0; font-size: 0.95em; } .event-info strong { color: #1976d2; } .payment-info { background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin: 10px 0; border-radius: 6px; } .payment-info h2 { color: #e65100; font-size: 1.1em; margin-bottom: 10px; } .payment-info p { margin: 5px 0; font-size: 0.95em; } .summary { background: #e8f5e9; border: 2px solid #4caf50; padding: 10px; border-radius: 6px; margin: 10px 0; text-align: center; font-size: 1em; color: #2e7d32; font-weight: bold; } .section { margin: 15px 0; } .section-title { background: linear-gradient(135deg, #1976d2, #42a5f5); color: white; padding: 10px 15px; border-radius: 6px; font-size: 1.1em; font-weight: bold; margin-bottom: 10px; } .subsection { margin: 10px 0; padding-left: 10px; } .subsection-title { color: #0d47a1; font-size: 1em; font-weight: bold; margin-bottom: 5px; border-bottom: 1px solid #e3f2fd; padding-bottom: 3px; } .item-list { list-style: none; padding-left: 0; } .item-list li { padding: 5px 10px; margin: 3px 0; background: #f8fbff; border-left: 3px solid #42a5f5; border-radius: 3px; font-size: 0.9em; } .item-list li:before { content: "✓"; color: #2e7d32; font-weight: bold; margin-right: 10px; } .footer { margin-top: 20px; padding-top: 15px; border-top: 2px solid #e3f2fd; text-align: center; color: #666; font-size: 0.85em; } .footer-logos { display: flex; justify-content: center; gap: 15px; margin: 10px 0; } .footer-logos img { max-height: 50px; object-fit: contain; } .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #1976d2; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; } @media print { .print-btn { display: none; } body { padding: 0; } }</style></head><body><button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button><div class="header"><div class="header-logos"><img src="${GITHUB_BASE_URL}totalfest-logo.png" alt="TOTAL FEST"><img src="${GITHUB_BASE_URL}sao-logo.png" alt="SAO Karaoke"></div><h1>️ TOTAL FEST</h1><div>Servicios Musicales Profesionales</div></div><div class="event-info"><h2>📋 Reporte de Equipo y Servicio Confirmado</h2><p><strong>🎵 Servicio:</strong> ${service} ${eventType ? `(${eventType})` : ''}</p>${celebrant ? `<p><strong>🎉 Festejo de:</strong> ${celebrant}</p>` : ''}${client ? `<p><strong>👤 Cliente:</strong> ${client}</p>` : ''}${address ? `<p><strong>📍 Ubicación:</strong> ${address}</p>` : ''}<p><strong>📅 Fecha:</strong> ${eventDate ? formatDateLocal(eventDate) : 'Por confirmar'}</p>${timeDisplay ? `<p><strong>⏰ Horario de inicio:</strong> ${timeDisplay}</p>` : ''}${staffNames ? `<p><strong>👥 Staff asignado:</strong> ${staffNames} (${staffCount} persona(s))</p>` : ''}<p><strong>🕒 Generado:</strong> ${new Date().toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p></div><div class="payment-info"><h2>💰 Resumen de Pagos</h2><p><strong>Costo Total del Servicio:</strong> ${fmtTotal}</p><p><strong>Anticipo Recibido:</strong> ${fmtAdvance} ${advanceDate ? `(Fecha: ${formatDateLocal(advanceDate)})` : ''}</p><p><strong>Saldo Restante por Liquidar:</strong> ${fmtBalance}</p></div><div class="summary">✅ ${totalChecked} items confirmados para este evento</div>`;
   CHECKLIST.forEach((section, sIdx) => {
     let sectionHasItems = false, sectionContent = '';
     section.subsections.forEach((sub, subIdx) => {
       const checkedItems = sub.items.filter((item, iIdx) => storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`] === true);
-      if (checkedItems.length > 0) {
-        sectionHasItems = true;
-        sectionContent += `<div class="subsection"><div class="subsection-title">${sub.title}</div><ul class="item-list">${checkedItems.map(item => `<li>${item}</li>`).join('')}</ul></div>`;
-      }
+      if (checkedItems.length > 0) { sectionHasItems = true; sectionContent += `<div class="subsection"><div class="subsection-title">${sub.title}</div><ul class="item-list">${checkedItems.map(item => `<li>${item}</li>`).join('')}</ul></div>`; }
     });
     if (sectionHasItems) html += `<div class="section"><div class="section-title">${section.title}</div>${sectionContent}</div>`;
   });
-
-  html += `<div class="footer">
-    <div class="footer-logos">
-      <img src="${GITHUB_BASE_URL}totalfest-logo.png" alt="TOTAL FEST">
-      <img src="${GITHUB_BASE_URL}sao-logo.png" alt="SAO Karaoke">
-    </div>
-    <p><strong>TOTAL FEST - JAVI SAO</strong></p>
-    <p>Servicios de Karaoke, DJ y Música en Vivo</p>
-    <p>📞 <a href="tel:+525532687918" style="color:#1976d2; text-decoration:none;">55 3268 7918</a> | 📧 <a href="mailto:karaoke.sao@gmail.com" style="color:#1976d2; text-decoration:none;">karaoke.sao@gmail.com</a></p>
-    <p style="margin-top: 10px; font-size: 0.8em; opacity: 0.7;">Este reporte confirma el equipo, requisitos y condiciones del servicio.</p>
-  </div></body></html>`;
-
+  html += `<div class="footer"><div class="footer-logos"><img src="${GITHUB_BASE_URL}totalfest-logo.png" alt="TOTAL FEST"><img src="${GITHUB_BASE_URL}sao-logo.png" alt="SAO Karaoke"></div><p><strong>TOTAL FEST - JAVI SAO</strong></p><p>Servicios de Karaoke, DJ y Música en Vivo</p><p>📞 <a href="tel:+525532687918" style="color:#1976d2; text-decoration:none;">55 3268 7918</a> | 📧 <a href="mailto:karaoke.sao@gmail.com" style="color:#1976d2; text-decoration:none;">karaoke.sao@gmail.com</a></p><p style="margin-top: 10px; font-size: 0.8em; opacity: 0.7;">Este reporte confirma el equipo, requisitos y condiciones del servicio.</p></div></body></html>`;
   printWindow.document.write(html);
   printWindow.document.close();
   setTimeout(() => printWindow.focus(), 250);
 }
 
-  // ... (aquí termina la función de exportClientReport)
+function exportRecibo() {
+  const eventoLiquidado = document.getElementById('eventoLiquidado').checked;
+  if (!eventoLiquidado) { if (!confirm('⚠️ El evento NO está marcado como liquidado. ¿Deseas generar el recibo de todos modos?')) return; }
+  const service = document.getElementById('service').value.trim() || 'Servicio Musical';
+  const eventType = document.getElementById('eventType').value.trim();
+  const celebrant = document.getElementById('celebrant').value.trim();
+  const client = document.getElementById('client').value.trim();
+  const address = document.getElementById('address').value.trim();
+  const eventDate = document.getElementById('eventDate').value;
+  const startTime = document.getElementById('startTime').value;
+  const contractedHours = document.getElementById('contractedHours').value.trim();
+  const costTotal = parseFloat(document.getElementById('costTotal').value) || 0;
+  const costAdvance = parseFloat(document.getElementById('costAdvance').value) || 0;
+  const advanceDate = document.getElementById('advanceDate').value;
+  const fechaLiquidacion = document.getElementById('fechaLiquidacion').value;
+  const fmtTotal = formatCurrency(costTotal);
+  const fmtAdvance = formatCurrency(costAdvance);
+  const fmtBalance = formatCurrency(Math.max(0, costTotal - costAdvance));
+  const timeDisplay = startTime ? `${formatTime12(startTime)} (${contractedHours} Horas de Servicio)` : 'Por confirmar';
+  const fechaEvento = eventDate ? formatDateLocal(eventDate) : 'Por confirmar';
+  const fechaLiq = fechaLiquidacion ? formatDateLocal(fechaLiquidacion) : new Date().toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  const folio = 'TF-' + new Date().getFullYear() + '-' + String(Date.now()).slice(-6);
+  const printWindow = window.open('', '_blank');
+  let html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Recibo de Liquidación - ${celebrant || service}</title><style>@page { margin: 1.5cm; size: letter; } * { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: 'Segoe UI', Tahoma, sans-serif; color: #1a1a1a; line-height: 1.5; padding: 20px; background: #fff; max-width: 800px; margin: 0 auto; } .recibo-header { text-align: center; padding: 25px 20px; background: linear-gradient(135deg, #1976d2, #0d47a1); color: white; border-radius: 12px; margin-bottom: 25px; } .recibo-header img { max-height: 80px; object-fit: contain; background: white; padding: 8px; border-radius: 8px; margin-bottom: 10px; } .recibo-header h1 { font-size: 2em; margin: 10px 0 5px; letter-spacing: 2px; } .recibo-header .subtitle { font-size: 1em; opacity: 0.9; } .folio-box { background: #fff3e0; border: 2px dashed #ff9800; padding: 10px 20px; border-radius: 8px; text-align: center; margin: 20px 0; font-weight: bold; color: #e65100; font-size: 1.1em; } .recibo-title { text-align: center; font-size: 1.5em; color: #0d47a1; margin: 20px 0; padding-bottom: 10px; border-bottom: 3px solid #1976d2; } .datos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; } .dato-box { background: #f5f9ff; border-left: 4px solid #1976d2; padding: 12px 15px; border-radius: 6px; } .dato-box label { font-size: 0.8em; color: #666; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 3px; } .dato-box .valor { font-size: 1.05em; color: #1a1a1a; font-weight: 600; } .dato-box.full { grid-column: 1 / -1; } .montos-box { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #4caf50; border-radius: 10px; padding: 20px; margin: 25px 0; } .montos-box h3 { color: #2e7d32; margin-bottom: 15px; font-size: 1.2em; text-align: center; } .monto-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #81c784; font-size: 1.05em; } .monto-row:last-child { border-bottom: none; font-weight: bold; font-size: 1.2em; color: #1b5e20; padding-top: 12px; margin-top: 5px; border-top: 2px solid #2e7d32; } .monto-row .label { color: #33691e; } .monto-row .valor { font-weight: 600; } .liquidacion-badge { background: #2e7d32; color: white; padding: 15px; border-radius: 10px; text-align: center; margin: 20px 0; font-size: 1.1em; } .liquidacion-badge strong { font-size: 1.3em; display: block; margin-top: 5px; } .agradecimiento { background: #fff8e1; border-left: 4px solid #ffc107; padding: 20px; border-radius: 8px; margin: 25px 0; font-style: italic; color: #5d4037; line-height: 1.7; } .agradecimiento h4 { color: #f57c00; margin-bottom: 10px; font-style: normal; font-size: 1.1em; } .firmas { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0 20px; } .firma-box { text-align: center; } .firma-linea { border-top: 2px solid #333; margin-top: 60px; padding-top: 8px; font-size: 0.9em; color: #555; } .firma-box .nombre { font-weight: bold; color: #1a1a1a; } .firma-box .puesto { font-size: 0.85em; color: #666; } .recibo-footer { text-align: center; padding: 20px; border-top: 2px solid #e3f2fd; margin-top: 30px; color: #666; font-size: 0.85em; } .recibo-footer img { max-height: 50px; object-fit: contain; margin-bottom: 10px; } .recibo-footer .empresa { font-weight: bold; color: #0d47a1; font-size: 1.1em; } .recibo-footer .contacto { margin-top: 8px; } .recibo-footer .contacto a { color: #1976d2; text-decoration: none; } .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #1976d2; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; } @media print { .print-btn { display: none; } body { padding: 0; } } @media (max-width: 600px) { .datos-grid { grid-template-columns: 1fr; } .firmas { grid-template-columns: 1fr; gap: 20px; } }</style></head><body><button class="print-btn" onclick="window.print()">️ Imprimir / Guardar como PDF</button><div class="recibo-header"><img src="${GITHUB_BASE_URL}totalfest-logo.png" alt="TOTAL FEST"><h1>TOTAL FEST</h1><div class="subtitle">Entretenimiento & Eventos · Desde 1988</div></div><div class="folio-box">FOLIO: ${folio}</div><div class="recibo-title">🧾 RECIBO DE LIQUIDACIÓN DE SERVICIO</div><div class="datos-grid"><div class="dato-box"><label>🎵 Servicio Contratado</label><div class="valor">${service} ${eventType ? `(${eventType})` : ''}</div></div><div class="dato-box"><label>🎉 Festejo de</label><div class="valor">${celebrant || 'N/A'}</div></div><div class="dato-box"><label>👤 Cliente</label><div class="valor">${client || 'N/A'}</div></div><div class="dato-box"><label>📅 Fecha del Evento</label><div class="valor">${fechaEvento}</div></div><div class="dato-box full"><label> Ubicación</label><div class="valor">${address || 'N/A'}</div></div><div class="dato-box"><label>⏰ Horario</label><div class="valor">${timeDisplay}</div></div><div class="dato-box"><label> Fecha de Liquidación</label><div class="valor">${fechaLiq}</div></div></div><div class="montos-box"><h3> Desglose de Pagos</h3><div class="monto-row"><span class="label">Costo Total del Servicio:</span><span class="valor">${fmtTotal}</span></div><div class="monto-row"><span class="label">Anticipo Recibido${advanceDate ? ` (${formatDateLocal(advanceDate)})` : ''}:</span><span class="valor">${fmtAdvance}</span></div><div class="monto-row"><span class="label">Saldo Liquidado:</span><span class="valor">${fmtBalance}</span></div><div class="monto-row"><span class="label">✅ TOTAL PAGADO:</span><span class="valor">${fmtTotal}</span></div></div><div class="liquidacion-badge">✅ ESTADO: SERVICIO LIQUIDADO EN SU TOTALIDAD<strong>Por la cantidad de ${fmtTotal}</strong></div><div class="agradecimiento"><h4>💌 Nota de Agradecimiento</h4><p>Estimado(a) <strong>${client || 'cliente'}</strong>,</p><p style="margin-top: 10px;">En nombre de <strong>TOTAL FEST</strong>, quiero expresarle mi más sincero agradecimiento por haber confiado en nosotros para hacer de su evento una experiencia inolvidable.</p><p style="margin-top: 10px;">Fue un honor ser parte de la celebración de <strong>${celebrant || 'su evento'}</strong>. Nuestro compromiso es brindar siempre el mejor servicio musical, con equipo de calidad y profesionalismo en cada detalle.</p><p style="margin-top: 10px;">Quedamos a sus órdenes para futuros eventos y le invitamos a recomendarnos con sus amigos y familiares. ¡Su satisfacción es nuestra mejor carta de presentación!</p><p style="margin-top: 15px; text-align: right; font-style: normal;">Con aprecio,<br><strong style="color: #0d47a1; font-size: 1.1em;">Luis Javier SAO</strong><br><span style="font-size: 0.9em;">TOTAL FEST · Servicios Musicales Profesionales</span></p></div><div class="firmas"><div class="firma-box"><div class="firma-linea"><div class="nombre">Luis Javier SAO</div><div class="puesto">TOTAL FEST · Proveedor del Servicio</div></div></div><div class="firma-box"><div class="firma-linea"><div class="nombre">${client || '____________________'}</div><div class="puesto">Cliente · Recibí conforme</div></div></div></div><div class="recibo-footer"><img src="${GITHUB_BASE_URL}totalfest-logo.png" alt="TOTAL FEST"><div class="empresa">TOTAL FEST - Luis Javier SAO</div><div>Música · Tributos en vivo · Karaoke · DJ · Audio · Estudio</div><div class="contacto">📞 <a href="tel:+525532687918">55 3268 7918</a> |  <a href="mailto:karaoke.sao@gmail.com">karaoke.sao@gmail.com</a></div><div style="margin-top: 10px; font-size: 0.8em; opacity: 0.7;">Este recibo avala la liquidación total del servicio contratado.</div></div></body></html>`;
+  printWindow.document.write(html);
   printWindow.document.close();
   setTimeout(() => printWindow.focus(), 250);
 }
 
-// 👇👇 PEGAS EL CÓDIGO NUEVO AQUÍ 👇👇
-function exportRecibo() {
-  // Validar que esté liquidado
-  const eventoLiquidado = document.getElementById('eventoLiquidado').checked;
-  // ... (todo el resto del código del recibo) ...
-}
-// 👆👆 TERMINA EL CÓDIGO NUEVO AQUÍ 👆👆
-
-function exportConfig() {  // <-- Esta línea ya estaba, tú solo pegaste arriba
+function exportConfig() {
   const storage = getStorage();
-  // ...
-}
- 
- function exportConfig() {
-  const storage = getStorage();
-  const config = { version: '8.0', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - Javi SAO', data: storage };
+  const config = { version: '8.1', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - Javi SAO', data: storage };
   const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -961,7 +638,6 @@ function exportConfig() {  // <-- Esta línea ya estaba, tú solo pegaste arriba
   a.click();
   alert('✅ Configuración exportada.');
 }
-
 function importConfig(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -971,19 +647,12 @@ function importConfig(event) {
     try {
       const config = JSON.parse(e.target.result);
       if (!config.data || !config.data.current) throw new Error('Formato inválido');
-      
       const currentStorage = getStorage();
       currentStorage.current = config.data.current;
-      
       if (config.data.history && Array.isArray(config.data.history)) {
         const existingIds = new Set(currentStorage.history.map(e => e.id));
-        config.data.history.forEach(event => {
-          if (!existingIds.has(event.id)) {
-            currentStorage.history.push(event);
-          }
-        });
+        config.data.history.forEach(event => { if (!existingIds.has(event.id)) { currentStorage.history.push(event); } });
       }
-      
       setStorage(currentStorage);
       render();
       alert('✅ Configuración importada. Tu historial está a salvo.');
@@ -992,7 +661,6 @@ function importConfig(event) {
   };
   reader.readAsText(file);
 }
-
 function updateProgress() {
   const storage = getStorage();
   let total = 0, checked = 0;
@@ -1002,7 +670,6 @@ function updateProgress() {
   document.getElementById('progressFill').textContent = pct + '%';
   document.getElementById('progressText').textContent = `${checked} de ${total} items listos`;
 }
-
 window.addEventListener('load', render);
 </script>
 </body>
