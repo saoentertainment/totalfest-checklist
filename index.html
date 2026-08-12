@@ -6,6 +6,15 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
+
+<!-- ETIQUETAS PARA VISTA PREVIA EN WHATSAPP Y REDES SOCIALES -->
+<meta property="og:title" content="🎛️ Checklist Maestro - TOTAL FEST">
+<meta property="og:description" content="Sistema de verificación de equipo para eventos - Javi SAO">
+<meta property="og:image" content="https://raw.githubusercontent.com/saoentertainment/totalfest-checklist/main/sao-logo.png">
+<meta property="og:url" content="https://saoentertainment.github.io/totalfest-checklist/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
 <title>🎛️ Checklist Maestro - TOTAL FEST (Javi SAO)</title>
 <link rel="icon" type="image/png" sizes="32x32" href="./icon-192.png">
 <link rel="apple-touch-icon" href="./icon-192.png">
@@ -28,7 +37,7 @@
   h1 { font-size: 1.6em; color: #64b5f6; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(33, 150, 243, 0.4); }
   .subtitle { font-size: 0.9em; color: #90caf9; opacity: 0.8; margin-bottom: 20px; }
   
-  .data-form { text-align: left; margin-top: 15px; }
+  .data-form-content { transition: all 0.3s ease; }
   .form-group { margin-bottom: 15px; }
   .form-group label { display: block; font-size: 0.85em; color: #90caf9; margin-bottom: 5px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
   .form-group input, .form-group select { width: 100%; padding: 10px 12px; background: rgba(13, 71, 161, 0.4); border: 1px solid rgba(100, 181, 246, 0.3); border-radius: 8px; color: #fff; font-size: 1em; }
@@ -128,8 +137,12 @@
     <h1>🎛️ CHECKLIST MAESTRO - TOTAL FEST (JAVI SAO)</h1>
     <div class="subtitle">Sistema de verificación de equipo para eventos</div>
     
-    <div class="data-form">
-      <div class="section-title">🎵 Datos del Servicio y Cliente</div>
+    <!-- SECCIÓN COLAPSABLE DE DATOS -->
+    <div class="section-title" onclick="toggleDataForm()" style="cursor: pointer; justify-content: space-between;">
+      <span>🎵 Datos del Servicio y Cliente</span>
+      <span id="dataFormArrow" style="font-size: 0.8em;">▼</span>
+    </div>
+    <div id="dataFormContent" class="data-form-content">
       <div class="form-row">
         <div class="form-group">
           <label>Servicio Contratado</label>
@@ -151,7 +164,7 @@
         </div>
       </div>
 
-      <div class="section-title">📍 Ubicación, Fecha y Horario</div>
+      <div class="section-title" style="margin-top: 10px;">📍 Ubicación, Fecha y Horario</div>
       <div class="form-group">
         <label>Dirección Completa</label>
         <input type="text" id="address" placeholder="Calle, número, colonia, ciudad, CP" oninput="updateMapsLink(); autoSaveEvent()">
@@ -173,7 +186,7 @@
         </div>
       </div>
 
-      <div class="section-title">🚗 Logística y Personal</div>
+      <div class="section-title" style="margin-top: 10px;">🚗 Logística y Personal</div>
       <div class="form-row">
         <div class="form-group">
           <label>Modo de Transporte</label>
@@ -205,7 +218,7 @@
         </div>
       </div>
 
-      <div class="section-title">💰 Costos y Pagos</div>
+      <div class="section-title" style="margin-top: 10px;">💰 Costos y Pagos</div>
       <div class="form-row-3">
         <div class="form-group">
           <label>Costo Total</label>
@@ -258,7 +271,7 @@
   </div>
 
   <div class="import-section">
-    <h4>️ Importar configuración desde otro dispositivo</h4>
+    <h4>⬆️ Importar configuración desde otro dispositivo</h4>
     <p style="font-size:0.85em; color:#ffb74d; margin-bottom:10px;">
       Sube el archivo JSON exportado previamente. Esto reemplazará tu configuración actual.
     </p>
@@ -274,12 +287,12 @@
   <button class="fab-main" id="fabMain" onclick="toggleFab()">☰</button>
   <div class="fab-menu" id="fabMenu">
     <div class="fab-item">
-      <span>📝 Datos del Servicio</span>
-      <button onclick="scrollToSection('header-section')">️</button>
+      <span> Datos del Servicio</span>
+      <button onclick="scrollToSection('header-section')">⬆️</button>
     </div>
     <div class="fab-item">
-      <span>🅰️ Karaoke + DJ</span>
-      <button onclick="scrollToSection('section-0')">🎤</button>
+      <span>️ Karaoke + DJ</span>
+      <button onclick="scrollToSection('section-0')"></button>
     </div>
     <div class="fab-item">
       <span>🅱️ Música en Vivo</span>
@@ -291,33 +304,44 @@
     </div>
     <div class="fab-item">
       <span>📚 Historial</span>
-      <button onclick="scrollToSection('history-section')">📚</button>
+      <button onclick="scrollToSection('history-section')"></button>
     </div>
   </div>
 </div>
 
 <script>
-// ELIMINAR SERVICE WORKERS (SOLUCIÓN AL PROBLEMA DE CACHÉ)
+// ELIMINAR SERVICE WORKERS
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
     for(let registration of registrations) {
       registration.unregister();
-      console.log('Service Worker eliminado');
     }
   });
 }
 
-   // FUNCIÓN DE RESET (Optimizada para Android)
-   function doReset() { 
-     // Usamos setTimeout para que el celular muestre el mensaje antes de bloquearse
-     setTimeout(function() {
-       alert('🔄 Limpiando todo...');
-       localStorage.clear();
-       window.location.reload();
-     }, 100);
-   }
+// FUNCIÓN PARA COLAPSAR DATOS DEL SERVICIO
+function toggleDataForm() {
+  const content = document.getElementById('dataFormContent');
+  const arrow = document.getElementById('dataFormArrow');
+  if (content.style.display === 'none') {
+    content.style.display = 'block';
+    arrow.textContent = '▼';
+  } else {
+    content.style.display = 'none';
+    arrow.textContent = '▶';
+  }
+}
 
-// AGREGAR EVENT LISTENERS AL BOTÓN
+// FUNCIÓN DE RESET (Optimizada para Android)
+function doReset() { 
+  setTimeout(function() {
+    alert('🔄 Limpiando todo...');
+    localStorage.clear();
+    window.location.reload();
+  }, 100);
+}
+
+// AGREGAR EVENT LISTENERS AL BOTÓN DE RESET
 window.addEventListener('load', function() {
   const btn = document.getElementById('btnReset');
   if (btn) {
@@ -340,16 +364,16 @@ const CHECKLIST = [
     subsections: [
       { title: "🔊 1.1 Sonido", items: ["2 Bocinas ALTO 10\" + Fundas", "1 Subwoofer ALTO 12\" + Funda", "Maleta con soportes para bocinas + Soporte Pantalla", "Micrófonos PHENYX + Módulo y Plug + Eliminador", "Micrófonos STEREN + Módulo y Plug + Eliminador", "Micrófono SHURE SM58", "Interfaz Behringer + USB", "Mezcladora Behringer + Eliminador de Corriente"] },
       { title: "📺 1.2 Video y Pantallas", items: ["Pantalla 42\" + estuche + control", "Monitor 15\" genérico + cables", "Pantalla 19\" AOC + control + base", "Pantalla 20\" Mitsui + control + base", "Soporte para laptop y monitor genérico 15\"", "Soportes de piso para Pantallas HERCULES"] },
-      { title: " 1.3 Iluminación", items: ["2 Barras de luces LED + estuche", "3 Luces LED + 1 cuadrado + estuche", "Maleta con luces robóticas", "Maleta con luces beam", "Clamps para luces + hule espuma", "Lámparas: Blanca, Mini y para Laptop"] },
+      { title: "💡 1.3 Iluminación", items: ["2 Barras de luces LED + estuche", "3 Luces LED + 1 cuadrado + estuche", "Maleta con luces robóticas", "Maleta con luces beam", "Clamps para luces + hule espuma", "Lámparas: Blanca, Mini y para Laptop"] },
       { title: "💻 1.4 Cómputo y DJ", items: ["Módulo desarmable para DJ + Patitas", "Cabina DJ + Estuche", "Laptop + Estuche", "Disco duro externo SSD Azul", "Extensor USB C", "Wav Link (transmisor HDMI inalámbrico) para monitores independientes", "HUB USB", "Audífonos + soporte + soporte vaso", "Mouse + Mouse pad"] },
       { title: "🔌 1.5 Cables y Energía", items: ["Regulador de energía FURMAN", "Maleta de cables de audio", "Maleta de adaptadores (verde)", "Maleta de extensiones de luz y multicontactos", "Maleta HDMI / Splitters / Cables HDMI", "Herramienta, clips, velcros, correas sujetadoras"] },
       { title: "🎒 1.6 Logística, Docs y Personal", items: ["Carrito transportador", "Atril para micrófonos (partituras)", "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación", "Pilas (¡cargarlas!) + Micro limpiador de micrófono", "Vestuario: Maletas con accesorios + ropa en gancho", "Hospitalidad: Almuerzo + Electrolit"] }
     ]
   },
   {
-    title: "️ SECCIÓN 2: MÚSICA EN VIVO (Bajista y Cantante)",
+    title: "🅱️ SECCIÓN 2: MÚSICA EN VIVO (Bajista y Cantante)",
     subsections: [
-      { title: " 2.1 Instrumentos y Amplificación", items: ["Bajo BATTALION + eliminador", "Afinador + eliminador", "Amplificador BUGERA + cable de corriente", "Bajo GL", "Bajo FACTOR", "THALI", "Soporte elevador monitor + cable corriente", "Cuerdas de repuesto"] },
+      { title: "🎸 2.1 Instrumentos y Amplificación", items: ["Bajo BATTALION + eliminador", "Afinador + eliminador", "Amplificador BUGERA + cable de corriente", "Bajo GL", "Bajo FACTOR", "THALI", "Soporte elevador monitor + cable corriente", "Cuerdas de repuesto"] },
       { title: "🎤 2.2 Audio y Cables", items: ["Micrófono SHURE SM58 (voz)", "Cables Plug (2)", "Cable XLR Voz", "2 cables XLR Salida Bugera", "Cables Plugs extra", "Clips de atril para cables de micrófono"] },
       { title: "📱 2.3 Soportes", items: ["Atril para micrófono", "Atriles para bajo", "Atril para teclado", "Clips de atril de teclado para cables", "Tablet + soporte Hercules", "Soporte para celular Hercules", "Soporte para vaso"] },
       { title: "💻 2.4 Cómputo y Video", items: ["Laptop + eliminador de corriente", "Disco duro negro + cable", "Base para pantalla tributo MUSE"] },
@@ -357,16 +381,16 @@ const CHECKLIST = [
     ]
   },
   {
-    title: "️ SECCIÓN 3: REQUISITOS DEL LUGAR (RIDER CLIENTE)",
+    title: "🅲️ SECCIÓN 3: REQUISITOS DEL LUGAR (RIDER CLIENTE)",
     subsections: [
       { title: "⚙️ Instalación y Espacio", items: ["Acceso al lugar 3 horas antes (instalación y prueba de sonido)", "Contactos aterrizados (3 patas) con breaker mínimo 15A", "Área despejada con techo/lona (protección contra sol/lluvia)", "Suelo firme y estable (no pasto húmedo/tierra por riesgos eléctricos)", "WiFi disponible en el lugar (o reportar ausencia con anticipación)"] },
       { title: "🚛 Logística y Accesos", items: ["Permisos y accesos tramitados (si es privada/condominio/fraccionamiento)", "Acceso vehicular cercano (escaleras/terreno difícil = cargo extra por maniobras)", "Zona de cobertura verificada (CDMX/Zona Metro. Otras zonas = costo de traslado ajustado)"] },
-      { title: " Acuerdos y Condiciones", items: ["Cuota sindical cubierta por el contratante (si aplica: SUTM, CROC, ANDA, etc.)", "Atención para el staff considerada (alimentos y bebidas durante descansos)", "Responsabilidad por daños al equipo (invitados o instalaciones deficientes) al 100% en 15 días", "Tiempo contratado ininterrumpido (interrupciones por mariachis/rifas/discursos NO generan reposición)"] }
+      { title: "📜 Acuerdos y Condiciones", items: ["Cuota sindical cubierta por el contratante (si aplica: SUTM, CROC, ANDA, etc.)", "Atención para el staff considerada (alimentos y bebidas durante descansos)", "Responsabilidad por daños al equipo (invitados o instalaciones deficientes) al 100% en 15 días", "Tiempo contratado ininterrumpido (interrupciones por mariachis/rifas/discursos NO generan reposición)"] }
     ]
   }
 ];
 
-const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v6_0';
+const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v7_0';
 const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/saoentertainment/totalfest-checklist/main/';
 
 function getStorage() {
@@ -553,7 +577,7 @@ function renderHistory() {
     const dateStr = event.eventDate ? formatDateLocal(event.eventDate) : 'Sin fecha';
     const timeStr = event.startTime ? formatTime12(event.startTime) : '';
     const balance = Math.max(0, (parseFloat(event.costTotal)||0) - (parseFloat(event.costAdvance)||0));
-    return `<div class="history-item"><div class="history-info"><h4> ${event.service} | 🎉 ${event.celebrant || 'N/A'}</h4><p>📅 ${dateStr} ${timeStr ? `⏰ ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p>💰 Saldo: ${formatCurrency(balance)} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
+    return `<div class="history-item"><div class="history-info"><h4>🎵 ${event.service} | 🎉 ${event.celebrant || 'N/A'}</h4><p> ${dateStr} ${timeStr ? ` ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p>💰 Saldo: ${formatCurrency(balance)} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})"> Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
   }).join('');
 }
 
@@ -585,7 +609,7 @@ function scrollToSection(id) {
 function exportReport() {
   const storage = getStorage();
   let report = `╔══════════════════════════════════════════════════╗\n`;
-  report += `║   🎛️ TOTAL FEST - SAO KARAOKE 🎤         ║\n`;
+  report += `║   🎛️ TOTAL FEST - SAO KARAOKE 🎤         \n`;
   report += `║   Checklist Maestro - Javi SAO              ║\n`;
   report += `╚══════════════════════════════════════════════════╝\n\n`;
   report += `🎵 SERVICIO: ${document.getElementById('service').value || 'N/A'}\n`;
@@ -596,7 +620,7 @@ function exportReport() {
   report += ` FECHA: ${document.getElementById('eventDate').value ? formatDateLocal(document.getElementById('eventDate').value) : 'N/A'}\n`;
   report += `⏰ HORARIO: ${document.getElementById('startTime').value ? formatTime12(document.getElementById('startTime').value) : 'N/A'} (${document.getElementById('contractedHours').value || '?'} Horas de Servicio)\n`;
   report += `🚗 TRANSPORTE: ${document.getElementById('transportType').value || 'N/A'} - ${document.getElementById('transportDetails').value || ''}\n`;
-  report += ` STAFF: ${document.getElementById('staffCount').value} persona(s) - ${document.getElementById('staffNames').value || 'N/A'}\n`;
+  report += `👥 STAFF: ${document.getElementById('staffCount').value} persona(s) - ${document.getElementById('staffNames').value || 'N/A'}\n`;
   report += `💰 COSTO TOTAL: ${formatCurrency(parseFloat(document.getElementById('costTotal').value)||0)}\n`;
   report += `💵 ANTICIPO: ${formatCurrency(parseFloat(document.getElementById('costAdvance').value)||0)} (Fecha: ${document.getElementById('advanceDate').value || 'N/A'})\n`;
   report += `💸 SALDO RESTANTE: ${formatCurrency(Math.max(0, (parseFloat(document.getElementById('costTotal').value)||0) - (parseFloat(document.getElementById('costAdvance').value)||0)))}\n\n`;
@@ -688,11 +712,11 @@ function exportClientReport() {
   <div class="event-info">
     <h2>📋 Reporte de Equipo y Servicio Confirmado</h2>
     <p><strong>🎵 Servicio:</strong> ${service} ${eventType ? `(${eventType})` : ''}</p>
-    ${celebrant ? `<p><strong> Festejo de:</strong> ${celebrant}</p>` : ''}
+    ${celebrant ? `<p><strong>🎉 Festejo de:</strong> ${celebrant}</p>` : ''}
     ${client ? `<p><strong>👤 Cliente:</strong> ${client}</p>` : ''}
-    ${address ? `<p><strong>📍 Ubicación:</strong> ${address}</p>` : ''}
+    ${address ? `<p><strong> Ubicación:</strong> ${address}</p>` : ''}
     <p><strong>📅 Fecha:</strong> ${eventDate ? formatDateLocal(eventDate) : 'Por confirmar'}</p>
-    ${timeDisplay ? `<p><strong>⏰ Horario de inicio:</strong> ${timeDisplay}</p>` : ''}
+    ${timeDisplay ? `<p><strong> Horario de inicio:</strong> ${timeDisplay}</p>` : ''}
     ${staffNames ? `<p><strong>👥 Staff asignado:</strong> ${staffNames} (${staffCount} persona(s))</p>` : ''}
     <p><strong>🕒 Generado:</strong> ${new Date().toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
   </div>
@@ -736,7 +760,7 @@ function exportClientReport() {
 
 function exportConfig() {
   const storage = getStorage();
-  const config = { version: '6.0', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - Javi SAO', data: storage };
+  const config = { version: '7.0', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - Javi SAO', data: storage };
   const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
