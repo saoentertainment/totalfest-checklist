@@ -3,12 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- ETIQUETAS PARA OBLIGAR AL CELULAR A DESCARGAR LA VERSIÓN NUEVA -->
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-
-<title>🎛️ Checklist Maestro - TOTAL FEST (Javi SAO)</title>
+<title>️ Checklist Maestro - TOTAL FEST (Javi SAO)</title>
 <link rel="icon" type="image/png" sizes="32x32" href="./icon-192.png">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <link rel="manifest" href="./manifest.json">
@@ -127,7 +122,7 @@
       <img src="./totalfest-logo.png" alt="TOTAL FEST" class="logo-totalfest">
       <img src="./sao-logo.png" alt="SAO Karaoke" class="logo-sao">
     </div>
-    <h1>️ CHECKLIST MAESTRO - TOTAL FEST (JAVI SAO)</h1>
+    <h1>🎛️ CHECKLIST MAESTRO - TOTAL FEST (JAVI SAO)</h1>
     <div class="subtitle">Sistema de verificación de equipo para eventos</div>
     
     <div class="data-form">
@@ -252,16 +247,11 @@
     <button class="btn-export" onclick="exportReport()">📄 Reporte interno</button>
     <button class="btn-client" onclick="exportClientReport()">📋 Reporte cliente</button>
     <button class="btn-config" onclick="exportConfig()">⬇️ Exportar config</button>
-    
-    <!-- BOTÓN DE RESET CON FORMULARIO (ESTRUCTURA QUE SÍ FUNCIONA EN ANDROID) -->
-    <form onsubmit="doReset(); return false;" style="display:inline-block; margin:0; padding:0;">
-      <button type="submit" class="btn-reset" style="touch-action: manipulation; pointer-events: auto;">🔄 Resetear Todo</button>
-    </form>
-    
+    <button class="btn-reset" onclick="resetChecks()">🔄 Reset checks</button>
   </div>
 
   <div class="import-section">
-    <h4>️ Importar configuración desde otro dispositivo</h4>
+    <h4>⬆️ Importar configuración desde otro dispositivo</h4>
     <p style="font-size:0.85em; color:#ffb74d; margin-bottom:10px;">
       Sube el archivo JSON exportado previamente. Esto reemplazará tu configuración actual.
     </p>
@@ -278,7 +268,7 @@
   <div class="fab-menu" id="fabMenu">
     <div class="fab-item">
       <span>📝 Datos del Servicio</span>
-      <button onclick="scrollToSection('header-section')">️</button>
+      <button onclick="scrollToSection('header-section')">⬆️</button>
     </div>
     <div class="fab-item">
       <span>🅰️ Karaoke + DJ</span>
@@ -293,46 +283,23 @@
       <button onclick="scrollToSection('section-2')">🏛️</button>
     </div>
     <div class="fab-item">
-      <span>📚 Historial</span>
+      <span> Historial</span>
       <button onclick="scrollToSection('history-section')">📚</button>
     </div>
   </div>
 </div>
 
 <script>
-// FUNCIÓN DE RESET DEFINIDA AL INICIO PARA EVITAR ERRORES DE CARGA
-function doReset() { 
-  if (!window.confirm('¿Limpiar todo el evento actual? El historial se mantiene.')) {
-    return false;
-  }
-  
-  try {
-    const storage = getStorage(); 
-    storage.current = { 
-      service: '', eventType: '', celebrant: '', client: '', 
-      address: '', eventDate: '', startTime: '', contractedHours: '', 
-      transportType: '', transportDetails: '', staffCount: '1', 
-      staffNames: '', costTotal: '', costAdvance: '', advanceDate: '', 
-      checks: {}, notes: {} 
-    };
-    setStorage(storage); 
-    window.location.reload();
-  } catch(e) {
-    alert('Error: ' + e.message);
-  }
-  return false;
-}
-
 const CHECKLIST = [
   {
     title: "🅰️ SECCIÓN 1: KARAOKE + DJ",
     subsections: [
-      { title: "🔊 1.1 Sonido", items: ["2 Bocinas ALTO 10\" + Fundas", "1 Subwoofer ALTO 12\" + Funda", "Maleta con soportes para bocinas + Soporte Pantalla", "Micrófonos PHENYX + Módulo y Plug + Eliminador", "Micrófonos STEREN + Módulo y Plug + Eliminador", "Micrófono SHURE SM58", "Interfaz Behringer + USB", "Mezcladora Behringer + Eliminador de Corriente"] },
+      { title: " 1.1 Sonido", items: ["2 Bocinas ALTO 10\" + Fundas", "1 Subwoofer ALTO 12\" + Funda", "Maleta con soportes para bocinas + Soporte Pantalla", "Micrófonos PHENYX + Módulo y Plug + Eliminador", "Micrófonos STEREN + Módulo y Plug + Eliminador", "Micrófono SHURE SM58", "Interfaz Behringer + USB", "Mezcladora Behringer + Eliminador de Corriente"] },
       { title: "📺 1.2 Video y Pantallas", items: ["Pantalla 42\" + estuche + control", "Monitor 15\" genérico + cables", "Pantalla 19\" AOC + control + base", "Pantalla 20\" Mitsui + control + base", "Soporte para laptop y monitor genérico 15\"", "Soportes de piso para Pantallas HERCULES"] },
       { title: "💡 1.3 Iluminación", items: ["2 Barras de luces LED + estuche", "3 Luces LED + 1 cuadrado + estuche", "Maleta con luces robóticas", "Maleta con luces beam", "Clamps para luces + hule espuma", "Lámparas: Blanca, Mini y para Laptop"] },
       { title: "💻 1.4 Cómputo y DJ", items: ["Módulo desarmable para DJ + Patitas", "Cabina DJ + Estuche", "Laptop + Estuche", "Disco duro externo SSD Azul", "Extensor USB C", "Wav Link (transmisor HDMI inalámbrico) para monitores independientes", "HUB USB", "Audífonos + soporte + soporte vaso", "Mouse + Mouse pad"] },
-      { title: "🔌 1.5 Cables y Energía", items: ["Regulador de energía FURMAN", "Maleta de cables de audio", "Maleta de adaptadores (verde)", "Maleta de extensiones de luz y multicontactos", "Maleta HDMI / Splitters / Cables HDMI", "Herramienta, clips, velcros, correas sujetadoras"] },
-      { title: " 1.6 Logística, Docs y Personal", items: ["Carrito transportador", "Atril para micrófonos (partituras)", "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación", "Pilas (¡cargarlas!) + Micro limpiador de micrófono", "Vestuario: Maletas con accesorios + ropa en gancho", "Hospitalidad: Almuerzo + Electrolit"] }
+      { title: " 1.5 Cables y Energía", items: ["Regulador de energía FURMAN", "Maleta de cables de audio", "Maleta de adaptadores (verde)", "Maleta de extensiones de luz y multicontactos", "Maleta HDMI / Splitters / Cables HDMI", "Herramienta, clips, velcros, correas sujetadoras"] },
+      { title: "🎒 1.6 Logística, Docs y Personal", items: ["Carrito transportador", "Atril para micrófonos (partituras)", "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación", "Pilas (¡cargarlas!) + Micro limpiador de micrófono", "Vestuario: Maletas con accesorios + ropa en gancho", "Hospitalidad: Almuerzo + Electrolit"] }
     ]
   },
   {
@@ -340,9 +307,9 @@ const CHECKLIST = [
     subsections: [
       { title: "🎸 2.1 Instrumentos y Amplificación", items: ["Bajo BATTALION + eliminador", "Afinador + eliminador", "Amplificador BUGERA + cable de corriente", "Bajo GL", "Bajo FACTOR", "THALI", "Soporte elevador monitor + cable corriente", "Cuerdas de repuesto"] },
       { title: "🎤 2.2 Audio y Cables", items: ["Micrófono SHURE SM58 (voz)", "Cables Plug (2)", "Cable XLR Voz", "2 cables XLR Salida Bugera", "Cables Plugs extra", "Clips de atril para cables de micrófono"] },
-      { title: "📱 2.3 Soportes", items: ["Atril para micrófono", "Atriles para bajo", "Atril para teclado", "Clips de atril de teclado para cables", "Tablet + soporte Hercules", "Soporte para celular Hercules", "Soporte para vaso"] },
-      { title: "💻 2.4 Cómputo y Video", items: ["Laptop + eliminador de corriente", "Disco duro negro + cable", "Base para pantalla tributo MUSE"] },
-      { title: "🔌 2.5 Energía y Accesorios", items: ["Extensión de luz", "Multicontactos", "Plumillas + PortaPlumillas"] }
+      { title: " 2.3 Soportes", items: ["Atril para micrófono", "Atriles para bajo", "Atril para teclado", "Clips de atril de teclado para cables", "Tablet + soporte Hercules", "Soporte para celular Hercules", "Soporte para vaso"] },
+      { title: " 2.4 Cómputo y Video", items: ["Laptop + eliminador de corriente", "Disco duro negro + cable", "Base para pantalla tributo MUSE"] },
+      { title: " 2.5 Energía y Accesorios", items: ["Extensión de luz", "Multicontactos", "Plumillas + PortaPlumillas"] }
     ]
   },
   {
@@ -355,7 +322,7 @@ const CHECKLIST = [
   }
 ];
 
-const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v4_0';
+const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v3_4';
 const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/saoentertainment/totalfest-checklist/main/';
 
 function getStorage() {
@@ -442,7 +409,7 @@ function render() {
                   const isChecked = storage.current.checks[key] === true;
                   return `<div class="item ${isChecked ? 'checked' : ''}"><input type="checkbox" id="${key}" ${isChecked ? 'checked' : ''} onchange="toggleItem('${key}', this)"><label for="${key}">${item}</label></div>`;
                 }).join('')}
-                <textarea class="notes" placeholder="📝 Notas para ${sub.title}..." oninput="saveNotes(${sIdx}, ${subIdx}, this.value)">${storage.current.notes[`s${sIdx}_sub${subIdx}`] || ''}</textarea>
+                <textarea class="notes" placeholder=" Notas para ${sub.title}..." oninput="saveNotes(${sIdx}, ${subIdx}, this.value)">${storage.current.notes[`s${sIdx}_sub${subIdx}`] || ''}</textarea>
               </div>
             </div>`;
         }).join('')}
@@ -542,10 +509,11 @@ function renderHistory() {
     const dateStr = event.eventDate ? formatDateLocal(event.eventDate) : 'Sin fecha';
     const timeStr = event.startTime ? formatTime12(event.startTime) : '';
     const balance = Math.max(0, (parseFloat(event.costTotal)||0) - (parseFloat(event.costAdvance)||0));
-    return `<div class="history-item"><div class="history-info"><h4> ${event.service} | 🎉 ${event.celebrant || 'N/A'}</h4><p>📅 ${dateStr} ${timeStr ? `⏰ ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p>💰 Saldo: ${formatCurrency(balance)} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
+    return `<div class="history-item"><div class="history-info"><h4>🎵 ${event.service} |  ${event.celebrant || 'N/A'}</h4><p>📅 ${dateStr} ${timeStr ? `⏰ ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p>💰 Saldo: ${formatCurrency(balance)} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
   }).join('');
 }
 
+function resetChecks() { if (!confirm('¿Resetear todos los checks?')) return; const storage = getStorage(); storage.current.checks = {}; setStorage(storage); render(); }
 function toggleAll() { document.querySelectorAll('.main-section').forEach(s => s.classList.toggle('open')); document.querySelectorAll('.sub-section').forEach(s => s.classList.toggle('open')); }
 
 function formatDateLocal(dateStr) {
@@ -577,14 +545,14 @@ function exportReport() {
   report += `║   🎛️ TOTAL FEST - SAO KARAOKE 🎤         ║\n`;
   report += `║   Checklist Maestro - Javi SAO              ║\n`;
   report += `╚══════════════════════════════════════════════════╝\n\n`;
-  report += `🎵 SERVICIO: ${document.getElementById('service').value || 'N/A'}\n`;
+  report += ` SERVICIO: ${document.getElementById('service').value || 'N/A'}\n`;
   report += `🎉 TIPO EVENTO: ${document.getElementById('eventType').value || 'N/A'}\n`;
   report += `🎂 FESTEJO DE: ${document.getElementById('celebrant').value || 'N/A'}\n`;
   report += `👤 CLIENTE: ${document.getElementById('client').value || 'N/A'}\n`;
   report += `📍 DIRECCIÓN: ${document.getElementById('address').value || 'N/A'}\n`;
   report += `📅 FECHA: ${document.getElementById('eventDate').value ? formatDateLocal(document.getElementById('eventDate').value) : 'N/A'}\n`;
   report += `⏰ HORARIO: ${document.getElementById('startTime').value ? formatTime12(document.getElementById('startTime').value) : 'N/A'} (${document.getElementById('contractedHours').value || '?'} Horas de Servicio)\n`;
-  report += `🚗 TRANSPORTE: ${document.getElementById('transportType').value || 'N/A'} - ${document.getElementById('transportDetails').value || ''}\n`;
+  report += ` TRANSPORTE: ${document.getElementById('transportType').value || 'N/A'} - ${document.getElementById('transportDetails').value || ''}\n`;
   report += `👥 STAFF: ${document.getElementById('staffCount').value} persona(s) - ${document.getElementById('staffNames').value || 'N/A'}\n`;
   report += `💰 COSTO TOTAL: ${formatCurrency(parseFloat(document.getElementById('costTotal').value)||0)}\n`;
   report += `💵 ANTICIPO: ${formatCurrency(parseFloat(document.getElementById('costAdvance').value)||0)} (Fecha: ${document.getElementById('advanceDate').value || 'N/A'})\n`;
@@ -597,9 +565,9 @@ function exportReport() {
       report += `\n  ${sub.title}\n  ${'-'.repeat(40)}\n`;
       sub.items.forEach((item, iIdx) => {
         const key = `s${sIdx}_sub${subIdx}_i${iIdx}`;
-        report += `  ${storage.current.checks[key] ? '✅' : ''} ${item}\n`;
+        report += `  ${storage.current.checks[key] ? '✅' : '⬜'} ${item}\n`;
       });
-      if (storage.current.notes[`s${sIdx}_sub${subIdx}`]) report += `   Notas: ${storage.current.notes[`s${sIdx}_sub${subIdx}`]}\n`;
+      if (storage.current.notes[`s${sIdx}_sub${subIdx}`]) report += `  📝 Notas: ${storage.current.notes[`s${sIdx}_sub${subIdx}`]}\n`;
     });
   });
   const blob = new Blob([report], { type: 'text/plain;charset=utf-8' });
@@ -665,7 +633,7 @@ function exportClientReport() {
   .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #1976d2; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; }
   @media print { .print-btn { display: none; } body { padding: 0; } }
   </style></head><body>
-  <button class="print-btn" onclick="window.print()">️ Imprimir / Guardar como PDF</button>
+  <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
   <div class="header">
     <div class="header-logos">
       <img src="${GITHUB_BASE_URL}totalfest-logo.png" alt="TOTAL FEST">
@@ -675,8 +643,8 @@ function exportClientReport() {
     <div>Servicios Musicales Profesionales</div>
   </div>
   <div class="event-info">
-    <h2> Reporte de Equipo y Servicio Confirmado</h2>
-    <p><strong>🎵 Servicio:</strong> ${service} ${eventType ? `(${eventType})` : ''}</p>
+    <h2>📋 Reporte de Equipo y Servicio Confirmado</h2>
+    <p><strong> Servicio:</strong> ${service} ${eventType ? `(${eventType})` : ''}</p>
     ${celebrant ? `<p><strong>🎉 Festejo de:</strong> ${celebrant}</p>` : ''}
     ${client ? `<p><strong>👤 Cliente:</strong> ${client}</p>` : ''}
     ${address ? `<p><strong>📍 Ubicación:</strong> ${address}</p>` : ''}
@@ -725,7 +693,7 @@ function exportClientReport() {
 
 function exportConfig() {
   const storage = getStorage();
-  const config = { version: '4.0', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - JAVI SAO', data: storage };
+  const config = { version: '3.4', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - Javi SAO', data: storage };
   const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
