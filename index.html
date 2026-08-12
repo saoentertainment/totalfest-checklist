@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ETIQUETAS PARA OBLIGAR AL CELULAR A DESCARGAR LA VERSIÓN NUEVA -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 <title>🎛️ Checklist Maestro - TOTAL FEST (Javi SAO)</title>
 <link rel="icon" type="image/png" sizes="32x32" href="./icon-192.png">
 <link rel="apple-touch-icon" href="./icon-192.png">
@@ -126,7 +131,7 @@
     <div class="subtitle">Sistema de verificación de equipo para eventos</div>
     
     <div class="data-form">
-      <div class="section-title"> Datos del Servicio y Cliente</div>
+      <div class="section-title">🎵 Datos del Servicio y Cliente</div>
       <div class="form-row">
         <div class="form-group">
           <label>Servicio Contratado</label>
@@ -242,14 +247,17 @@
   </div>
 
   <div class="actions">
-    <button class="btn-expand" onclick="toggleAll()"> Expandir/Colapsar</button>
+    <button class="btn-expand" onclick="toggleAll()">📂 Expandir/Colapsar</button>
     <button class="btn-save-event" onclick="saveAsNewEvent()">📌 Guardar en Historial</button>
     <button class="btn-export" onclick="exportReport()">📄 Reporte interno</button>
     <button class="btn-client" onclick="exportClientReport()">📋 Reporte cliente</button>
     <button class="btn-config" onclick="exportConfig()">⬇️ Exportar config</button>
-<form id="resetForm" onsubmit="doReset(); return false;" style="display:inline;">
-  <button type="submit" class="btn-reset" style="pointer-events:auto; touch-action:manipulation;">🔄 Resetear Todo</button>
-</form>
+    
+    <!-- BOTÓN DE RESET CON FORMULARIO (ESTRUCTURA QUE SÍ FUNCIONA EN ANDROID) -->
+    <form onsubmit="doReset(); return false;" style="display:inline-block; margin:0; padding:0;">
+      <button type="submit" class="btn-reset" style="touch-action: manipulation; pointer-events: auto;">🔄 Resetear Todo</button>
+    </form>
+    
   </div>
 
   <div class="import-section">
@@ -292,16 +300,7 @@
 </div>
 
 <script>
-// Limpiar Service Worker si existe
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(function(registrations) {
-    for(let registration of registrations) {
-      registration.unregister();
-    }
-  });
-}
-
-// Función de reset definida al inicio para evitar problemas de carga
+// FUNCIÓN DE RESET DEFINIDA AL INICIO PARA EVITAR ERRORES DE CARGA
 function doReset() { 
   if (!window.confirm('¿Limpiar todo el evento actual? El historial se mantiene.')) {
     return false;
@@ -323,6 +322,7 @@ function doReset() {
   }
   return false;
 }
+
 const CHECKLIST = [
   {
     title: "🅰️ SECCIÓN 1: KARAOKE + DJ",
@@ -332,14 +332,14 @@ const CHECKLIST = [
       { title: "💡 1.3 Iluminación", items: ["2 Barras de luces LED + estuche", "3 Luces LED + 1 cuadrado + estuche", "Maleta con luces robóticas", "Maleta con luces beam", "Clamps para luces + hule espuma", "Lámparas: Blanca, Mini y para Laptop"] },
       { title: "💻 1.4 Cómputo y DJ", items: ["Módulo desarmable para DJ + Patitas", "Cabina DJ + Estuche", "Laptop + Estuche", "Disco duro externo SSD Azul", "Extensor USB C", "Wav Link (transmisor HDMI inalámbrico) para monitores independientes", "HUB USB", "Audífonos + soporte + soporte vaso", "Mouse + Mouse pad"] },
       { title: "🔌 1.5 Cables y Energía", items: ["Regulador de energía FURMAN", "Maleta de cables de audio", "Maleta de adaptadores (verde)", "Maleta de extensiones de luz y multicontactos", "Maleta HDMI / Splitters / Cables HDMI", "Herramienta, clips, velcros, correas sujetadoras"] },
-      { title: "🎒 1.6 Logística, Docs y Personal", items: ["Carrito transportador", "Atril para micrófonos (partituras)", "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación", "Pilas (¡cargarlas!) + Micro limpiador de micrófono", "Vestuario: Maletas con accesorios + ropa en gancho", "Hospitalidad: Almuerzo + Electrolit"] }
+      { title: " 1.6 Logística, Docs y Personal", items: ["Carrito transportador", "Atril para micrófonos (partituras)", "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación", "Pilas (¡cargarlas!) + Micro limpiador de micrófono", "Vestuario: Maletas con accesorios + ropa en gancho", "Hospitalidad: Almuerzo + Electrolit"] }
     ]
   },
   {
-    title: "️ SECCIÓN 2: MÚSICA EN VIVO (Bajista y Cantante)",
+    title: "🅱️ SECCIÓN 2: MÚSICA EN VIVO (Bajista y Cantante)",
     subsections: [
-      { title: " 2.1 Instrumentos y Amplificación", items: ["Bajo BATTALION + eliminador", "Afinador + eliminador", "Amplificador BUGERA + cable de corriente", "Bajo GL", "Bajo FACTOR", "THALI", "Soporte elevador monitor + cable corriente", "Cuerdas de repuesto"] },
-      { title: " 2.2 Audio y Cables", items: ["Micrófono SHURE SM58 (voz)", "Cables Plug (2)", "Cable XLR Voz", "2 cables XLR Salida Bugera", "Cables Plugs extra", "Clips de atril para cables de micrófono"] },
+      { title: "🎸 2.1 Instrumentos y Amplificación", items: ["Bajo BATTALION + eliminador", "Afinador + eliminador", "Amplificador BUGERA + cable de corriente", "Bajo GL", "Bajo FACTOR", "THALI", "Soporte elevador monitor + cable corriente", "Cuerdas de repuesto"] },
+      { title: "🎤 2.2 Audio y Cables", items: ["Micrófono SHURE SM58 (voz)", "Cables Plug (2)", "Cable XLR Voz", "2 cables XLR Salida Bugera", "Cables Plugs extra", "Clips de atril para cables de micrófono"] },
       { title: "📱 2.3 Soportes", items: ["Atril para micrófono", "Atriles para bajo", "Atril para teclado", "Clips de atril de teclado para cables", "Tablet + soporte Hercules", "Soporte para celular Hercules", "Soporte para vaso"] },
       { title: "💻 2.4 Cómputo y Video", items: ["Laptop + eliminador de corriente", "Disco duro negro + cable", "Base para pantalla tributo MUSE"] },
       { title: "🔌 2.5 Energía y Accesorios", items: ["Extensión de luz", "Multicontactos", "Plumillas + PortaPlumillas"] }
@@ -355,7 +355,7 @@ const CHECKLIST = [
   }
 ];
 
-const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v3_9';
+const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v4_0';
 const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/saoentertainment/totalfest-checklist/main/';
 
 function getStorage() {
@@ -542,56 +542,8 @@ function renderHistory() {
     const dateStr = event.eventDate ? formatDateLocal(event.eventDate) : 'Sin fecha';
     const timeStr = event.startTime ? formatTime12(event.startTime) : '';
     const balance = Math.max(0, (parseFloat(event.costTotal)||0) - (parseFloat(event.costAdvance)||0));
-    return `<div class="history-item"><div class="history-info"><h4>🎵 ${event.service} |  ${event.celebrant || 'N/A'}</h4><p>📅 ${dateStr} ${timeStr ? `⏰ ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p> Saldo: ${formatCurrency(balance)} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
+    return `<div class="history-item"><div class="history-info"><h4> ${event.service} | 🎉 ${event.celebrant || 'N/A'}</h4><p>📅 ${dateStr} ${timeStr ? `⏰ ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p>💰 Saldo: ${formatCurrency(balance)} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
   }).join('');
-}
-
-function doReset() { 
-  alert('✅ Botón funcionando! Limpiando todo...');
-  
-  const storage = getStorage(); 
-  
-  storage.current.checks = {}; 
-  storage.current.notes = {};
-  storage.current.service = '';
-  storage.current.eventType = '';
-  storage.current.celebrant = '';
-  storage.current.client = '';
-  storage.current.address = '';
-  storage.current.eventDate = '';
-  storage.current.startTime = '';
-  storage.current.contractedHours = '';
-  storage.current.transportType = '';
-  storage.current.transportDetails = '';
-  storage.current.staffCount = '1';
-  storage.current.staffNames = '';
-  storage.current.costTotal = '';
-  storage.current.costAdvance = '';
-  storage.current.advanceDate = '';
-  
-  setStorage(storage); 
-  
-  document.getElementById('service').value = '';
-  document.getElementById('eventType').value = '';
-  document.getElementById('celebrant').value = '';
-  document.getElementById('client').value = '';
-  document.getElementById('address').value = '';
-  document.getElementById('eventDate').value = '';
-  document.getElementById('startTime').value = '';
-  document.getElementById('contractedHours').value = '';
-  document.getElementById('transportType').value = '';
-  document.getElementById('transportDetails').value = '';
-  document.getElementById('staffCount').value = '1';
-  document.getElementById('staffNames').value = '';
-  document.getElementById('costTotal').value = '';
-  document.getElementById('costAdvance').value = '';
-  document.getElementById('advanceDate').value = '';
-  
-  updateMapsLink(); 
-  calculateBalance();
-  render();
-  
-  alert('✅ Todo limpio y listo para el siguiente evento');
 }
 
 function toggleAll() { document.querySelectorAll('.main-section').forEach(s => s.classList.toggle('open')); document.querySelectorAll('.sub-section').forEach(s => s.classList.toggle('open')); }
@@ -626,10 +578,10 @@ function exportReport() {
   report += `║   Checklist Maestro - Javi SAO              ║\n`;
   report += `╚══════════════════════════════════════════════════╝\n\n`;
   report += `🎵 SERVICIO: ${document.getElementById('service').value || 'N/A'}\n`;
-  report += ` TIPO EVENTO: ${document.getElementById('eventType').value || 'N/A'}\n`;
+  report += `🎉 TIPO EVENTO: ${document.getElementById('eventType').value || 'N/A'}\n`;
   report += `🎂 FESTEJO DE: ${document.getElementById('celebrant').value || 'N/A'}\n`;
   report += `👤 CLIENTE: ${document.getElementById('client').value || 'N/A'}\n`;
-  report += ` DIRECCIÓN: ${document.getElementById('address').value || 'N/A'}\n`;
+  report += `📍 DIRECCIÓN: ${document.getElementById('address').value || 'N/A'}\n`;
   report += `📅 FECHA: ${document.getElementById('eventDate').value ? formatDateLocal(document.getElementById('eventDate').value) : 'N/A'}\n`;
   report += `⏰ HORARIO: ${document.getElementById('startTime').value ? formatTime12(document.getElementById('startTime').value) : 'N/A'} (${document.getElementById('contractedHours').value || '?'} Horas de Servicio)\n`;
   report += `🚗 TRANSPORTE: ${document.getElementById('transportType').value || 'N/A'} - ${document.getElementById('transportDetails').value || ''}\n`;
@@ -645,9 +597,9 @@ function exportReport() {
       report += `\n  ${sub.title}\n  ${'-'.repeat(40)}\n`;
       sub.items.forEach((item, iIdx) => {
         const key = `s${sIdx}_sub${subIdx}_i${iIdx}`;
-        report += `  ${storage.current.checks[key] ? '✅' : '⬜'} ${item}\n`;
+        report += `  ${storage.current.checks[key] ? '✅' : ''} ${item}\n`;
       });
-      if (storage.current.notes[`s${sIdx}_sub${subIdx}`]) report += `  📝 Notas: ${storage.current.notes[`s${sIdx}_sub${subIdx}`]}\n`;
+      if (storage.current.notes[`s${sIdx}_sub${subIdx}`]) report += `   Notas: ${storage.current.notes[`s${sIdx}_sub${subIdx}`]}\n`;
     });
   });
   const blob = new Blob([report], { type: 'text/plain;charset=utf-8' });
@@ -681,7 +633,7 @@ function exportClientReport() {
 
   let totalChecked = 0;
   CHECKLIST.forEach((section, sIdx) => { section.subsections.forEach((sub, subIdx) => { sub.items.forEach((_, iIdx) => { if (storage.current.checks[`s${sIdx}_sub${subIdx}_i${iIdx}`]) totalChecked++; }); }); });
-  if (totalChecked === 0) { alert('️ Marca al menos un equipo.'); return; }
+  if (totalChecked === 0) { alert('⚠️ Marca al menos un equipo.'); return; }
 
   const printWindow = window.open('', '_blank');
   let html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Reporte - ${celebrant || service}</title><style>
@@ -713,7 +665,7 @@ function exportClientReport() {
   .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #1976d2; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; }
   @media print { .print-btn { display: none; } body { padding: 0; } }
   </style></head><body>
-  <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
+  <button class="print-btn" onclick="window.print()">️ Imprimir / Guardar como PDF</button>
   <div class="header">
     <div class="header-logos">
       <img src="${GITHUB_BASE_URL}totalfest-logo.png" alt="TOTAL FEST">
@@ -723,14 +675,14 @@ function exportClientReport() {
     <div>Servicios Musicales Profesionales</div>
   </div>
   <div class="event-info">
-    <h2>📋 Reporte de Equipo y Servicio Confirmado</h2>
+    <h2> Reporte de Equipo y Servicio Confirmado</h2>
     <p><strong>🎵 Servicio:</strong> ${service} ${eventType ? `(${eventType})` : ''}</p>
     ${celebrant ? `<p><strong>🎉 Festejo de:</strong> ${celebrant}</p>` : ''}
     ${client ? `<p><strong>👤 Cliente:</strong> ${client}</p>` : ''}
     ${address ? `<p><strong>📍 Ubicación:</strong> ${address}</p>` : ''}
     <p><strong>📅 Fecha:</strong> ${eventDate ? formatDateLocal(eventDate) : 'Por confirmar'}</p>
     ${timeDisplay ? `<p><strong>⏰ Horario de inicio:</strong> ${timeDisplay}</p>` : ''}
-    ${staffNames ? `<p><strong> Staff asignado:</strong> ${staffNames} (${staffCount} persona(s))</p>` : ''}
+    ${staffNames ? `<p><strong>👥 Staff asignado:</strong> ${staffNames} (${staffCount} persona(s))</p>` : ''}
     <p><strong>🕒 Generado:</strong> ${new Date().toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
   </div>
   
@@ -773,7 +725,7 @@ function exportClientReport() {
 
 function exportConfig() {
   const storage = getStorage();
-  const config = { version: '3.8', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - JAVI SAO', data: storage };
+  const config = { version: '4.0', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - JAVI SAO', data: storage };
   const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -795,7 +747,7 @@ function importConfig(event) {
       setStorage(config.data);
       render();
       alert('✅ Configuración importada correctamente');
-    } catch (err) { alert(' Error al importar: archivo inválido'); }
+    } catch (err) { alert('❌ Error al importar: archivo inválido'); }
     event.target.value = '';
   };
   reader.readAsText(file);
