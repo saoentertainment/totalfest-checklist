@@ -312,7 +312,8 @@
     <button class="btn-save-event" onclick="saveAsNewEvent()">📌 Guardar en Historial</button>
     <button class="btn-export" onclick="exportReport()">📄 Reporte interno</button>
     <button class="btn-client" onclick="exportClientReport()">📋 Reporte cliente</button>
-    <button class="btn-config" onclick="exportConfig()">⬇️ Exportar config</button>
+    <button class="btn-client" onclick="exportRecibo()" style="background: linear-gradient(135deg, #2e7d32, #4caf50);">✅ Recibo de Liquidación</button>
+    <button class="btn-config" onclick="exportConfig()">️ Exportar config</button>
   </div>
 
   <div style="width: 100%; margin-top: 20px; display: flex; justify-content: center;">
@@ -429,7 +430,7 @@ const CHECKLIST = [
         "Interfaz Behringer UCA 202 + USB",
         "Mezcladora Behringer + Eliminador de Corriente"
       ]},
-      { title: " 1.2 Video y Pantallas", items: [
+      { title: "📺 1.2 Video y Pantallas", items: [
         "Pantalla 42\" + estuche + control",
         "Monitor 15\" ligero + cables",
         "Pantalla 19\" AOC + control + base",
@@ -457,7 +458,7 @@ const CHECKLIST = [
         "Audífonos + soporte + soporte vaso",
         "Mouse + Mouse pad"
       ]},
-      { title: " 1.5 Cables y Energía", items: [
+      { title: "🔌 1.5 Cables y Energía", items: [
         "Regulador de energía FURMAN",
         "Maleta de cables de audio",
         "Maleta de adaptadores (verde)",
@@ -517,7 +518,7 @@ const CHECKLIST = [
     ]
   },
   {
-    title: "️ SECCIÓN 3: REQUISITOS DEL LUGAR (RIDER CLIENTE)",
+       title: " SECCIÓN 3: REQUISITOS DEL LUGAR (RIDER CLIENTE)",
     subsections: [
       { title: "⚙️ Instalación y Espacio", items: [
         "Acceso al lugar 3 horas antes (instalación y prueba de sonido)",
@@ -531,7 +532,7 @@ const CHECKLIST = [
         "Acceso vehicular cercano (escaleras/terreno difícil = cargo extra por maniobras)",
         "Zona de cobertura verificada (CDMX/Zona Metro. Otras zonas = costo de traslado ajustado)"
       ]},
-      { title: " Acuerdos y Condiciones", items: [
+      { title: "📜 Acuerdos y Condiciones", items: [
         "Cuota sindical cubierta por el contratante (si aplica: SUTM, CROC, ANDA, etc.)",
         "Atención para el staff considerada (alimentos y bebidas durante descansos)",
         "Responsabilidad por daños al equipo (invitados o instalaciones deficientes) al 100% en 15 días",
@@ -931,7 +932,25 @@ function exportClientReport() {
   setTimeout(() => printWindow.focus(), 250);
 }
 
-function exportConfig() {
+  // ... (aquí termina la función de exportClientReport)
+  printWindow.document.close();
+  setTimeout(() => printWindow.focus(), 250);
+}
+
+// 👇👇 PEGAS EL CÓDIGO NUEVO AQUÍ 👇👇
+function exportRecibo() {
+  // Validar que esté liquidado
+  const eventoLiquidado = document.getElementById('eventoLiquidado').checked;
+  // ... (todo el resto del código del recibo) ...
+}
+// 👆👆 TERMINA EL CÓDIGO NUEVO AQUÍ 👆👆
+
+function exportConfig() {  // <-- Esta línea ya estaba, tú solo pegaste arriba
+  const storage = getStorage();
+  // ...
+}
+ 
+ function exportConfig() {
   const storage = getStorage();
   const config = { version: '8.0', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - Javi SAO', data: storage };
   const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
