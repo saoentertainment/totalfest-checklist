@@ -7,7 +7,6 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 
-<!-- ETIQUETAS PARA VISTA PREVIA EN WHATSAPP Y REDES SOCIALES -->
 <meta property="og:title" content="🎛️ Checklist Maestro - TOTAL FEST">
 <meta property="og:description" content="Sistema de verificación de equipo para eventos - Javi SAO">
 <meta property="og:image" content="https://raw.githubusercontent.com/saoentertainment/totalfest-checklist/main/sao-logo.png">
@@ -49,6 +48,46 @@
   @media (max-width: 600px) { .form-row, .form-row-3 { grid-template-columns: 1fr; } }
   
   .section-title { color: #64b5f6; font-size: 1.1em; margin: 20px 0 10px; padding-bottom: 5px; border-bottom: 1px solid rgba(100, 181, 246, 0.2); display: flex; align-items: center; gap: 8px; }
+  
+  .liquidado-box { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    padding: 15px; 
+    background: rgba(76, 175, 80, 0.1); 
+    border: 2px solid rgba(76, 175, 80, 0.4); 
+    border-radius: 10px; 
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+  .liquidado-box label { 
+    color: #4caf50; 
+    font-weight: bold; 
+    font-size: 1em; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+  }
+  .liquidado-box input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    accent-color: #4caf50;
+    cursor: pointer;
+  }
+  .liquidado-box .fecha-liquidado {
+    flex: 1;
+    min-width: 150px;
+  }
+  .liquidado-box .fecha-liquidado label {
+    color: #90caf9;
+    font-size: 0.85em;
+    margin-bottom: 5px;
+  }
+  .liquidado-box .fecha-liquidado input {
+    width: 100%;
+  }
   
   .btn-maps { display: inline-block; width: 100%; text-align: center; padding: 10px; background: linear-gradient(135deg, #0288d1, #03a9f4); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 5px; transition: transform 0.2s; }
   .btn-maps:hover { transform: scale(1.02); }
@@ -137,7 +176,6 @@
     <h1>🎛️ CHECKLIST MAESTRO - TOTAL FEST (JAVI SAO)</h1>
     <div class="subtitle">Sistema de verificación de equipo para eventos</div>
     
-    <!-- SECCIÓN COLAPSABLE DE DATOS -->
     <div class="section-title" onclick="toggleDataForm()" style="cursor: pointer; justify-content: space-between;">
       <span>🎵 Datos del Servicio y Cliente</span>
       <span id="dataFormArrow" style="font-size: 0.8em;">▼</span>
@@ -237,6 +275,18 @@
         <label>Saldo Restante</label>
         <div id="balanceDisplay" class="balance-display">$0.00</div>
       </div>
+
+      <!-- NUEVO: APARTADO DE EVENTO LIQUIDADO -->
+      <div class="liquidado-box">
+        <label>
+          <input type="checkbox" id="eventoLiquidado" onchange="autoSaveEvent()">
+          ✅ Evento Liquidado
+        </label>
+        <div class="fecha-liquidado">
+          <label>Fecha de Liquidación</label>
+          <input type="date" id="fechaLiquidacion" onchange="autoSaveEvent()">
+        </div>
+      </div>
     </div>
 
     <div class="progress-bar">
@@ -249,7 +299,7 @@
 
   <div class="history-section" id="history-section">
     <div class="history-header" onclick="this.parentElement.classList.toggle('open')">
-      <h2>📚 Historial de Eventos</h2>
+      <h2> Historial de Eventos</h2>
       <span class="section-count" id="historyCount">0 eventos</span>
     </div>
     <div class="history-content">
@@ -259,21 +309,20 @@
 
   <div class="actions">
     <button class="btn-expand" onclick="toggleAll()">📂 Expandir/Colapsar</button>
-    <button class="btn-save-event" onclick="saveAsNewEvent()"> Guardar en Historial</button>
-    <button class="btn-export" onclick="exportReport()"> Reporte interno</button>
-    <button class="btn-client" onclick="exportClientReport()"> Reporte cliente</button>
-    <button class="btn-config" onclick="exportConfig()">️ Exportar config</button>
+    <button class="btn-save-event" onclick="saveAsNewEvent()">📌 Guardar en Historial</button>
+    <button class="btn-export" onclick="exportReport()">📄 Reporte interno</button>
+    <button class="btn-client" onclick="exportClientReport()">📋 Reporte cliente</button>
+    <button class="btn-config" onclick="exportConfig()">⬇️ Exportar config</button>
   </div>
 
-  <!-- BOTÓN DE RESET AISLADO Y MÁS GRANDE -->
   <div style="width: 100%; margin-top: 20px; display: flex; justify-content: center;">
-    <button class="btn-reset" id="btnReset" style="width: 100%; max-width: 350px; padding: 16px; font-size: 1.1em; border-radius: 10px;">🔄 Reset Todo</button>
+    <button class="btn-reset" id="btnReset" style="width: 100%; max-width: 350px; padding: 16px; font-size: 1.1em; border-radius: 10px;"> Reset Todo</button>
   </div>
 
   <div class="import-section">
     <h4>⬆️ Importar configuración desde otro dispositivo</h4>
     <p style="font-size:0.85em; color:#ffb74d; margin-bottom:10px;">
-      Sube el archivo JSON exportado previamente. Esto reemplazará tu configuración actual.
+      Sube el archivo JSON exportado previamente. Se mantendrá tu historial actual.
     </p>
     <input type="file" id="importFile" accept=".json" onchange="importConfig(event)">
   </div>
@@ -287,12 +336,12 @@
   <button class="fab-main" id="fabMain" onclick="toggleFab()">☰</button>
   <div class="fab-menu" id="fabMenu">
     <div class="fab-item">
-      <span> Datos del Servicio</span>
+      <span>📝 Datos del Servicio</span>
       <button onclick="scrollToSection('header-section')">⬆️</button>
     </div>
     <div class="fab-item">
-      <span>️ Karaoke + DJ</span>
-   <button onclick="scrollToSection('section-0')">🎤</button>
+      <span>🅰️ Karaoke + DJ</span>
+      <button onclick="scrollToSection('section-0')">🎤</button>
     </div>
     <div class="fab-item">
       <span>🅱️ Música en Vivo</span>
@@ -303,14 +352,13 @@
       <button onclick="scrollToSection('section-2')">🏛️</button>
     </div>
     <div class="fab-item">
-      <span>📚 Historial</span>
-   <button onclick="scrollToSection('history-section')">📚</button>
+      <span> Historial</span>
+      <button onclick="scrollToSection('history-section')">📚</button>
     </div>
   </div>
 </div>
 
 <script>
-// ELIMINAR SERVICE WORKERS
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
     for(let registration of registrations) {
@@ -319,7 +367,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// FUNCIÓN PARA COLAPSAR DATOS DEL SERVICIO
 function toggleDataForm() {
   const content = document.getElementById('dataFormContent');
   const arrow = document.getElementById('dataFormArrow');
@@ -332,7 +379,6 @@ function toggleDataForm() {
   }
 }
 
-// FUNCIÓN DE RESET (Solo borra el evento actual, respeta el historial)
 function doReset() { 
   setTimeout(function() {
     if(!confirm('¿Limpiar el evento actual? El historial se mantendrá a salvo.')) return;
@@ -343,6 +389,7 @@ function doReset() {
       address: '', eventDate: '', startTime: '', contractedHours: '', 
       transportType: '', transportDetails: '', staffCount: '1', 
       staffNames: '', costTotal: '', costAdvance: '', advanceDate: '', 
+      eventoLiquidado: false, fechaLiquidacion: '',
       checks: {}, notes: {} 
     };
     setStorage(storage);
@@ -350,7 +397,6 @@ function doReset() {
   }, 100);
 }
 
-// AGREGAR EVENT LISTENERS AL BOTÓN DE RESET
 window.addEventListener('load', function() {
   const btn = document.getElementById('btnReset');
   if (btn) {
@@ -371,41 +417,137 @@ const CHECKLIST = [
   {
     title: "🅰️ SECCIÓN 1: KARAOKE + DJ",
     subsections: [
-      { title: "🔊 1.1 Sonido", items: ["2 Bocinas ALTO 10\" + Fundas", "1 Subwoofer ALTO 12\" + Funda", "Maleta con soportes para bocinas + Soporte Pantalla", "Micrófonos PHENYX + Módulo y Plug + Eliminador", "Micrófonos STEREN + Módulo y Plug + Eliminador", "Micrófono SHURE SM58", "Interfaz Behringer + USB", "Mezcladora Behringer + Eliminador de Corriente"] },
-      { title: "📺 1.2 Video y Pantallas", items: ["Pantalla 42\" + estuche + control", "Monitor 15\" genérico + cables", "Pantalla 19\" AOC + control + base", "Pantalla 20\" Mitsui + control + base", "Soporte para laptop y monitor genérico 15\"", "Soportes de piso para Pantallas HERCULES"] },
-      { title: "💡 1.3 Iluminación", items: ["2 Barras de luces LED + estuche", "3 Luces LED + 1 cuadrado + estuche", "Maleta con luces robóticas", "Maleta con luces beam", "Clamps para luces + hule espuma", "Lámparas: Blanca, Mini y para Laptop"] },
-      { title: "💻 1.4 Cómputo y DJ", items: ["Módulo desarmable para DJ + Patitas", "Cabina DJ + Estuche", "Laptop + Estuche", "Disco duro externo SSD Azul", "Extensor USB C", "Wav Link (transmisor HDMI inalámbrico) para monitores independientes", "HUB USB", "Audífonos + soporte + soporte vaso", "Mouse + Mouse pad"] },
-      { title: "🔌 1.5 Cables y Energía", items: ["Regulador de energía FURMAN", "Maleta de cables de audio", "Maleta de adaptadores (verde)", "Maleta de extensiones de luz y multicontactos", "Maleta HDMI / Splitters / Cables HDMI", "Herramienta, clips, velcros, correas sujetadoras"] },
-      { title: "🎒 1.6 Logística, Docs y Personal", items: ["Carrito transportador", "Atril para micrófonos (partituras)", "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación", "Pilas (¡cargarlas!) + Micro limpiador de micrófono", "Vestuario: Maletas con accesorios + ropa en gancho", "Hospitalidad: Almuerzo + Electrolit"] }
+      { title: "🔊 1.1 Sonido", items: [
+        "2 Bocinas ALTO 10\" + Fundas",
+        "1 Bocinas ALTO 15\" + Funda",
+        "1 Subwoofer ALTO 12\" + Funda",
+        "Maleta con soportes para bocinas + Soporte Pantalla",
+        "Micrófonos PHENYX + Módulo y Plug + Eliminador + Estrellas protectoras",
+        "Micrófonos STEREN + Módulo y Plug + Eliminador + Estrellas protectoras",
+        "Micrófono SHURE SM58",
+        "Interfaz Behringer UMC 404 + USB",
+        "Interfaz Behringer UCA 202 + USB",
+        "Mezcladora Behringer + Eliminador de Corriente"
+      ]},
+      { title: " 1.2 Video y Pantallas", items: [
+        "Pantalla 42\" + estuche + control",
+        "Monitor 15\" ligero + cables",
+        "Pantalla 19\" AOC + control + base",
+        "Pantalla 20\" Mitsui + control + base",
+        "Soporte para laptop y monitor ligero 15\" (Brazos Robot)",
+        "Soportes de piso para Pantallas HERCULES (StagePrompt)"
+      ]},
+      { title: "💡 1.3 Iluminación", items: [
+        "2 Barras de luces LED + estuche",
+        "3 Luces LED + 1 rectangulo LED + estuche",
+        "Maleta con 2 luces robóticas",
+        "Maleta con 2 luces BEAM",
+        "Clamps para luces + hule espuma",
+        "Lámparas: Blanca, Mini y para Laptop + Cables USB"
+      ]},
+      { title: "💻 1.4 Cómputo y DJ", items: [
+        "Módulo desarmable para DJ + Patitas",
+        "Cabina DJ + Estuche",
+        "Laptop + Estuche",
+        "Disco duro externo SSD Azul",
+        "Extensor USB C",
+        "Wav Link (transmisor HDMI inalámbrico) para monitores independientes",
+        "EDID HDMI + Cables",
+        "HUB USB",
+        "Audífonos + soporte + soporte vaso",
+        "Mouse + Mouse pad"
+      ]},
+      { title: " 1.5 Cables y Energía", items: [
+        "Regulador de energía FURMAN",
+        "Maleta de cables de audio",
+        "Maleta de adaptadores (verde)",
+        "Maleta de extensiones de luz y multicontactos",
+        "Maleta HDMI / Splitters + eliminador / Cables HDMI",
+        "Herramienta, clips, velcros, correas sujetadoras"
+      ]},
+      { title: "🎒 1.6 Logística, Docs y Personal", items: [
+        "Carrito transportador",
+        "Atril partituras (Para Micrófonos inalámbricos)",
+        "Docs: Hojas de peticiones, QR, plumas, tarjetas de presentación",
+        "Pilas (¡cargarlas!) + Líquido limpiador de micrófono",
+        "Vestuario: Maletas con accesorios + ropa en gancho",
+        "Hospitalidad: Almuerzo + Electrolit"
+      ]}
     ]
   },
   {
-    title: "🅱️ SECCIÓN 2: MÚSICA EN VIVO (Bajista y Cantante)",
+    title: "🅱️ SECCIÓN 2: MÚSICA EN VIVO",
     subsections: [
-      { title: "🎸 2.1 Instrumentos y Amplificación", items: ["Bajo BATTALION + eliminador", "Afinador + eliminador", "Amplificador BUGERA + cable de corriente", "Bajo GL", "Bajo FACTOR", "THALI", "Soporte elevador monitor + cable corriente", "Cuerdas de repuesto"] },
-      { title: "🎤 2.2 Audio y Cables", items: ["Micrófono SHURE SM58 (voz)", "Cables Plug (2)", "Cable XLR Voz", "2 cables XLR Salida Bugera", "Cables Plugs extra", "Clips de atril para cables de micrófono"] },
-      { title: "📱 2.3 Soportes", items: ["Atril para micrófono", "Atriles para bajo", "Atril para teclado", "Clips de atril de teclado para cables", "Tablet + soporte Hercules", "Soporte para celular Hercules", "Soporte para vaso"] },
-      { title: "💻 2.4 Cómputo y Video", items: ["Laptop + eliminador de corriente", "Disco duro negro + cable", "Base para pantalla tributo MUSE"] },
-      { title: "🔌 2.5 Energía y Accesorios", items: ["Extensión de luz", "Multicontactos", "Plumillas + PortaPlumillas"] }
+      { title: "🎸 2.1 Instrumentos y Amplificación", items: [
+        "BATTALION + eliminador",
+        "Afinador + eliminador",
+        "Amplificador BUGERA + cable de corriente + Estuche",
+        "Bajo GL + Estuche",
+        "Bajo FACTOR + Estuche",
+        "THALI",
+        "Soporte para Batallion + cable corriente",
+        "Cuerdas de repuesto"
+      ]},
+      { title: "🎤 2.2 Audio y Cables", items: [
+        "Micrófono SHURE SM58 (voz)",
+        "Cables Plug (2)",
+        "Cable XLR Voz",
+        "2 cables XLR Salida Bugera",
+        "Cables Plugs extra",
+        "Clips de atril para cables de micrófono"
+      ]},
+      { title: "📱 2.3 Soportes", items: [
+        "Atril para micrófono",
+        "Atriles para bajo",
+        "Atril para teclado",
+        "Clips de atril de teclado para cables",
+        "Tablet + soporte Hercules",
+        "Soporte para celular Hercules",
+        "Soporte para vaso"
+      ]},
+      { title: "💻 2.4 Cómputo y Video", items: [
+        "Laptop + eliminador de corriente",
+        "Disco duro negro + cable"
+      ]},
+      { title: "🔌 2.5 Energía y Accesorios", items: [
+        "Extensión de luz",
+        "Multicontactos",
+        "Plumillas + PortaPlumillas"
+      ]}
     ]
   },
   {
-    title: "🅲️ SECCIÓN 3: REQUISITOS DEL LUGAR (RIDER CLIENTE)",
+    title: "️ SECCIÓN 3: REQUISITOS DEL LUGAR (RIDER CLIENTE)",
     subsections: [
-      { title: "⚙️ Instalación y Espacio", items: ["Acceso al lugar 3 horas antes (instalación y prueba de sonido)", "Contactos aterrizados (3 patas) con breaker mínimo 15A", "Área despejada con techo/lona (protección contra sol/lluvia)", "Suelo firme y estable (no pasto húmedo/tierra por riesgos eléctricos)", "WiFi disponible en el lugar (o reportar ausencia con anticipación)"] },
-      { title: "🚛 Logística y Accesos", items: ["Permisos y accesos tramitados (si es privada/condominio/fraccionamiento)", "Acceso vehicular cercano (escaleras/terreno difícil = cargo extra por maniobras)", "Zona de cobertura verificada (CDMX/Zona Metro. Otras zonas = costo de traslado ajustado)"] },
-      { title: "📜 Acuerdos y Condiciones", items: ["Cuota sindical cubierta por el contratante (si aplica: SUTM, CROC, ANDA, etc.)", "Atención para el staff considerada (alimentos y bebidas durante descansos)", "Responsabilidad por daños al equipo (invitados o instalaciones deficientes) al 100% en 15 días", "Tiempo contratado ininterrumpido (interrupciones por mariachis/rifas/discursos NO generan reposición)"] }
+      { title: "⚙️ Instalación y Espacio", items: [
+        "Acceso al lugar 3 horas antes (instalación y prueba de sonido)",
+        "Contactos aterrizados (3 patas) con breaker mínimo 15A y voltaje domestico 110 V o 120 V",
+        "Área despejada aprox 2 mts x 2 mts min. con techo/lona (protección contra sol/lluvia)",
+        "Suelo firme y estable (no pasto húmedo/tierra por riesgos eléctricos)",
+        "WiFi disponible en el lugar (o reportar ausencia con anticipación)"
+      ]},
+      { title: "🚛 Logística y Accesos", items: [
+        "Permisos y accesos tramitados (si es privada/condominio/fraccionamiento)",
+        "Acceso vehicular cercano (escaleras/terreno difícil = cargo extra por maniobras)",
+        "Zona de cobertura verificada (CDMX/Zona Metro. Otras zonas = costo de traslado ajustado)"
+      ]},
+      { title: " Acuerdos y Condiciones", items: [
+        "Cuota sindical cubierta por el contratante (si aplica: SUTM, CROC, ANDA, etc.)",
+        "Atención para el staff considerada (alimentos y bebidas durante descansos)",
+        "Responsabilidad por daños al equipo (invitados o instalaciones deficientes) al 100% en 15 días",
+        "Tiempo contratado ininterrumpido (interrupciones por mariachis/rifas/discursos NO generan reposición)"
+      ]}
     ]
   }
 ];
 
-const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v7_0';
+const STORAGE_KEY = 'riderCheckTotalFestJaviSAO_v8_0';
 const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/saoentertainment/totalfest-checklist/main/';
 
 function getStorage() {
   const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
   return { 
-    current: data.current || { service: '', eventType: '', celebrant: '', client: '', address: '', eventDate: '', startTime: '', contractedHours: '', transportType: '', transportDetails: '', staffCount: '1', staffNames: '', costTotal: 0, costAdvance: 0, advanceDate: '', checks: {}, notes: {} }, 
+    current: data.current || { service: '', eventType: '', celebrant: '', client: '', address: '', eventDate: '', startTime: '', contractedHours: '', transportType: '', transportDetails: '', staffCount: '1', staffNames: '', costTotal: 0, costAdvance: 0, advanceDate: '', eventoLiquidado: false, fechaLiquidacion: '', checks: {}, notes: {} }, 
     history: data.history || [] 
   };
 }
@@ -459,6 +601,8 @@ function render() {
   document.getElementById('costTotal').value = storage.current.costTotal || '';
   document.getElementById('costAdvance').value = storage.current.costAdvance || '';
   document.getElementById('advanceDate').value = storage.current.advanceDate || '';
+  document.getElementById('eventoLiquidado').checked = storage.current.eventoLiquidado || false;
+  document.getElementById('fechaLiquidacion').value = storage.current.fechaLiquidacion || '';
   
   updateMapsLink(); calculateBalance();
 
@@ -532,6 +676,8 @@ function autoSaveEvent() {
   storage.current.costTotal = document.getElementById('costTotal').value;
   storage.current.costAdvance = document.getElementById('costAdvance').value;
   storage.current.advanceDate = document.getElementById('advanceDate').value;
+  storage.current.eventoLiquidado = document.getElementById('eventoLiquidado').checked;
+  storage.current.fechaLiquidacion = document.getElementById('fechaLiquidacion').value;
   setStorage(storage); 
 }
 
@@ -545,7 +691,8 @@ function saveAsNewEvent() {
     service: document.getElementById('service').value, eventType: document.getElementById('eventType').value, celebrant: document.getElementById('celebrant').value, client: document.getElementById('client').value,
     address: document.getElementById('address').value, eventDate: document.getElementById('eventDate').value, startTime: document.getElementById('startTime').value, contractedHours: document.getElementById('contractedHours').value,
     transportType: document.getElementById('transportType').value, transportDetails: document.getElementById('transportDetails').value, staffCount: document.getElementById('staffCount').value, staffNames: document.getElementById('staffNames').value,
-    costTotal: document.getElementById('costTotal').value, costAdvance: document.getElementById('costAdvance').value, advanceDate: document.getElementById('advanceDate').value
+    costTotal: document.getElementById('costTotal').value, costAdvance: document.getElementById('costAdvance').value, advanceDate: document.getElementById('advanceDate').value,
+    eventoLiquidado: document.getElementById('eventoLiquidado').checked, fechaLiquidacion: document.getElementById('fechaLiquidacion').value
   };
   storage.history.unshift({ id: Date.now(), ...currentData, checks: { ...storage.current.checks }, notes: { ...storage.current.notes }, savedAt: new Date().toISOString() });
   setStorage(storage); renderHistory();
@@ -561,7 +708,8 @@ function loadEvent(id) {
     service: event.service, eventType: event.eventType, celebrant: event.celebrant, client: event.client, 
     address: event.address, eventDate: event.eventDate, startTime: event.startTime, contractedHours: event.contractedHours,
     transportType: event.transportType, transportDetails: event.transportDetails, staffCount: event.staffCount || '1', staffNames: event.staffNames,
-    costTotal: event.costTotal, costAdvance: event.costAdvance, advanceDate: event.advanceDate, 
+    costTotal: event.costTotal, costAdvance: event.costAdvance, advanceDate: event.advanceDate,
+    eventoLiquidado: event.eventoLiquidado || false, fechaLiquidacion: event.fechaLiquidacion || '',
     checks: { ...event.checks }, notes: { ...event.notes } 
   };
   setStorage(storage); render();
@@ -586,7 +734,8 @@ function renderHistory() {
     const dateStr = event.eventDate ? formatDateLocal(event.eventDate) : 'Sin fecha';
     const timeStr = event.startTime ? formatTime12(event.startTime) : '';
     const balance = Math.max(0, (parseFloat(event.costTotal)||0) - (parseFloat(event.costAdvance)||0));
-    return `<div class="history-item"><div class="history-info"><h4>🎵 ${event.service} | 🎉 ${event.celebrant || 'N/A'}</h4><p> ${dateStr} ${timeStr ? ` ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p>💰 Saldo: ${formatCurrency(balance)} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})"> Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
+    const liquidadoStr = event.eventoLiquidado ? (event.fechaLiquidacion ? ` | ✅ Liquidado: ${formatDateLocal(event.fechaLiquidacion)}` : ' | ✅ Liquidado') : ' | ⏳ Pendiente';
+    return `<div class="history-item"><div class="history-info"><h4>🎵 ${event.service} | 🎉 ${event.celebrant || 'N/A'}</h4><p>📅 ${dateStr} ${timeStr ? `⏰ ${timeStr}` : ''} | 👥 ${event.staffCount || 1} pax</p><p>💰 Saldo: ${formatCurrency(balance)}${liquidadoStr} | ✅ ${checkedCount} items</p></div><div class="history-actions"><button class="btn-load" onclick="loadEvent(${event.id})">📂 Cargar</button><button class="btn-delete" onclick="deleteEvent(${event.id})">🗑️ Eliminar</button></div></div>`;
   }).join('');
 }
 
@@ -617,22 +766,27 @@ function scrollToSection(id) {
 
 function exportReport() {
   const storage = getStorage();
+  const liquidadoStr = document.getElementById('eventoLiquidado').checked ? 
+    (`\n ESTADO: ✅ EVENTO LIQUIDADO${document.getElementById('fechaLiquidacion').value ? ` (Fecha: ${formatDateLocal(document.getElementById('fechaLiquidacion').value)})` : ''}`) : 
+    `\n💵 ESTADO: ⏳ PENDIENTE DE LIQUIDACIÓN`;
+  
   let report = `╔══════════════════════════════════════════════════╗\n`;
-  report += `║   🎛️ TOTAL FEST - SAO KARAOKE 🎤         \n`;
-  report += `║   Checklist Maestro - Javi SAO              ║\n`;
+  report += `║   ️ TOTAL FEST - SAO KARAOKE          ║\n`;
+  report += `║   Checklist Maestro - Javi SAO              \n`;
   report += `╚══════════════════════════════════════════════════╝\n\n`;
-  report += `🎵 SERVICIO: ${document.getElementById('service').value || 'N/A'}\n`;
+  report += ` SERVICIO: ${document.getElementById('service').value || 'N/A'}\n`;
   report += `🎉 TIPO EVENTO: ${document.getElementById('eventType').value || 'N/A'}\n`;
   report += `🎂 FESTEJO DE: ${document.getElementById('celebrant').value || 'N/A'}\n`;
-  report += `👤 CLIENTE: ${document.getElementById('client').value || 'N/A'}\n`;
+  report += ` CLIENTE: ${document.getElementById('client').value || 'N/A'}\n`;
   report += `📍 DIRECCIÓN: ${document.getElementById('address').value || 'N/A'}\n`;
-  report += ` FECHA: ${document.getElementById('eventDate').value ? formatDateLocal(document.getElementById('eventDate').value) : 'N/A'}\n`;
+  report += `📅 FECHA: ${document.getElementById('eventDate').value ? formatDateLocal(document.getElementById('eventDate').value) : 'N/A'}\n`;
   report += `⏰ HORARIO: ${document.getElementById('startTime').value ? formatTime12(document.getElementById('startTime').value) : 'N/A'} (${document.getElementById('contractedHours').value || '?'} Horas de Servicio)\n`;
   report += `🚗 TRANSPORTE: ${document.getElementById('transportType').value || 'N/A'} - ${document.getElementById('transportDetails').value || ''}\n`;
   report += `👥 STAFF: ${document.getElementById('staffCount').value} persona(s) - ${document.getElementById('staffNames').value || 'N/A'}\n`;
   report += `💰 COSTO TOTAL: ${formatCurrency(parseFloat(document.getElementById('costTotal').value)||0)}\n`;
   report += `💵 ANTICIPO: ${formatCurrency(parseFloat(document.getElementById('costAdvance').value)||0)} (Fecha: ${document.getElementById('advanceDate').value || 'N/A'})\n`;
-  report += `💸 SALDO RESTANTE: ${formatCurrency(Math.max(0, (parseFloat(document.getElementById('costTotal').value)||0) - (parseFloat(document.getElementById('costAdvance').value)||0)))}\n\n`;
+  report += `💸 SALDO RESTANTE: ${formatCurrency(Math.max(0, (parseFloat(document.getElementById('costTotal').value)||0) - (parseFloat(document.getElementById('costAdvance').value)||0)))}\n`;
+  report += liquidadoStr + `\n\n`;
   report += `Generado: ${new Date().toLocaleString('es-MX')}\n\n`;
   
   CHECKLIST.forEach((section, sIdx) => {
@@ -669,6 +823,8 @@ function exportClientReport() {
   const costTotal = document.getElementById('costTotal').value;
   const costAdvance = document.getElementById('costAdvance').value;
   const advanceDate = document.getElementById('advanceDate').value;
+  const eventoLiquidado = document.getElementById('eventoLiquidado').checked;
+  const fechaLiquidacion = document.getElementById('fechaLiquidacion').value;
   
   const fmtTotal = formatCurrency(parseFloat(costTotal)||0);
   const fmtAdvance = formatCurrency(parseFloat(costAdvance)||0);
@@ -695,6 +851,9 @@ function exportClientReport() {
   .payment-info { background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin: 10px 0; border-radius: 6px; }
   .payment-info h2 { color: #e65100; font-size: 1.1em; margin-bottom: 10px; }
   .payment-info p { margin: 5px 0; font-size: 0.95em; }
+  .liquidado-info { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; margin: 10px 0; border-radius: 6px; }
+  .liquidado-info h2 { color: #2e7d32; font-size: 1.1em; margin-bottom: 10px; }
+  .liquidado-info p { margin: 5px 0; font-size: 0.95em; }
   .summary { background: #e8f5e9; border: 2px solid #4caf50; padding: 10px; border-radius: 6px; margin: 10px 0; text-align: center; font-size: 1em; color: #2e7d32; font-weight: bold; }
   .section { margin: 15px 0; }
   .section-title { background: linear-gradient(135deg, #1976d2, #42a5f5); color: white; padding: 10px 15px; border-radius: 6px; font-size: 1.1em; font-weight: bold; margin-bottom: 10px; }
@@ -723,10 +882,10 @@ function exportClientReport() {
     <p><strong>🎵 Servicio:</strong> ${service} ${eventType ? `(${eventType})` : ''}</p>
     ${celebrant ? `<p><strong>🎉 Festejo de:</strong> ${celebrant}</p>` : ''}
     ${client ? `<p><strong>👤 Cliente:</strong> ${client}</p>` : ''}
-    ${address ? `<p><strong> Ubicación:</strong> ${address}</p>` : ''}
+    ${address ? `<p><strong>📍 Ubicación:</strong> ${address}</p>` : ''}
     <p><strong>📅 Fecha:</strong> ${eventDate ? formatDateLocal(eventDate) : 'Por confirmar'}</p>
-    ${timeDisplay ? `<p><strong> Horario de inicio:</strong> ${timeDisplay}</p>` : ''}
-    ${staffNames ? `<p><strong>👥 Staff asignado:</strong> ${staffNames} (${staffCount} persona(s))</p>` : ''}
+    ${timeDisplay ? `<p><strong>⏰ Horario de inicio:</strong> ${timeDisplay}</p>` : ''}
+    ${staffNames ? `<p><strong> Staff asignado:</strong> ${staffNames} (${staffCount} persona(s))</p>` : ''}
     <p><strong>🕒 Generado:</strong> ${new Date().toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
   </div>
   
@@ -736,6 +895,11 @@ function exportClientReport() {
     <p><strong>Anticipo Recibido:</strong> ${fmtAdvance} ${advanceDate ? `(Fecha: ${formatDateLocal(advanceDate)})` : ''}</p>
     <p><strong>Saldo Restante por Liquidar:</strong> ${fmtBalance}</p>
   </div>
+
+  ${eventoLiquidado ? `<div class="liquidado-info">
+    <h2>✅ Evento Liquidado</h2>
+    <p><strong>Fecha de Liquidación:</strong> ${fechaLiquidacion ? formatDateLocal(fechaLiquidacion) : 'No especificada'}</p>
+  </div>` : ''}
 
   <div class="summary">✅ ${totalChecked} items confirmados para este evento</div>`;
 
@@ -769,7 +933,7 @@ function exportClientReport() {
 
 function exportConfig() {
   const storage = getStorage();
-  const config = { version: '7.0', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - Javi SAO', data: storage };
+  const config = { version: '8.0', exportedAt: new Date().toISOString(), app: 'TOTAL FEST - Javi SAO', data: storage };
   const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -782,15 +946,28 @@ function exportConfig() {
 function importConfig(event) {
   const file = event.target.files[0];
   if (!file) return;
-  if (!confirm('⚠️ Esto reemplazará TODA tu configuración actual. ¿Continuar?')) { event.target.value = ''; return; }
+  if (!confirm('⚠️ ¿Importar configuración? Se mantendrá tu historial actual.')) { event.target.value = ''; return; }
   const reader = new FileReader();
   reader.onload = function(e) {
     try {
       const config = JSON.parse(e.target.result);
       if (!config.data || !config.data.current) throw new Error('Formato inválido');
-      setStorage(config.data);
+      
+      const currentStorage = getStorage();
+      currentStorage.current = config.data.current;
+      
+      if (config.data.history && Array.isArray(config.data.history)) {
+        const existingIds = new Set(currentStorage.history.map(e => e.id));
+        config.data.history.forEach(event => {
+          if (!existingIds.has(event.id)) {
+            currentStorage.history.push(event);
+          }
+        });
+      }
+      
+      setStorage(currentStorage);
       render();
-      alert('✅ Configuración importada correctamente');
+      alert('✅ Configuración importada. Tu historial está a salvo.');
     } catch (err) { alert('❌ Error al importar: archivo inválido'); }
     event.target.value = '';
   };
