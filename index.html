@@ -332,11 +332,20 @@ function toggleDataForm() {
   }
 }
 
-// FUNCIÓN DE RESET (Optimizada para Android)
+// FUNCIÓN DE RESET (Solo borra el evento actual, respeta el historial)
 function doReset() { 
   setTimeout(function() {
-    alert('🔄 Limpiando todo...');
-    localStorage.clear();
+    if(!confirm('¿Limpiar el evento actual? El historial se mantendrá a salvo.')) return;
+    
+    const storage = getStorage();
+    storage.current = { 
+      service: '', eventType: '', celebrant: '', client: '', 
+      address: '', eventDate: '', startTime: '', contractedHours: '', 
+      transportType: '', transportDetails: '', staffCount: '1', 
+      staffNames: '', costTotal: '', costAdvance: '', advanceDate: '', 
+      checks: {}, notes: {} 
+    };
+    setStorage(storage);
     window.location.reload();
   }, 100);
 }
