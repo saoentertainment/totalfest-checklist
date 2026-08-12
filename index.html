@@ -303,12 +303,15 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// FUNCIÓN DE RESET CON TOUCH Y CLICK
-function doReset() { 
-  alert('🔄 Limpiando todo...');
-  localStorage.clear();
-  window.location.reload();
-}
+   // FUNCIÓN DE RESET (Optimizada para Android)
+   function doReset() { 
+     // Usamos setTimeout para que el celular muestre el mensaje antes de bloquearse
+     setTimeout(function() {
+       alert('🔄 Limpiando todo...');
+       localStorage.clear();
+       window.location.reload();
+     }, 100);
+   }
 
 // AGREGAR EVENT LISTENERS AL BOTÓN
 window.addEventListener('load', function() {
